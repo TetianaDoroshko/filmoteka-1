@@ -1,2 +1,24 @@
-@import './common';
-@import './example';
+// Utils
+@import './utils/variables';
+@import './utils/visually-hidden';
+@import './utils/mixins';
+
+// Base
+@import './base/common';
+@import './base/reset';
+@import './base/container';
+
+// Components
+@import './components/btn-library';
+@import './components/search-header';
+@import './components/main-container';
+@import './components/card';
+@import './components/pagination';
+@import './components/backdrop';
+@import './components/modal-film-details';
+@import './components/modal-team';
+@import './components/loader';
+
+// Layout
+@import './layout/header';
+@import './layout/footer';
