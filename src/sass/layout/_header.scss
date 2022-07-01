@@ -1,0 +1,64 @@
+.header {
+  height: 230px;
+  width: 100%;
+  padding-top: 20px;
+  background-color: #000000b0;
+  background-image: url(../images/header@1x.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  @include retinabg {
+    background-image: url(../images/header@2x.png);
+  }
+}
+.header--library {
+  background-image: url(../images/header-lib-overlay.png),
+    url(../images/header-lib@1x.png);
+  @include retinabg {
+    background-image: url(../images/header-lib-overlay.png),
+      url(../images/header-lib@2x.png);
+  }
+}
+.navigation {
+  display: flex;
+  align-items: center;
+  margin-bottom: 40px;
+  justify-content: space-between;
+}
+.navigation__name {
+  display: none;
+  color: #ffffff;
+  margin-left: 8px;
+  @include font(30px, 1.17, 500, null);
+
+  @include tablet {
+    display: inline-block;
+  }
+}
+.navigation__actions {
+  display: flex;
+}
+.navigation__page {
+  display: block;
+  padding: 20px 0;
+  margin-right: 40px;
+  text-transform: uppercase;
+  color: #ffffff;
+  text-decoration: none;
+  @include font(12px, 1.17, 500, null);
+}
+.navigation__page:last-child {
+  margin-right: 0px;
+}
+.current {
+  position: relative;
+}
+.current::after {
+  position: absolute;
+  left: 0;
+  bottom: 17px;
+  content: '';
+  height: 3px;
+  width: 100%;
+  background-color: #ff001b;
+}

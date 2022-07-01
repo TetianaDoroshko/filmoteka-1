@@ -1,0 +1,17 @@
+.gallery {
+  padding: 20px 0 40px;
+
+  @include tablet {
+    padding: 60px 0;
+  }
+}
+.gallery__container {
+  @include tablet {
+    display: flex;
+    flex-wrap: wrap;
+    margin: -16px;
+  }
+  @include desktop {
+    margin: -8px;
+  }
+}

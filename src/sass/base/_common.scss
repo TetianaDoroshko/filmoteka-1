@@ -1,4 +1,6 @@
 body {
+  font-family: 'Roboto', sans-serif;
+  @include font(14px, 1.14, 400, 0);
 }
 
 img {

@@ -1,5 +1,27 @@
 <!-- // Разметка хедера, сделать контейнер в который динамически будет подставляться
 поиск или кнопки в зависимости от страницы. И через джс будет меняться фоновое
 изображение. -->
-<include src="./partials/search-header-dev.html"></include>
-<include src="./partials/btn-library-dev.htm"></include>
+
+<header class="header">
+  <div class="container">
+    <nav class="navigation">
+      <div class="navigation__logo">
+        <a href=""
+          ><svg width="24" height="24">
+            <use href="./images/sprite.svg#icon-logo"></use>
+          </svg>
+          <span class="navigation__name">Filmoteka</span></a
+        >
+      </div>
+      <div class="navigation__actions">
+        <a class="navigation__page current js-home" href="#">Home</a>
+        <a class="navigation__page js-library" href="#">Library</a>
+      </div>
+    </nav>
+
+    <include src="./partials/search-header-dev.html"></include>
+    <include src="./partials/btn-library-dev.html"></include>
+
+    <div class="header__info"></div>
+  </div>
+</header>

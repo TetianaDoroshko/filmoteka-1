@@ -32,14 +32,15 @@
 }
 
 @mixin font($fs: null, $lh: null, $fw: null, $ls: null) {
-  font-weight: $fw;
   font-size: $fs;
-  line-height: decimal-round($lh/$fs, 2);
+  line-height: $lh;
+
+  font-weight: $fw;
   letter-spacing: $ls;
 }
 
 // Флекс
-@mixin flex($dflex: flex, $aligni: null, $justc: null) {
+@mixin flex($dflex: flex, $aligni: center, $justc: center) {
   display: $dflex;
   justify-content: $justc;
   align-items: $aligni;
