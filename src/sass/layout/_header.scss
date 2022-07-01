@@ -29,7 +29,9 @@
   display: none;
   color: #ffffff;
   margin-left: 8px;
-  @include font(30px, 1.17, 500, null);
+  font-size: 30px;
+  line-height: 1.17;
+  font-weight: 500;
 
   @include tablet {
     display: inline-block;
@@ -45,7 +47,9 @@
   text-transform: uppercase;
   color: #ffffff;
   text-decoration: none;
-  @include font(12px, 1.17, 500, null);
+  font-size: 12px;
+  line-height: 1.17;
+  font-weight: 500;
 }
 .navigation__page:last-child {
   margin-right: 0px;

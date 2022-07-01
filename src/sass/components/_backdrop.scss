@@ -10,10 +10,10 @@
 
   overflow-y: auto;
 
-  @media (min-width: 768px) {
+  @include tablet {
     padding-top: 219px;
   }
-  @media (min-width: 1280px) {
+  @include desktop {
     padding-top: 150px;
   }
 }

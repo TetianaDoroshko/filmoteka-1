@@ -6,7 +6,7 @@
   background-color: transparent;
   font-weight: 500;
   text-transform: uppercase;
-  @include flex();
+  @include flex(flex, center, center);
 }
 .button:active {
   color: #ffffff;

@@ -6,7 +6,7 @@
   border: 1px solid #ffffff;
   color: #ffffff;
   width: 130px;
-  @media (min-width: 768px) {
+  @include tablet {
     width: 150px;
   }
 }
