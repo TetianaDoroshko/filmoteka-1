@@ -1,0 +1,49 @@
+.modal {
+  padding: 20px 20px 48px 20px;
+  width: 100vw;
+  height: 100vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  overflow-y: auto;
+
+  @media screen and (max-width: 767px) {
+    align-items: flex-start;
+  }
+}
+
+.modal-wrapper {
+  position: relative;
+  padding: 48px 20px 40px 20px;
+  width: 280px;
+
+  background-color: #ffffff;
+
+  @media screen and (min-width: 768px) {
+    width: 704px;
+    padding: 40px 72px 40px 36px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    width: 806px;
+    padding: 50px 12px 40px 12px;
+  }
+}
+
+.modal-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 30px;
+  height: 30px;
+
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+
+  @media screen and (min-width: 1280px) {
+    top: 5px;
+  }
+}
