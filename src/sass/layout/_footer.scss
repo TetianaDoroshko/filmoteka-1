@@ -6,6 +6,7 @@
 
     //move to mixin
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     //
@@ -14,6 +15,7 @@
 
     @include tablet {
         height: 79px;
+        flex-direction: row;
     }
 
     @include desktop {
@@ -28,19 +30,33 @@
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
-    line-height: 16px;
+    line-height: 1.14;
     //
 
     color: #545454;
 
     @include tablet {
         font-size: 16px;
-        line-height: 19px;
+        line-height: 1.33;
     }
 }
 
 .ft-part-one{
-    margin-right: 10px;
+    margin-right: auto;
+    margin-left: auto;
+    margin-bottom: 10px;
+    @include tablet {
+        margin-right: 3px;
+        margin-left: 0;
+        margin-bottom: 0;
+    }
+}
+
+.ft-part-two{
+    display: flex;
+    @include tablet {
+        align-items: center;
+    }
 }
 
 .footer-image{
@@ -48,6 +64,7 @@
     width: 14px;
     height: 13px;
     margin-right: 10px;
+    margin-left: 10px;
 }
 
 .footer-link{
