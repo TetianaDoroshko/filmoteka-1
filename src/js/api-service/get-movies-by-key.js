@@ -28,4 +28,4 @@ export async function getMoviesByKey(query, page = 1) {
     console.log(error);
   }
 }
-console.log(getMoviesByKey('cat'));
+// console.log('getMoviesByKey', getMoviesByKey('game'));
