@@ -1,0 +1,203 @@
+.team-modal{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: var(--timingFunction);
+}
+
+.tm-content{ 
+    width: 240px;
+    background-color: #fff;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50% , -50%);
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 2px 1px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    border: solid;
+    border-image-slice: 1;
+    border-width: 5px;
+    border-image-source: 
+    linear-gradient(
+        60deg,
+        #A71D31,
+        #3F0D12);
+
+    @include mobile{
+        width: 440px;
+    }
+    @include tablet{
+        width: 700px;
+        padding-bottom: 20px;
+    }
+    @include desktop{
+        width: 900px;
+        padding-bottom: 35px;
+    }
+}
+
+.tm-header{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 18px;
+    font-weight: bold;
+    font-family: "Roboto", sans-serif;
+
+    color: #000;
+    font-weight: bold;
+    padding: 5px;
+
+    @include mobile{
+        font-size: 22px;
+    }
+    @include tablet{
+        font-size: 30px;
+    }
+    @include desktop{
+        font-size: 40px;
+    }
+}
+
+.tm-number{
+    color: #A71D31;
+    padding: 5px;
+    padding-left: 0;
+    font-weight: bold;
+}
+
+.tm-header-container{
+    margin-top: 30px;
+    margin-bottom: 10px;
+    @include mobile{
+        margin-bottom: 15px;
+    }
+    @include tablet{
+        margin-bottom: 20px;
+    }
+}
+
+.tm-close-btn{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    border: #3F0D12 solid 1px;
+    transition: var(--timingFunction);
+    cursor: pointer;
+    &:hover,
+    &:focus{
+        background-color: #A71D31;
+        fill: #fff;
+    }
+}
+
+.tm-body{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.tm-members{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.tm-members-item{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
+    &:not(:last-child){
+        margin-bottom: 8px;
+    }
+    @include tablet{
+        &:not(:last-child){
+            margin-bottom: 16px;
+        }
+        &:nth-child(n+7){
+            margin-bottom: 0;
+        }
+        width: 111px;
+    }
+    @include desktop{
+        &:not(:last-child){
+            margin-bottom: 20px;
+        }
+        &:nth-child(n+6){
+            margin-bottom: 0;
+        }
+        width: 150px;
+    }
+}
+
+.member-image{
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background-color: #A71D31;
+    transition: transform 0.35s;
+    &:hover{
+        transform: scale(1.2);
+    }
+    @include mobile{
+        width: 35px;
+        height: 35px;
+    }
+    @include tablet{
+        width: 45px;
+        height: 45px;
+    }
+    @include desktop{
+        width: 60px;
+        height: 60px;
+    }
+}
+
+.member-link{
+    margin-bottom: 5px;
+    @include tablet{
+        margin-bottom: 10px;
+    }
+}
+
+.member-name{
+    font-size: 12px;
+    font-weight: normal;
+    color: #000;
+    margin-bottom: 2px;
+    @include tablet{
+        font-size: 15px;
+    }
+    @include desktop{
+        font-size: 18px;
+    }
+}
+
+.member-position{
+    font-size: 10px;
+    font-weight: bold;
+    color: #000;
+    @include tablet{
+        font-size: 13px;
+    }
+    @include desktop{
+        font-size: 16px;
+    }
+}
