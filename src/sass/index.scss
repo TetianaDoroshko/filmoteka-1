@@ -1,3 +1,5 @@
+@import '~node_modules/modern-normalize/modern-normalize.css';
+
 // Utils
 @import './utils/variables';
 @import './utils/visually-hidden';
@@ -12,7 +14,6 @@
 @import './components/btn-library';
 @import './components/search-header';
 @import './components/button';
-@import './components/main-container';
 @import './components/card';
 @import './components/pagination';
 @import './components/backdrop';
