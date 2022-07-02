@@ -5,6 +5,7 @@ const apiConfig = {
   SEARCH_PATH_PARAMS: 'search/movie',
   DETAILS_PATH_PARAMS: 'movie/',
   IMAGE_BASE_URL: 'https://image.tmdb.org/t/p/w1280',
+  GENRES_PATH_PARAMS: 'genre/movie/list',
 };
 
 export default apiConfig;
