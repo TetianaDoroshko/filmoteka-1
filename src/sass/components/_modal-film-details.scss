@@ -50,16 +50,15 @@
 }
 
 .modal-btn {
+  @include centrFlex;
+
   position: absolute;
   top: 8px;
   right: 8px;
   width: 30px;
   height: 30px;
-  padding: 8px;
 
   background-color: transparent;
-  color: #000000;
-  border: none;
   cursor: pointer;
   transition: color var(--timingFunction);
 
@@ -69,6 +68,14 @@
 }
 
 .modal__icon {
+  right: 8px;
+  top: 8px;
+  font-size: 26px;
+
+  &:hover,
+  &:focus {
+    color: #ff6b08;
+  }
   margin: auto;
 }
 
