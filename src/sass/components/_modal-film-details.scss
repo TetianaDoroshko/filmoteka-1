@@ -1,11 +1,9 @@
 .modal {
+  @include centrFlex;
+
   padding: 20px 20px 48px 20px;
   width: 100vw;
   height: 100vh;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
 
   overflow-y: auto;
 
@@ -21,12 +19,12 @@
 
   background-color: #ffffff;
 
-  @media screen and (min-width: 768px) {
+  @include tablet {
     width: 704px;
     padding: 40px 72px 40px 36px;
   }
 
-  @media screen and (min-width: 1280px) {
+  @include desktop {
     width: 806px;
     padding: 50px 12px 40px 12px;
   }
@@ -38,12 +36,135 @@
   right: 8px;
   width: 30px;
   height: 30px;
+  padding: 8px;
 
   background-color: transparent;
+  color: #000000;
   border: none;
   cursor: pointer;
+  transition: color var(--timingFunction);
 
-  @media screen and (min-width: 1280px) {
-    top: 5px;
+  &:hover {
+    color: var(--accentBtnColor);
   }
+}
+
+.modal__icon {
+  margin: auto;
+}
+
+.film-details {
+  @include tablet {
+    @include flex;
+    align-items: flex-start;
+  }
+}
+
+.film-details__image {
+  width: 240px;
+  height: 357px;
+  border-radius: 5px;
+
+  @media screen and (max-width: 767px) {
+    margin-bottom: 20px;
+  }
+
+  @include tablet {
+    width: 264px;
+    height: 374px;
+    margin-right: 68px;
+  }
+
+  @include desktop {
+    width: 375px;
+    height: 478px;
+    margin-right: 16px;
+  }
+}
+
+.film-details__title {
+  margin-bottom: 20px;
+
+  font-weight: 500;
+  font-style: normal;
+  font-size: 20px;
+  line-height: 1.17;
+  text-transform: uppercase;
+
+  @include desktop {
+    font-size: 30px;
+  }
+}
+
+.film-details__list {
+  margin-bottom: 20px;
+}
+
+.film-details__item {
+  @include flex;
+  margin-bottom: 8px;
+}
+
+.film-details__text {
+  min-width: 109px;
+
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.33;
+  color: var(--secondaryTextDetailsColor);
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  @include desktop {
+    min-width: 152px;
+  }
+}
+
+.film-details__span {
+  @include centrFlex;
+
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.33;
+
+  &--accent {
+    width: 36px;
+    height: 16px;
+    margin-right: 2px;
+
+    background-color: var(--accentBtnColor);
+    color: var(--primaryTextLight);
+    border-radius: 5px;
+  }
+
+  &--noaccent {
+    width: 36px;
+    height: 16px;
+    margin-left: 2px;
+
+    background-color: var(--primaryLightThemeBgColor);
+    color: var(--primaryTextDark);
+    border-radius: 5px;
+  }
+}
+
+.film-details__about {
+  margin-bottom: 8px;
+
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.33;
+  text-transform: uppercase;
+  color: var(--primaryTextDark);
+}
+
+.film-details__overview {
+  margin-bottom: 20px;
+
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.67;
+  color: var(--primaryTextDark);
 }

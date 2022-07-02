@@ -6,24 +6,35 @@
       type="button"
       aria-label="Закрыть модальное окно"
     >
-      <svg class="modal__icon" width="30" height="30">
+      X
+      <svg class="modal__icon icon" width="30" height="30">
         <!-- <use href="./images/icons.svg#icon-close-modal"></use> -->
       </svg>
     </button>
     <article class="film-details">
+      <!-- Временная картинка -->
       <img
+        class="film-details__image"
+        src="http://dummyimage.com/240x357.png/99cccc&text=The+image!"
+        alt="${title}"
+      />
+      <!-- <img
         class="film-details__image"
         src="http://image.tmdb.org/t/p/w500/${poster_path}"
         alt="${title}"
-      />
+      /> -->
       <div class="film-details__wrapper">
         <h2 class="film-details__title">A FISTFUL OF LEAD</h2>
-        <ul class="film-details__list">
+        <ul class="film-details__list list">
           <li class="film-details__item">
             <p class="film-details__text">Vote / Votes</p>
-            <span class="film-details__span">7.3</span>
-            <span>/ </span>
-            <span class="film-details__span">1260</span>
+            <span class="film-details__span film-details__span--accent"
+              >7.3</span
+            >
+            <span>/</span>
+            <span class="film-details__span film-details__span--noaccent"
+              >1260</span
+            >
           </li>
           <li class="film-details__item">
             <p class="film-details__text">Popularity</p>
@@ -49,6 +60,8 @@
           as they realise the bags of gold are filled with lead... they’ve been
           double crossed – but by who and how?
         </p>
+
+        <!-- Кнопки переиспользуемые, как будут добавлю -->
 
         <ul>
           <li>
