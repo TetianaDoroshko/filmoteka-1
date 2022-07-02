@@ -1,5 +1,8 @@
 body {
   font-family: var(--fontFamily);
+  font-size: 14px;
+  line-height: 1.14;
+  font-weight: 400;
   color: var(--primaryTextDark);
   background-color: var(--primaryLightThemeBgColor);
   // -webkit-tap-highlight-color: transparent;
