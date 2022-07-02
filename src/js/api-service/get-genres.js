@@ -1,9 +1,9 @@
 import apiConfig from '../constants/api-config';
 
-const { API_KEY, API_BASE_URL, DETAILS_PATH_PARAMS } = apiConfig;
+const { API_KEY, API_BASE_URL, GENRES_PATH_PARAMS } = apiConfig;
 
-export async function getDetails(id) {
-  const url = new URL(API_BASE_URL + DETAILS_PATH_PARAMS + id);
+export async function getGenres() {
+  const url = new URL(API_BASE_URL + GENRES_PATH_PARAMS);
   url.searchParams.set('api_key', API_KEY);
   try {
     const response = await fetch(url);
@@ -11,11 +11,10 @@ export async function getDetails(id) {
       const respJson = await response.json();
       throw new Error(respJson.status_message);
     }
-    const movieInfo = await response.json();
-    return movieInfo;
+    const genres = await response.json();
+    return genres;
   } catch (error) {
     console.log(error);
   }
 }
-
-console.log(getDetails('496450'));
+console.log(getGenres());

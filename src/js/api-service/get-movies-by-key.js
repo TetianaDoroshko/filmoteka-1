@@ -1,15 +1,14 @@
 import apiConfig from '../constants/api-config';
-//export function getMoviesByKey()
 
 const { API_KEY, API_BASE_URL, SEARCH_PATH_PARAMS } = apiConfig;
 
-async function getMoviesByKey(query, page = 1) {
-  try {
-    const url = new URL(API_BASE_URL + SEARCH_PATH_PARAMS);
-    url.searchParams.set('api_key', API_KEY);
-    url.searchParams.set('page', page);
-    url.searchParams.set('query', query);
+export async function getMoviesByKey(query, page = 1) {
+  const url = new URL(API_BASE_URL + SEARCH_PATH_PARAMS);
+  url.searchParams.set('api_key', API_KEY);
+  url.searchParams.set('page', page);
+  url.searchParams.set('query', query);
 
+  try {
     const response = await fetch(url);
     if (!response.ok) {
       const respJson = await response.json();
