@@ -1,7 +1,48 @@
-// .pagination {
-//   margin-top: 40px;
+.pagination {
+  margin-top: 40px;
+ 
+      
+  @include tablet {
+    margin-top: 60px;
+  }
+    
+}
+.pagination__list{
+@include flex($dflex: flex, $aligni: null, $justc: center);
+margin-left: -16px;
+  
+}
 
-//   @include tablet {
-//     margin-top: 60px;
-//   }
-// }
+.pagination__item{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 16px;
+  color: var(--primaryTextDark);
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.3;
+
+}
+
+
+.button{
+  width: 40px;
+    height: 40px;
+    background: #F7F7F7;
+      border-radius: 5px;
+}
+.active{
+  width: 40px;
+    height: 40px;
+  background: var(--accentTextColor);
+    border-radius: 5px;
+   color: var(--primaryTextLight);
+}
+.hidden{
+  @media screen and (max-width:767px) {
+    display: none;
+     
+    }
+ 
+}

@@ -22,4 +22,4 @@ export async function getTrendingMovies(page = 1) {
   }
 }
 
-console.log(getTrendingMovies());
+// console.log('getTrendingMovies', getTrendingMovies());

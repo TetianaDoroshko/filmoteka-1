@@ -18,4 +18,4 @@ export async function getDetails(id) {
   }
 }
 
-console.log(getDetails('496450'));
+// console.log('getDetails', getDetails('496450'));

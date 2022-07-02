@@ -17,4 +17,4 @@ export async function getGenres() {
     console.log(error);
   }
 }
-console.log(getGenres());
+// console.log('getGenres', getGenres());
