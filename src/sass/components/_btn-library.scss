@@ -1,15 +1,15 @@
-.header__buttons {
-  margin: 0 auto;
-  @include flex(flex, center, center);
-}
-.header__btn {
-  border: 1px solid #ffffff;
-  color: #ffffff;
-  width: 130px;
-  @include tablet {
-    width: 150px;
-  }
-}
-.header__btn:not(:last-child) {
-  margin-right: 20px;
-}
+// .header__buttons {
+//   margin: 0 auto;
+//   @include flex(flex, center, center);
+// }
+// .header__btn {
+//   border: 1px solid #ffffff;
+//   color: #ffffff;
+//   width: 130px;
+//   @include tablet {
+//     width: 150px;
+//   }
+// }
+// .header__btn:not(:last-child) {
+//   margin-right: 20px;
+// }

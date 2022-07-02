@@ -1,12 +1,23 @@
 body {
-  font-family: 'Roboto', sans-serif;
+  font-family: var(--fontFamily);
   font-size: 14px;
   line-height: 1.14;
   font-weight: 400;
+  color: var(--primaryTextDark);
+  background-color: var(--primaryLightThemeBgColor);
+  // -webkit-tap-highlight-color: transparent;
 }
 
 img {
   display: block;
   max-width: 100%;
   height: auto;
+}
+
+.lock {
+  overflow: hidden;
+}
+
+.icon {
+  fill: currentColor;
 }
