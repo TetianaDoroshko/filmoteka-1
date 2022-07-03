@@ -54,36 +54,14 @@
   }
 }
 
-.Main-btn--current:focus {
+.Main-btn--current:focus,
+.Main-btn--current:active
+ {
   transition: border var(--timingFunction);
   border: 1px solid var(--accentBtnColor);
   background-color: var(--accentBtnColor);
   box-shadow: 0px 8px 43px rgba(255, 107, 1, 0.6);
   filter: drop-shadow(0px 8px 43px rgba(255, 107, 1, 0.6));
 }
-.button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
 
-  font-family: inherit;
-  font-weight: 500;
-  font-size: 12px;
-  line-height: 1.33;
-  text-transform: uppercase;
 
-  color: var(--accentBtnColor);
-  background-color: transparent;
-  border-radius: 5px;
-  border: 1px solid var(--accentBtnColor);
-
-  cursor: pointer;
-  transition: color var(--timingFunction),
-    background-color var(--timingFunction);
-
-  &:hover,
-  &:focus {
-    color: var(--primaryTextLight);
-    background-color: var(--accentBtnColor);
-  }
-}
