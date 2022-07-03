@@ -86,7 +86,7 @@ function checkCurrentPosition() {
       togglePrePagination();
       togglePostPagination();
 
-      if (currentPage >= 4 && currentPage <= totalPage - 3) {
+      if (currentPage >= 4 && currentPage <= totalPage - 2) {
         reRenderPagination();
       }
       activeCurrentPage();
@@ -132,20 +132,20 @@ function togglePostPagination() {
 function reRenderPagination() {
   let firstNum = currentPage - 4;
 
-  if (currentPage <= 4) {
-    firstNum = currentPage - 3;
-  }
-
   if (currentPage <= 1) {
     firstNum = currentPage;
-  }
-
-  if (currentPage >= totalPage - 3) {
-    firstNum = currentPage - 5;
+  } else if (currentPage <= 3) {
+    firstNum = currentPage - 2;
+  } else if (currentPage <= 4) {
+    firstNum = currentPage - 3;
   }
 
   if (currentPage >= totalPage) {
     firstNum = currentPage - 8;
+  } else if (currentPage >= totalPage - 2) {
+    firstNum = currentPage - 6;
+  } else if (currentPage >= totalPage - 3) {
+    firstNum = currentPage - 5;
   }
 
   if (window.matchMedia('(max-width: 768px)').matches) {
