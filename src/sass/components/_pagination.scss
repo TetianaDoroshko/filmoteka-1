@@ -22,7 +22,7 @@
   cursor: pointer;
 }
 
-.pagitation__link {
+.pagination__link {
   color: inherit;
   pointer-events: none;
 }
@@ -35,25 +35,19 @@
 }
 
 .pagination .button:first-child {
-  background-image: url(../images/arrow-left.svg);
-  background-repeat: no-repeat;
-  background-position: center;
   margin-right: 8px;
 }
 
 .pagination .button:last-child {
-  background-image: url(../images/arrow-right.svg);
-  background-repeat: no-repeat;
-  background-position: center;
   margin-left: 8px;
 }
 
-.pagination__item.disabled.button:first-child {
-  background-image: url(../images/arrow-left-disabled.svg);
+.pagination__item.disabled .button__icon {
+  stroke: #ccc;
 }
 
-.pagination__item.disabled.button:last-child {
-  background-image: url(../images/arrow-right-disabled.svg);
+.button__icon {
+  stroke: #000;
 }
 
 .pagination .active {
