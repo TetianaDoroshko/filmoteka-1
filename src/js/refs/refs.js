@@ -1,30 +1,40 @@
 export function refs() {
   return {
-    header: {
+    headerRef: {
       // ref: document.querySelector('.selector')
     },
-    home: {
+    homeRef: {
       // ref: document.querySelector('.selector')
     },
-    library: {
+    libraryRef: {
       // ref: document.querySelector('.selector')
     },
-    pagination: {
+    paginationRef: {
+      container: document.querySelector('.pagination'),
+      items: document.querySelectorAll('.pagination__item'),
+      paginationList: document.querySelector('.pagination__list'),
+      pages: document.querySelectorAll('.js-page'),
+      link: document.querySelectorAll('.pagitation__link'),
+      prev: document.querySelector('.prev-js'),
+      next: document.querySelector('.next-js'),
+      first: document.querySelector('.first-js'),
+      last: document.querySelector('.last-js'),
+      prevMore: document.querySelector('.prevMore-js'),
+      nextMore: document.querySelector('.nextMore-js'),
+    },
+    modalTeamRef: {
       // ref: document.querySelector('.selector')
     },
-    modalTeam: {
+    libraryRef: {
       // ref: document.querySelector('.selector')
     },
-    library: {
+    galleryRef: {
       // ref: document.querySelector('.selector')
     },
-    gallery: {
+    filmDetailsRef: {
       // ref: document.querySelector('.selector')
     },
-    filmDetails: {
-      // ref: document.querySelector('.selector')
-    },
-    footer: {
+    footerRef: {
       // ref: document.querySelector('.selector')
     },
   };
