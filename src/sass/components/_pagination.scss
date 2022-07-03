@@ -1,4 +1,5 @@
 .pagination {
+  user-select: none;
   margin-top: 40px;
 
   @include tablet {
@@ -47,7 +48,8 @@
 }
 
 .button__icon {
-  stroke: #000;
+  pointer-events: none;
+  stroke: var(--primaryTextDark);
 }
 
 .pagination .active {
