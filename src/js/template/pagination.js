@@ -20,11 +20,11 @@ export function paginationListMarkup(page) {
   return `
   <ul class="pagination__list">
       <li class="button prev-js pagination__item"></li>
-      <li class="pagination__item first-js is-hidden hidden"><a class="pagitation__link" href="#"></a>1</li>
-      <li class="pagination__item prevMore-js is-hidden hidden"><a class="pagitation__link" href="#"></a>...</li>
+      <li class="pagination__item first-js is-hidden hidden"><a class="pagitation__link" href="#">1</a></li>
+      <li class="pagination__item prevMore-js is-hidden hidden"><a class="pagitation__link" href="#">...</a></li>
       ${item}
-      <li class="pagination__item ${isHidden} nextMore-js hidden"><a class="pagitation__link" href="#"></a>...</li>
-      <li class="pagination__item ${isHidden} last-js hidden"><a class="pagitation__link" href="#"></a>${page}</li>
+      <li class="pagination__item ${isHidden} nextMore-js hidden"><a class="pagitation__link" href="#">...</a></li>
+      <li class="pagination__item ${isHidden} last-js hidden"><a class="pagitation__link" href="#">${page}</a></li>
       <li class="button next-js pagination__item"></li>
 
     </ul>`;
