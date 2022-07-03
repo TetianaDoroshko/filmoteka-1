@@ -14,12 +14,12 @@
       <path fill="none" stroke="#fff" style="stroke: var(--color2, #fff)" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2.6667" d="M22.667 9.333h6.667"></path>
     </symbol>
     <symbol fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" id="arrow-left">
-      <path d="M3.33329 8H12.6666" stroke="black" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"></path>
-      <path d="M7.99996 12.6668L12.6666 8.00016L7.99996 3.3335" stroke="black" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"></path>
+      <path d="M3.33329 8H12.6666"  stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"></path>
+      <path d="M7.99996 12.6668L12.6666 8.00016L7.99996 3.3335"  stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"></path>
     </symbol>
     <symbol fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" id="arrow-right">
-      <path d="M12.6667 8H3.33337" stroke="black" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"></path>
-      <path d="M8.00004 12.6668L3.33337 8.00016L8.00004 3.3335" stroke="black" stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"></path>
+      <path d="M12.6667 8H3.33337"  stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"></path>
+      <path d="M8.00004 12.6668L3.33337 8.00016L8.00004 3.3335"  stroke-width="1.33333" stroke-linecap="round" stroke-linejoin="round"></path>
     </symbol>
     <symbol id="icon-search" viewBox="0 0 32 32">
       <path fill="none" stroke="#fff" style="stroke: var(--color2, #fff)" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2.6667" d="M14.667 25.333c5.891 0 10.667-4.776 10.667-10.667s-4.776-10.667-10.667-10.667c-5.891 0-10.667 4.776-10.667 10.667s4.776 10.667 10.667 10.667z"></path>

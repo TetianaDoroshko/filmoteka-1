@@ -10,3 +10,4 @@ import './js/modal-team';
 // import './js/api-service/get-movies-by-key';
 // import './js/api-service/get-deatils';
 // import './js/api-service/get-genres';
+import './js/render/render-pagination';
