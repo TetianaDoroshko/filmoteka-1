@@ -1,48 +1,69 @@
 .pagination {
   margin-top: 40px;
- 
-      
+
   @include tablet {
     margin-top: 60px;
   }
-    
 }
-.pagination__list{
-@include flex($dflex: flex, $aligni: null, $justc: center);
-margin-left: -16px;
-  
+.pagination__list {
+  @include flex($dflex: flex, $aligni: null, $justc: center);
 }
 
-.pagination__item{
+.pagination__item {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-left: 16px;
+  // margin: 8px;
+  min-width: 40px;
   color: var(--primaryTextDark);
   font-weight: 500;
   font-size: 12px;
   line-height: 1.3;
-
+  cursor: pointer;
 }
 
-
-.button{
-  width: 40px;
-    height: 40px;
-    background: #F7F7F7;
-      border-radius: 5px;
+.pagitation__link {
+  pointer-events: none;
 }
-.active{
+
+.pagination .button {
   width: 40px;
-    height: 40px;
+  height: 40px;
+  background: #f7f7f7;
+  border-radius: 5px;
+}
+
+.pagination .button:first-child {
+  background-image: url(../images/arrow-left.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  margin-right: 8px;
+}
+
+.pagination .button:last-child {
+  background-image: url(../images/arrow-right.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  margin-left: 8px;
+}
+
+.pagination__item.disabled.button:first-child {
+  background-image: url(../images/arrow-left-disabled.svg);
+}
+
+.pagination__item.disabled.button:last-child {
+  background-image: url(../images/arrow-right-disabled.svg);
+}
+
+.pagination .active {
+  width: 40px;
+  height: 40px;
   background: var(--accentTextColor);
-    border-radius: 5px;
-   color: var(--primaryTextLight);
+  border-radius: 5px;
+  color: var(--primaryTextLight);
 }
-.hidden{
-  @media screen and (max-width:767px) {
+.pagination .hidden {
+  @media screen and (max-width: 767px) {
     display: none;
-     
-    }
- 
+  }
 }
