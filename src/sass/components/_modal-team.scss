@@ -31,7 +31,7 @@
         width: 440px;
     }
     @include tablet{
-        width: 700px;
+        width: 720px;
         padding-bottom: 20px;
     }
     @include desktop{
@@ -127,6 +127,9 @@
     &:not(:last-child){
         margin-bottom: 8px;
     }
+    &:last-child{
+        width: 110px;
+    }
     @include tablet{
         &:not(:last-child){
             margin-bottom: 16px;
@@ -134,7 +137,10 @@
         &:nth-child(n+7){
             margin-bottom: 0;
         }
-        width: 111px;
+        &:last-child{
+            width: 115px;
+        }
+        width: 115px;
     }
     @include desktop{
         &:not(:last-child){
@@ -143,7 +149,10 @@
         &:nth-child(n+6){
             margin-bottom: 0;
         }
-        width: 150px;
+        &:last-child{
+            width: 160px;
+        }
+        width: 160px;
     }
 }
 
@@ -183,7 +192,7 @@
     color: #000;
     margin-bottom: 2px;
     @include tablet{
-        font-size: 13px;
+        font-size: 12px;
     }
     @include desktop{
         font-size: 17px;
