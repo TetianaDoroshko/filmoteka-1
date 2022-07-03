@@ -23,7 +23,9 @@ export function refs() {
       nextMore: document.querySelector('.nextMore-js'),
     },
     modalTeamRef: {
-      // ref: document.querySelector('.selector')
+      teamModal: document.querySelector('.team-modal'),
+      teamModalBtn: document.querySelector('.tm-close-btn'),
+      teamModalOpen: document.querySelector('.footer-link'),
     },
     libraryRef: {
       // ref: document.querySelector('.selector')
