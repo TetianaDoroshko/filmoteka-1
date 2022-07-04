@@ -1,13 +1,13 @@
 .pagination {
   user-select: none;
-  margin-top: 40px;
-
-  @include tablet {
-    margin-top: 60px;
-  }
 }
 .pagination__list {
   @include flex($dflex: flex, $aligni: null, $justc: center);
+  padding: 40px 0;
+
+  @include tablet {
+    padding: 60px 0;
+  }
 }
 
 .pagination__item {

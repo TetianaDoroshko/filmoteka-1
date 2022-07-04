@@ -7,7 +7,7 @@ export function paginationListMarkup(page) {
 
   for (let i = 1; i <= page; i += 1) {
     if (window.matchMedia('(max-width: 767px)').matches) {
-      if (page > 9 && i === 6) {
+      if (page > 5 && i === 6) {
         break;
       }
     }
