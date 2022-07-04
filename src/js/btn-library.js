@@ -21,7 +21,7 @@ console.log(gallery);
 
 //----временная функция  getStorage--------------
 function getStorage(key) {
-  return ['453395', '982987', '667739', '616037'];
+  return ['453395', '921987', '667739', '616037'];
 }
 //----временная функция создания карточки фильма--
 function makeCard(movie) {
@@ -64,7 +64,6 @@ function showWatchedMovies() {
       "You don't have any movies you've watched. Add the first one.";
   } else {
     renderMovies(movieSetId);
-    console.log(movieSetId);
   }
 }
 function showQueueOfMovies() {
@@ -84,7 +83,6 @@ async function renderMovies(movieSetId) {
   let markup = [];
   for (movieID of movieSetId) {
     const movieDetails = await getDetails(movieID);
-    console.log(movieDetails);
     if (movieDetails) {
       const markupCard = makeCard(movieDetails);
       markup.push(markupCard);
