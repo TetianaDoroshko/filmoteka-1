@@ -13,28 +13,28 @@ function openModal(e) {
   window.addEventListener('click', closeModalByClick);
   modalTeamRef.teamModalBtn.addEventListener('click', closeModal);
 
-  function closeModalByEsc(e) {
-    if (e.key === 'Escape') {
-      modalTeamRef.teamModal.classList.add('is-hidden');
-      clearEventListeners();
-    }
-  }
+function clearEventListeners() {
+  window.removeEventListener('click', closeModalByClick);
+  window.removeEventListener('keydown', closeModalByEsc);
+  modalTeamRef.teamModalBtn.removeEventListener('click', closeModal);
+}
 
-  function closeModalByClick(e) {
-    if (e.target === teamModal) {
-      modalTeamRef.teamModal.classList.add('is-hidden');
-      clearEventListeners();
-    }
-  }
-
-  function closeModal(e) {
+function closeModalByEsc(e) {
+  if (e.key === 'Escape') {
     modalTeamRef.teamModal.classList.add('is-hidden');
     clearEventListeners();
   }
 }
 
-function clearEventListeners() {
-  window.removeEventListener('click', closeModalByClick);
-  window.removeEventListener('keydown', closeModalByEsc);
-  modalTeamRef.teamModalBtn.removeEventListener('click', closeModal);
+function closeModalByClick(e) {
+  if (e.target === modalTeamRef.teamModal) {
+    modalTeamRef.teamModal.classList.add('is-hidden');
+    clearEventListeners();
+  }
+}
+
+function closeModal(e) {
+  modalTeamRef.teamModal.classList.add('is-hidden');
+  clearEventListeners();
+}
 }
