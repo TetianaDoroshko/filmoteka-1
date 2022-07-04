@@ -11,11 +11,9 @@ export function refs() {
       btnQueue: document.querySelector('.js-btn-queue'),
     },
     paginationRef: {
-      container: document.querySelector('.pagination'),
-      items: document.querySelectorAll('.pagination__item'),
-      paginationList: document.querySelector('.pagination__list'),
+      container: document.querySelector('.pag-container-js'),
+      paginationList: document.querySelector('.pag-list-js'),
       pages: document.querySelectorAll('.js-page'),
-      link: document.querySelectorAll('.pagitation__link'),
       prev: document.querySelector('.prev-js'),
       next: document.querySelector('.next-js'),
       first: document.querySelector('.first-js'),

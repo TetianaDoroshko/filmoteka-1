@@ -95,7 +95,7 @@ function onClick(e) {
 }
 
 function activeCurrentPage() {
-  paginationRef.items.forEach(item => {
+  paginationRef.pages.forEach(item => {
     item.classList.remove('active');
 
     if (+item.dataset.num === currentPage) {

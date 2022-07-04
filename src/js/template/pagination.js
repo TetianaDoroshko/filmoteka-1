@@ -19,7 +19,7 @@ export function paginationListMarkup(page) {
   }
 
   return `
-  <ul class="pagination__list">
+  <ul class="pagination__list pag-list-js">
       <li class="button prev-js pagination__item"><svg class="button__icon" width="16" height ="16">
           <use href="${images}#arrow-right"></use>
         </svg></li>
