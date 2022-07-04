@@ -6,8 +6,9 @@ export function refs() {
     homeRef: {
       // ref: document.querySelector('.selector')
     },
-    libraryRef: {
-      // ref: document.querySelector('.selector')
+    libraryButtonsRef: {
+      btnWatched: document.querySelector('.js-btn-watched'),
+      btnQueue: document.querySelector('.js-btn-queue'),
     },
     paginationRef: {
       container: document.querySelector('.pagination'),
