@@ -6,7 +6,31 @@ let paginationRef;
 let currentPage = 1;
 let totalPage;
 
-createPagination(20);
+createPagination(200);
+
+window.addEventListener(`resize`, onResize);
+
+function onResize() {
+  if (!paginationRef) {
+    return;
+  }
+
+  if (
+    window.matchMedia('(max-width: 767px)').matches &&
+    !paginationRef.container.classList.contains('mobile-js')
+  ) {
+    paginationRef.container.classList.remove('desktop-js');
+    paginationRef.container.classList.add('mobile-js');
+    createPagination(totalPage);
+  } else if (
+    window.matchMedia('(min-width: 768px)').matches &&
+    !paginationRef.container.classList.contains('desktop-js')
+  ) {
+    paginationRef.container.classList.remove('mobile-js');
+    paginationRef.container.classList.add('desktop-js');
+    createPagination(totalPage);
+  }
+}
 
 function createPagination(totalPagination) {
   totalPage = totalPagination;
@@ -86,17 +110,19 @@ function checkCurrentPosition() {
       togglePrePagination();
       togglePostPagination();
 
-      if (currentPage >= 4 && currentPage <= totalPage - 2) {
+      if (currentPage >= 4 && currentPage <= totalPage) {
         reRenderPagination();
       }
-      activeCurrentPage();
+      // activeCurrentPage();
     }
   } else {
-    if (currentPage >= 2 && currentPage <= totalPage - 1) {
-      reRenderPagination();
+    if (totalPage > 5) {
+      if (currentPage >= 2 && currentPage <= totalPage) {
+        reRenderPagination();
+      }
     }
-    activeCurrentPage();
   }
+  activeCurrentPage();
 }
 
 function togglePrePagination() {
@@ -134,6 +160,8 @@ function reRenderPagination() {
 
   if (currentPage <= 1) {
     firstNum = currentPage;
+  } else if (currentPage <= 2) {
+    firstNum = currentPage - 1;
   } else if (currentPage <= 3) {
     firstNum = currentPage - 2;
   } else if (currentPage <= 4) {
@@ -142,23 +170,29 @@ function reRenderPagination() {
 
   if (currentPage >= totalPage) {
     firstNum = currentPage - 8;
+  } else if (currentPage >= totalPage - 1) {
+    firstNum = currentPage - 7;
   } else if (currentPage >= totalPage - 2) {
     firstNum = currentPage - 6;
   } else if (currentPage >= totalPage - 3) {
     firstNum = currentPage - 5;
   }
 
-  if (window.matchMedia('(max-width: 768px)').matches) {
+  if (window.matchMedia('(max-width: 767px)').matches) {
     firstNum = currentPage - 2;
-    if (currentPage <= 2) {
-      firstNum = currentPage - 1;
-    }
+
     if (currentPage <= 1) {
       firstNum = currentPage;
+    } else if (currentPage <= 2) {
+      firstNum = currentPage - 1;
     }
 
-    if (currentPage >= totalPage - 1) {
+    if (currentPage >= totalPage) {
+      firstNum = currentPage - 4;
+    } else if (currentPage >= totalPage - 1) {
       firstNum = currentPage - 3;
+    } else if (currentPage >= totalPage - 2) {
+      firstNum = currentPage - 2;
     }
   }
 

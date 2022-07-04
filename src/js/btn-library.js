@@ -16,6 +16,7 @@ const btnQueue = refs().libraryButtonsRef.btnQueue;
 //-----временный контейнер для галереи-----------
 const pag = document.querySelector('.pagination');
 const gallery = document.createElement('div');
+gallery.style.display = 'flex';
 pag.insertAdjacentElement('beforebegin', gallery);
 console.log(gallery);
 
@@ -30,7 +31,7 @@ function makeCard(movie) {
         <div class="thumb">
         <img class="movie-card__img" src="https://image.tmdb.org/t/p/w1280/${
           movie.poster_path
-        }" sizes="100%" alt="${movie.title}"/>
+        }" width="300" sizes="100%" alt="${movie.title}"/>
         </div>
         <div class="movie-card__description">
             <p class="movie-card__name">${movie.title}</p>
