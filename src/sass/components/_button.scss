@@ -1,41 +1,32 @@
-// .button {
-//   display: block;
-//   height: 44px;
-//   padding: 12px;
-//   border-radius: 5px;
-//   background-color: transparent;
-//   font-weight: 500;
-//   text-transform: uppercase;
-//   @include flex(flex, center, center);
-// }
-// .button:active {
-//   color: #ffffff;
-//   background-color: #ff6b01;
-//   border: 1px solid #ff6b01;
-// }
-.button-main {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  font-family: inherit;
-  font-weight: 500;
-  font-size: 12px;
-  line-height: 1.33;
-  text-transform: uppercase;
-
-  color: var(--accentBtnColor);
-  background-color: transparent;
-  border-radius: 5px;
-  border: 1px solid var(--accentBtnColor);
-
+.main-btn {
   cursor: pointer;
-  transition: color var(--timingFunction),
-    background-color var(--timingFunction);
+  text-transform: uppercase;
+  color: var(--primaryTextLight);
+  padding: 0;
+  min-width: 130px;
+  min-height: 44px;
 
-  &:hover,
-  &:focus {
-    color: var(--primaryTextLight);
+  border: 1px solid #ffffff;
+  border-radius: 5px;
+  background-color: inherit;
+
+  transition: background-color var(--timingFunction),
+    border-color var(--timingFunction), transform var(--timingFunction);
+
+  &.active,
+  &:focus,
+  &:hover {
+    border: 1px solid var(--accentBtnColor);
     background-color: var(--accentBtnColor);
+    box-shadow: 0px 8px 43px rgba(255, 107, 1, 0.6);
+  }
+
+  &.active {
+    pointer-events: none;
+  }
+
+  @include tablet {
+    min-width: 136px;
+    min-height: 44px;
   }
 }

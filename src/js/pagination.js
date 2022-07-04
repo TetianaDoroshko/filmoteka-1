@@ -6,7 +6,7 @@ let paginationRef;
 let currentPage = 1;
 let totalPage;
 
-createPagination(20);
+// createPagination(20);
 
 function createPagination(totalPagination) {
   totalPage = totalPagination;
