@@ -1,39 +1,40 @@
-const teamModal = document.querySelector('.team-modal');
-const teamModalBtn = document.querySelector('.tm-close-btn');
-const teamModalOpen = document.querySelector('.footer-link');
+import { refs } from './refs/refs';
 
-teamModalOpen.addEventListener('click', openModal);
+let modalTeamRef;
+modalTeamRef = refs().modalTeamRef;
+
+modalTeamRef.teamModalOpen.addEventListener('click', openModal);
 
 function openModal(e) {
   e.preventDefault();
-  teamModal.classList.remove('is-hidden');
+  modalTeamRef.teamModal.classList.remove('is-hidden');
 
   window.addEventListener('keydown', closeModalByEsc);
   window.addEventListener('click', closeModalByClick);
-  teamModalBtn.addEventListener('click', closeModal);
+  modalTeamRef.teamModalBtn.addEventListener('click', closeModal);
 
   function closeModalByEsc(e) {
     if (e.key === 'Escape') {
-      teamModal.classList.add('is-hidden');
-      window.removeEventListener('keydown', closeModalByEsc);
-      window.removeEventListener('click', closeModalByClick);
-      teamModalBtn.removeEventListener('click', closeModal);
+      modalTeamRef.teamModal.classList.add('is-hidden');
+      clearEventListeners();
     }
   }
 
   function closeModalByClick(e) {
     if (e.target === teamModal) {
-      teamModal.classList.add('is-hidden');
-      window.removeEventListener('click', closeModalByClick);
-      window.removeEventListener('keydown', closeModalByEsc);
-      teamModalBtn.removeEventListener('click', closeModal);
+      modalTeamRef.teamModal.classList.add('is-hidden');
+      clearEventListeners();
     }
   }
 
   function closeModal(e) {
-    teamModal.classList.add('is-hidden');
-    window.removeEventListener('click', closeModalByClick);
-    window.removeEventListener('keydown', closeModalByEsc);
-    teamModalBtn.removeEventListener('click', closeModal);
+    modalTeamRef.teamModal.classList.add('is-hidden');
+    clearEventListeners();
   }
+}
+
+function clearEventListeners() {
+  window.removeEventListener('click', closeModalByClick);
+  window.removeEventListener('keydown', closeModalByEsc);
+  modalTeamRef.teamModalBtn.removeEventListener('click', closeModal);
 }
