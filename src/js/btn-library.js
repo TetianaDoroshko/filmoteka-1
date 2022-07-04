@@ -82,7 +82,7 @@ function showQueueOfMovies() {
 
 async function renderMovies(movieSetId) {
   let markup = [];
-  for (movieID of movieSetId) {
+  for (const movieID of movieSetId) {
     const movieDetails = await getDetails(movieID);
     if (movieDetails) {
       const markupCard = makeCard(movieDetails);
