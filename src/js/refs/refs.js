@@ -32,7 +32,14 @@ export function refs() {
       // ref: document.querySelector('.selector')
     },
     filmDetailsRef: {
-      // ref: document.querySelector('.selector')
+      image: document.querySelector('.js-image'),
+      title: document.querySelector('.js-title'),
+      voteAverage: document.querySelector('.js-vote'),
+      voteCount: document.querySelector('.js-vote-count'),
+      popularity: document.querySelector('.js-popularity'),
+      originTitle: document.querySelector('.js-title-orig'),
+      genres: document.querySelector('.js-genres'),
+      about: document.querySelector('.js-about'),
     },
     footerRef: {
       // ref: document.querySelector('.selector')
