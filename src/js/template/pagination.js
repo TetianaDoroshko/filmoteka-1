@@ -7,7 +7,7 @@ export function paginationListMarkup(page) {
 
   for (let i = 1; i <= page; i += 1) {
     if (window.matchMedia('(max-width: 767px)').matches) {
-      if (page > 9 && i === 6) {
+      if (page > 5 && i === 6) {
         break;
       }
     }
@@ -19,7 +19,7 @@ export function paginationListMarkup(page) {
   }
 
   return `
-  <ul class="pagination__list">
+  <ul class="pagination__list pag-list-js">
       <li class="button prev-js pagination__item"><svg class="button__icon" width="16" height ="16">
           <use href="${images}#arrow-right"></use>
         </svg></li>

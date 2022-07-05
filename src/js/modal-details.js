@@ -8,9 +8,9 @@
 // есть ли фильм в хранилище и подсвечивает кнопки.
 
 import { refs } from './refs/refs';
-import api from './api-service/get-deatils';
+import api from './api-service/get-details';
 import apiConfig from './constants/api-config';
-import { getDetails } from './api-service/get-deatils';
+import { getDetails } from './api-service/get-details';
 
 const { filmDetailsRef } = refs();
 
