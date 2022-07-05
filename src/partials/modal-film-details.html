@@ -1,4 +1,4 @@
-<div class="modal visually-hidden">
+<div class="is-hidden">
   <div class="modal-backdrop"></div>
   <div class="modal-wrapper">
     <button
@@ -12,8 +12,13 @@
       </svg>
     </button>
     <article class="film-details">
-      <img srcset="" src="" alt="" />
-      <img class="film-details__image js-image" src="#" alt="" />
+      <img
+        class="film-details__image js-image"
+        srcset=""
+        src="../images/modal-img.jpg"
+        alt=""
+      />
+      <!-- <img class="film-details__image js-image" src="#" alt="" /> -->
 
       <div class="film-details__wrapper">
         <h2 class="film-details__title js-title">A FISTFUL OF LEAD</h2>
@@ -58,18 +63,12 @@
 
         <ul class="film-details-btn__list">
           <li class="film-details-btn__item">
-            <button
-              class="film-details-btn film-details-btn--watched"
-              type="button"
-            >
+            <button class="film-details-btn js-btn-modal-watched" type="button">
               add to Watched
             </button>
           </li>
           <li class="film-details-btn__item">
-            <button
-              class="film-details-btn film-details-btn--queue"
-              type="button"
-            >
+            <button class="film-details-btn js-btn-modal-queue" type="button">
               add to queue
             </button>
           </li>

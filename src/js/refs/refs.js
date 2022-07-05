@@ -33,6 +33,8 @@ export function refs() {
       // ref: document.querySelector('.selector')
     },
     filmDetailsRef: {
+      filmDetailsModalOpen: document.querySelector('li'),
+      filmDetailsModal: document.querySelector('.modal'),
       image: document.querySelector('.js-image'),
       title: document.querySelector('.js-title'),
       voteAverage: document.querySelector('.js-vote'),
