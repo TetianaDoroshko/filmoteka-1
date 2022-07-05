@@ -8,3 +8,39 @@
 // Если жанров больше чем 2, то добавляет в конец Other.
 // нужно сделать доп проверки, если массив пустой(нету жанров у фильма) возвращается строка N/A.
 // Может не быть жанра с тем ID что пришел с бека, нужно тоже сделать проверку, что бы не записать undefined в строку.
+
+//=====!!!!! 2 обработка происходит в render-gallery.js фуекцией renderSingleMovie
+
+//!!!!!!!!! ОБЕ функции надо вызывать при старте
+
+//========getting list of movies=====
+const genresList = {};
+getGenres().then(data => makingGenresList(data));
+
+function makingGenresList(List) {
+  List.forEach(el => {
+    genresList[el.id] = el.name;
+  });
+}
+
+// console.log('eto', genresList);
+
+//================ функция запроса жанров
+
+async function getGenres() {
+  let data;
+  try {
+    const response = await fetch(
+      `https://api.themoviedb.org/3/genre/movie/list?api_key=${API_KEY}`
+    );
+
+    const responseData = await response.json();
+    // console.log(responseData);
+    // data = responseData.genres.map(genre => genre.name).join(',');
+    data = responseData.genres;
+  } catch (error) {
+    console.log(error);
+  }
+
+  return data;
+}
