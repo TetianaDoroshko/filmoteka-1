@@ -14,3 +14,4 @@ import './js/render/render-pagination';
 
 import './js/refs/refs';
 import './js/btn-library';
+import './js/template/btn-library-header';

@@ -27,7 +27,8 @@ export function refs() {
       teamModalOpen: document.querySelector('.footer-link'),
     },
     libraryRef: {
-      // ref: document.querySelector('.selector')
+      libBtn: document.querySelector('.js-library'),
+      homeBtn: document.querySelector('.js-home'),
     },
     galleryRef: {
       // ref: document.querySelector('.selector')

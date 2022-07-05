@@ -10,3 +10,15 @@
 // и обратно делать запрос на популярные фильмы.
 
 import { getTrendingMovies } from './api-service/get-trending-movies';
+import { hideLoader, showLoader } from './loader/loader';
+import { testGallery } from './render/render-gallery'; //TEST!!!!!
+
+// ===================================================
+showLoader();
+window.addEventListener('DOMContentLoaded', createPage);
+
+async function createPage() {
+  const data = await getTrendingMovies();
+  testGallery(data);
+  hideLoader();
+}
