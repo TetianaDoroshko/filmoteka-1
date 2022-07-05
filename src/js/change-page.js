@@ -11,7 +11,9 @@
 
 import { getTrendingMovies } from './api-service/get-trending-movies';
 import { hideLoader, showLoader } from './loader/loader';
-import { testGallery } from './render/render-gallery'; //TEST!!!!!
+import { renderMovies } from './render/render-gallery';
+import { refs } from './refs/refs';
+import { libraryHandler } from './utils/get-name-genres';
 
 // ===================================================
 showLoader();
@@ -19,6 +21,23 @@ window.addEventListener('DOMContentLoaded', createPage);
 
 async function createPage() {
   const data = await getTrendingMovies();
-  testGallery(data);
+  renderMovies(data);
   hideLoader();
 }
+
+refs().libraryRef.libBtn.addEventListener('click', showButtonsLibrary);
+refs().libraryRef.homeBtn.addEventListener('click', showSearchLabel);
+
+const btnWatch = refs().libraryButtonsRef.btnWatched;
+const btnQue = refs().libraryButtonsRef.btnQueue;
+function showButtonsLibrary() {
+  //   btnQue.classList.remove('is-hidden');
+  //   btnWatch.classList.remove('is-hidden');
+}
+
+function showSearchLabel() {
+  //   btnQue.classList.add('is-hidden');
+  //   btnWatch.classList.add('is-hidden');
+}
+
+//.display-none

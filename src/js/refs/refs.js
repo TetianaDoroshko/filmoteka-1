@@ -1,7 +1,8 @@
 export function refs() {
   return {
     headerRef: {
-      // ref: document.querySelector('.selector')
+      navLogo: document.querySelector('.navigation__logo'),
+      searchForm: document.querySelector('.js-search-form'),
     },
     homeRef: {
       // ref: document.querySelector('.selector')
@@ -27,6 +28,7 @@ export function refs() {
       teamModalOpen: document.querySelector('.footer-link'),
     },
     libraryRef: {
+      btnContainer: document.querySelector('.js-btn-container'),
       libBtn: document.querySelector('.js-library'),
       homeBtn: document.querySelector('.js-home'),
     },
@@ -34,7 +36,16 @@ export function refs() {
       // ref: document.querySelector('.selector')
     },
     filmDetailsRef: {
-      // ref: document.querySelector('.selector')
+      filmDetailsModalOpen: document.querySelector('li'),
+      filmDetailsModal: document.querySelector('.modal'),
+      image: document.querySelector('.js-image'),
+      title: document.querySelector('.js-title'),
+      voteAverage: document.querySelector('.js-vote'),
+      voteCount: document.querySelector('.js-vote-count'),
+      popularity: document.querySelector('.js-popularity'),
+      originTitle: document.querySelector('.js-title-orig'),
+      genres: document.querySelector('.js-genres'),
+      about: document.querySelector('.js-about'),
     },
     footerRef: {
       // ref: document.querySelector('.selector')
