@@ -38,5 +38,8 @@ export function refs() {
     footerRef: {
       // ref: document.querySelector('.selector')
     },
+    loaderRef: {
+      loader: document.querySelector('.loader'),
+    },
   };
 }
