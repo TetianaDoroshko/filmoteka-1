@@ -23,12 +23,11 @@ async function renderModalDetails() {
   const imgUrl = apiConfig.IMAGE_BASE_URL;
 
   if (!data.poster_path) {
-    filmDetailsRef.image.src =
-      'http://dummyimage.com/150x60.png/99cccc&text=The+image!';
+    filmDetailsRef.image.src = '../images/modal-img.jpg';
     filmDetailsRef.image.alt = 'Movie photo';
   }
 
-  filmDetailsRef.image.src = `${imgUrl}${data.poster_path}`;
+  filmDetailsRef.image.srcset = `${imgUrl}${data.poster_path}`;
   filmDetailsRef.image.alt = data.title;
   filmDetailsRef.title.textContent = data.title;
   filmDetailsRef.voteAverage.textContent = data.vote_average;
