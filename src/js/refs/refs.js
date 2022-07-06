@@ -8,6 +8,7 @@ export function refs() {
       // ref: document.querySelector('.selector')
     },
     libraryButtonsRef: {
+      btnContainer: document.querySelector('.js-btn-container'),
       btnWatched: document.querySelector('.js-btn-watched'),
       btnQueue: document.querySelector('.js-btn-queue'),
     },
@@ -28,7 +29,6 @@ export function refs() {
       teamModalOpen: document.querySelector('.footer-link'),
     },
     libraryRef: {
-      btnContainer: document.querySelector('.js-btn-container'),
       libBtn: document.querySelector('.js-library'),
       homeBtn: document.querySelector('.js-home'),
     },
