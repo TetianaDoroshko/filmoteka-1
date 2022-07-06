@@ -31,6 +31,7 @@ export function refs() {
     },
     galleryRef: {
       // ref: document.querySelector('.selector')
+      moviesDiv: document.querySelector('#movies-gallery'),
     },
     filmDetailsRef: {
       filmDetailsModalOpen: document.querySelector('li'),
