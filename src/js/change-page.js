@@ -15,6 +15,7 @@ import { renderMovies } from './render/render-gallery';
 import { refs } from './refs/refs';
 import { libraryHandler } from './btn-library';
 import { createPagination } from './pagination';
+import { setStorage } from './storage/storage';
 
 // ===================================================
 showLoader();
@@ -28,6 +29,9 @@ async function createPage() {
   renderMovies(data);
   createPagination(data.total_pages);
   hideLoader();
+
+  refs().libraryRef.homeBtn.setAttribute('style', 'pointer-events:none');
+  refs().libraryRef.libBtn.setAttribute('style', 'pointer-events:visible');
 }
 
 // ====================================================
@@ -49,6 +53,9 @@ function switchPageToHome() {
   refs().libraryRef.homeBtn.classList.add('current');
   refs().libraryRef.libBtn.classList.remove('current');
 
+  refs().libraryRef.homeBtn.setAttribute('style', 'pointer-events:none');
+  refs().libraryRef.libBtn.setAttribute('style', 'pointer-events:visible');
+  setStorage(key, value);
   createPage();
 }
 
@@ -64,7 +71,10 @@ function switchPageToLibrary() {
   refs().libraryRef.libBtn.classList.add('current');
   refs().libraryRef.homeBtn.classList.remove('current');
 
-  refs().paginationRef.container.classList.add('display-none');
+  // refs().paginationRef.container.classList.add('display-none');
+
+  refs().libraryRef.libBtn.setAttribute('style', 'pointer-events:none');
+  refs().libraryRef.homeBtn.setAttribute('style', 'pointer-events:visible');
 
   libraryHandler();
 }
