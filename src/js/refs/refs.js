@@ -44,6 +44,8 @@ export function refs() {
       originTitle: document.querySelector('.js-title-orig'),
       genres: document.querySelector('.js-genres'),
       about: document.querySelector('.js-about'),
+      btnWatched: document.querySelector('.js-btn-modal-watched'),
+      btnQueue: document.querySelector('.js-btn-modal-queue'),
     },
     footerRef: {
       // ref: document.querySelector('.selector')
