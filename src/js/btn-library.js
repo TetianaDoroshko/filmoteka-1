@@ -38,7 +38,7 @@ function makeCard(movie) {
 }
 //------------
 
-libraryHandler(); // нужно вызвыть при переключении на страницу Library
+// libraryHandler(); // нужно вызвыть при переключении на страницу Library
 
 export function libraryHandler() {
   addListenersBtnLib();

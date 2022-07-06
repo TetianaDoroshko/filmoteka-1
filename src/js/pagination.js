@@ -6,7 +6,7 @@ let paginationRef;
 let currentPage = 1;
 let totalPage;
 
-createPagination(200);
+// createPagination(200);
 
 window.addEventListener(`resize`, onResize);
 
@@ -32,7 +32,7 @@ function onResize() {
   }
 }
 
-function createPagination(totalPagination) {
+export function createPagination(totalPagination) {
   totalPage = totalPagination;
   if (totalPagination <= 1) {
     return;
