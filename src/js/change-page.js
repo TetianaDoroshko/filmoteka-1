@@ -15,7 +15,6 @@ import { renderMovies } from './render/render-gallery';
 import { refs } from './refs/refs';
 import { libraryHandler } from './btn-library';
 import { createPagination } from './pagination';
-// import { libraryHandler } from './utils/get-name-genres';
 
 // ===================================================
 showLoader();
@@ -36,6 +35,8 @@ refs().libraryRef.homeBtn.addEventListener('click', switchPageToHome);
 refs().libraryRef.libBtn.addEventListener('click', switchPageToLibrary);
 refs().headerRef.navLogo.addEventListener('click', switchPageToHome);
 
+// ====================================================
+
 function switchPageToHome() {
   refs().headerRef.searchInput.value = null;
 
@@ -50,6 +51,8 @@ function switchPageToHome() {
 
   createPage();
 }
+
+// ====================================================
 
 function switchPageToLibrary() {
   refs().headerRef.header.classList.remove('header--home');
