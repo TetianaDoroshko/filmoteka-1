@@ -7,6 +7,7 @@ export async function getMoviesByKey(query, page = 1) {
   url.searchParams.set('api_key', API_KEY);
   url.searchParams.set('page', page);
   url.searchParams.set('query', query);
+  url.searchParams.set('language', 'uk');
 
   try {
     const response = await fetch(url);
@@ -28,4 +29,4 @@ export async function getMoviesByKey(query, page = 1) {
     console.log(error);
   }
 }
-// console.log('getMoviesByKey', getMoviesByKey('game'));
+console.log('getMoviesByKey', getMoviesByKey('game'));

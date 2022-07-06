@@ -7,10 +7,11 @@ import './js/pagination';
 import './js/modal-team';
 
 // import './js/api-service/get-trending-movies';
-// import './js/api-service/get-movies-by-key';
+import './js/api-service/get-movies-by-key';
 // import './js/api-service/get-deatils';
-// import './js/api-service/get-genres';
+import './js/api-service/get-genres';
 import './js/render/render-pagination';
 
 import './js/refs/refs';
 import './js/btn-library';
+import './js/multi-language';
