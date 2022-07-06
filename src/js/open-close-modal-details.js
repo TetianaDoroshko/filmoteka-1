@@ -4,6 +4,7 @@
 import { refs } from './refs/refs';
 import { getDetails } from './api-service/get-details';
 import { renderModalDetails } from './modal-details';
+import { modalButtonsHandler } from './modal-details/watched';
 
 const { filmDetailsRef } = refs();
 
