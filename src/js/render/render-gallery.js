@@ -7,7 +7,7 @@ import apiConfig from '../constants/api-config';
 
 // функция должна запускаться после прорисовки DOM
 
-async function renderMovies() {
+export async function renderMovies() {
   const movies = await getPopularMovies(); // функция, которая делает запрос на популярные фильмы и возвращает DATA из 20 фильмов
   //   console.log('this is movies=', movies);
   //   console.log('this is movies.result=', movies.results);
