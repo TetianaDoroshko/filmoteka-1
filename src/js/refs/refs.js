@@ -33,7 +33,11 @@ export function refs() {
       // ref: document.querySelector('.selector')
     },
     filmDetailsRef: {
-      filmDetailsModalOpen: document.querySelector('li'),
+      filmDetailsModalOpen: document.querySelector('.gallery-card'),
+      filmDetailsModalClose: document.querySelector(
+        '[data-action="close-modal"]'
+      ),
+      modalBackdrop: document.querySelector('.modal-backdrop'),
       filmDetailsModal: document.querySelector('.modal'),
       image: document.querySelector('.js-image'),
       title: document.querySelector('.js-title'),

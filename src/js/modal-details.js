@@ -1,6 +1,3 @@
-// Сделать открытие и закрытие модалки детальной инфы фильма,
-// должна закрывать по esc и по клику в бекдроп
-//
 // Для подстановки динамических данных нужно сделать запрос getDetails() передать id
 // и использовать функцию из файла render-details для их отрисовки
 //
@@ -14,11 +11,11 @@ import { getDetails } from './api-service/get-details';
 
 const { filmDetailsRef } = refs();
 
-const btn = document.querySelector('.modal-btn');
+// const btn = document.querySelector('.modal-btn');
 
-btn.addEventListener('click', renderModalDetails);
+// btn.addEventListener('click', renderModalDetails);
 
-async function renderModalDetails() {
+export async function renderModalDetails() {
   const data = await getDetails('496450');
   const imgUrl = apiConfig.IMAGE_BASE_URL;
 
@@ -27,7 +24,7 @@ async function renderModalDetails() {
     filmDetailsRef.image.alt = 'Movie photo';
   }
 
-  filmDetailsRef.image.srcset = `${imgUrl}${data.poster_path}`;
+  filmDetailsRef.image.src = `${imgUrl}${data.poster_path}`;
   filmDetailsRef.image.alt = data.title;
   filmDetailsRef.title.textContent = data.title;
   filmDetailsRef.voteAverage.textContent = data.vote_average;
