@@ -7,32 +7,16 @@
 import { refs } from './refs/refs';
 import storageConfig from './constants/storage-config';
 import { getDetails } from './api-service/get-details';
+import { createSingleMovieMarkup } from './template/card-library';
 // import { getStorage, setStorage, deleteStorage } from './storage/storage';
 
 const btnWatched = refs().libraryButtonsRef.btnWatched;
 const btnQueue = refs().libraryButtonsRef.btnQueue;
-const gallery = refs().galleryRef.galleryContainer;
+const gallery = refs().galleryRef.moviesDiv;
 // ------temp-----
 //----временная функция  getStorage--------------
 function getStorage(key) {
   return ['453395', '921987', '667739', '616037'];
-}
-//----временная функция создания карточки фильма--
-function makeCard(movie) {
-  return `
-        <article class="movie-card" id="${movie.id}">
-        <div class="thumb">
-        <img class="movie-card__img" src="https://image.tmdb.org/t/p/w1280/${
-          movie.poster_path
-        }" width="300" sizes="100%" alt="${movie.title}"/>
-        </div>
-        <div class="movie-card__description">
-            <p class="movie-card__name">${movie.title}</p>
-            <p class="movie-card__info">Genres | ${Number.parseInt(
-              movie.release_date
-            )}</p>
-        </div>
-        </article>`;
 }
 //------------
 
@@ -66,7 +50,6 @@ async function showWatchedMovies() {
 
 async function showQueueOfMovies() {
   btnQueue.classList.add('active');
-  console.log(btnQueue);
   btnWatched.classList.remove('active');
   gallery.innerHTML = '';
 
@@ -98,5 +81,5 @@ function renderMoviesPromises(arrayOfPromises) {
       }
     })
     .join('');
-  gallery.innerHTML = markup;
+  gallery.innerHTML = `<ul class="gallery-container">${markup}</ul>`;
 }
