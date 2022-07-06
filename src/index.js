@@ -12,7 +12,7 @@ import './js/modal-team';
 // import './js/api-service/get-deatils';
 // import './js/api-service/get-genres';
 import './js/render/render-pagination';
-
+import './js/storage/storage'
 import './js/refs/refs';
 import './js/btn-library';
 
