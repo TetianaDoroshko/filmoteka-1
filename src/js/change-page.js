@@ -13,7 +13,7 @@ import { getTrendingMovies } from './api-service/get-trending-movies';
 import { hideLoader, showLoader } from './loader/loader';
 import { renderMovies } from './render/render-gallery';
 import { refs } from './refs/refs';
-import { libraryHandler } from './utils/get-name-genres';
+// import { libraryHandler } from './utils/get-name-genres';
 
 // ===================================================
 showLoader();
@@ -25,21 +25,31 @@ async function createPage() {
   hideLoader();
 }
 
-refs().libraryRef.libBtn.addEventListener('click', showButtonsLibrary);
-refs().libraryRef.homeBtn.addEventListener('click', showSearchLabel);
+// ====================================================
+refs().libraryRef.homeBtn.addEventListener('click', switchPageToHome);
+refs().libraryRef.libBtn.addEventListener('click', switchPageToLibrary);
+refs().headerRef.navLogo.addEventListener('click', switchPageToHome);
 
-// const btnWatch = refs().libraryButtonsRef.btnWatched;
-// const btnQue = refs().libraryButtonsRef.btnQueue;
-const btnContainer = refs().libraryButtonsRef.btnContainer;
+function switchPageToHome() {
+  refs().headerRef.searchInput.value = null;
 
-function showButtonsLibrary() {
-  //   btnQue.classList.remove('is-hidden');
-  //   btnWatch.classList.remove('is-hidden');
+  refs().headerRef.header.classList.add('header--home');
+  refs().headerRef.header.classList.remove('header--library');
+
+  refs().libraryButtonsRef.btnContainer.classList.add('display-none');
+  refs().headerRef.searchForm.classList.remove('display-none');
+
+  refs().libraryRef.homeBtn.classList.add('current');
+  refs().libraryRef.libBtn.classList.remove('current');
 }
 
-function showSearchLabel() {
-  //   btnQue.classList.add('is-hidden');
-  //   btnWatch.classList.add('is-hidden');
-}
+function switchPageToLibrary() {
+  refs().headerRef.header.classList.remove('header--home');
+  refs().headerRef.header.classList.add('header--library');
 
-//.display-none
+  refs().headerRef.searchForm.classList.add('display-none');
+  refs().libraryButtonsRef.btnContainer.classList.remove('display-none');
+
+  refs().libraryRef.libBtn.classList.add('current');
+  refs().libraryRef.homeBtn.classList.remove('current');
+}

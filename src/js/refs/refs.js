@@ -1,8 +1,11 @@
 export function refs() {
   return {
     headerRef: {
+      header: document.querySelector('.header'),
       navLogo: document.querySelector('.navigation__logo'),
       searchForm: document.querySelector('.js-search-form'),
+      headLibBackGr: document.querySelector('.header--library'),
+      searchInput: document.querySelector('.js-form-input'),
     },
     homeRef: {
       // ref: document.querySelector('.selector')
