@@ -2,7 +2,27 @@
 
 <section class="gallery">
   <div class="container">
-    <include src="./partials/card-dev.html"></include>
+    <!-- <include src="./partials/card-dev.html"></include> -->
+    <!-- div for cards rendering -->
+    <div id="#movies-gallery" class=""></div>
     <include src="./partials/pagination-dev.html"></include>
   </div>
 </section>
+
+<!-- <div id="#movies-gallery" class="">
+  <ul class="gallery-container">
+  <li class="gallery-card" data-id="${movie.id}">
+    <a class="gallery-card__item">
+      <img
+        src="${IMAGE_BASE_URL + movie.poster_path}"
+        alt="${movie.original_title}"
+        class="gallery-card__image"
+      />
+      <p class="gallery-card__name">${movie.original_title}</p>
+      <p class="gallery-card__genre">
+        ${listOfGenres} | ${movieYear}<span class="gallery-card__span"></span>
+      </p>
+    </a>
+  </li>
+  <ul>
+</div> -->

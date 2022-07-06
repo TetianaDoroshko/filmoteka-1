@@ -11,10 +11,11 @@ export async function renderMovies() {
   const movies = await getPopularMovies(); // функция, которая делает запрос на популярные фильмы и возвращает DATA из 20 фильмов
   //   console.log('this is movies=', movies);
   //   console.log('this is movies.result=', movies.results);
-
-  refs.moviesDiv.innerHTML = movies.results
+  const itemMovie = movies.results
     .map(movie => renderSingleMovie(movie)) // obrabotka sozdaniya 1 karto4ki
     .join('');
+
+  refs.moviesDiv.innerHTML = `<ul class="gallery-container">${itemMovie}</ul>`;
 }
 
 function renderSingleMovie(movie) {
@@ -53,19 +54,24 @@ function renderSingleMovie(movie) {
   }
 
   if (movie.name) {
-    return ` <div class="">
+    return `<li class="gallery-card" data-id ="${movie.id}">
+<a class="gallery-card__item">
             <img src="${IMAGE_BASE_URL + movie.poster_path}" alt="${
       movie.original_title
-    }" data-id ="${movie.id}" class="" ><p class="">${
-      movie.name
-    }</p><p class="">${listOfGenres} | ${movieYear}</p>
-        </div>`;
+    }"  class="gallery-card__image" >
+<p class="gallery-card__name">${movie.name}</p>
+<p class="gallery-card__genre">${listOfGenres} | ${movieYear}<span class="gallery-card__span"></span></p>
+</a>        
+	    </li>`;
   } else {
-    return ` <div class="">
+    return `<li class="gallery-card" data-id ="${movie.id}">
+<a class="gallery-card__item">
             <img src="${IMAGE_BASE_URL + movie.poster_path}" alt="${
       movie.original_title
-    }" data-id ="${movie.id}" class="" ><p class="">${movie.original_title}</p>
-    <p class="">${listOfGenres} | ${movieYear}</p>
-        </div>`;
+    }"  class="gallery-card__image" >
+<p class="gallery-card__name">${movie.original_title}</p>
+<p class="gallery-card__genre">${listOfGenres} | ${movieYear}<span class="gallery-card__span"></span></p>
+</a>
+            </li>`;
   }
 }
