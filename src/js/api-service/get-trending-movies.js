@@ -16,7 +16,7 @@ export async function getTrendingMovies(page = 1) {
 
     const data = await response.json();
 
-    return data.results;
+    return data;
   } catch (error) {
     console.log(error);
   }

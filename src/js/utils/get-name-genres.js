@@ -13,34 +13,57 @@
 
 //!!!!!!!!! ОБЕ функции надо вызывать при старте
 
+import { getGenres } from '../api-service/get-genres';
 //========getting list of movies=====
 const genresList = {};
 getGenres().then(data => makingGenresList(data));
 
-function makingGenresList(List) {
-  List.forEach(el => {
+function makingGenresList(list) {
+  list.genres.forEach(el => {
     genresList[el.id] = el.name;
   });
+}
+
+export function getNameGenres(movie) {
+  const genresName = [];
+  movie.genre_ids.forEach(el => {
+    if (genresList[el]) {
+      genresName.push(genresList[el]); // genresList -объект, созданный при старте кода. находится в get-name-genres
+    }
+  });
+
+  if (genresName.length === 0) {
+    genresName.push('N/A');
+  }
+  if (genresName.length > 3) {
+    genresName.splice(3);
+    genresName[2] = 'Other';
+  }
+  //   console.log(genresName);
+
+  const listOfGenres = genresName.map(el => `${el}`).join(', ');
+
+  return listOfGenres;
 }
 
 // console.log('eto', genresList);
 
 //================ функция запроса жанров
 
-async function getGenres() {
-  let data;
-  try {
-    const response = await fetch(
-      `https://api.themoviedb.org/3/genre/movie/list?api_key=${API_KEY}`
-    );
+// async function getGenres() {
+//   let data;
+//   try {
+//     const response = await fetch(
+//       `https://api.themoviedb.org/3/genre/movie/list?api_key=${API_KEY}`
+//     );
 
-    const responseData = await response.json();
-    // console.log(responseData);
-    // data = responseData.genres.map(genre => genre.name).join(',');
-    data = responseData.genres;
-  } catch (error) {
-    console.log(error);
-  }
+//     const responseData = await response.json();
+//     // console.log(responseData);
+//     // data = responseData.genres.map(genre => genre.name).join(',');
+//     data = responseData.genres;
+//   } catch (error) {
+//     console.log(error);
+//   }
 
-  return data;
-}
+//   return data;
+// }

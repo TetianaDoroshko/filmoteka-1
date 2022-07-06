@@ -7,7 +7,7 @@ export function refs() {
       headLibBackGr: document.querySelector('.header--library'),
       searchInput: document.querySelector('.js-form-input'),
     },
-    homeRef: {
+    searchRef: {
       // ref: document.querySelector('.selector')
     },
     libraryButtonsRef: {
@@ -57,7 +57,7 @@ export function refs() {
       // ref: document.querySelector('.selector')
     },
     loaderRef: {
-      loader: document.querySelector('.loader'),
+      loader: document.querySelector('.js-loader'),
     },
   };
 }
