@@ -1,12 +1,35 @@
 import { renderPagination } from './render/render-pagination';
 import { refs } from './refs/refs';
 import { getTrendingMovies } from './api-service/get-trending-movies';
+import { getMoviesByKey } from './api-service/get-movies-by-key';
+import {
+  getSessionStorage,
+  setSessionStorage,
+} from './storage/session-storage';
+import storageConfig from './constants/storage-config';
+
+const { TRENDING, BY_KEY, LIBRARY } = storageConfig;
+
+//==================================================
+// const { btnWatched, btnQueue } = refs().libraryButtonsRef;
+// btnWatched.addEventListener('click', () => {
+//   createPagination(200, 1);
+//   setSessionStorage(BY_KEY, 'game');
+//   console.log('1');
+// });
+
+// btnQueue.addEventListener('click', () => {
+//   createPagination(100, 1);
+//   setSessionStorage(TRENDING);
+//   console.log('2');
+// });
+//==================================================
 
 let paginationRef;
 let currentPage = 1;
 let totalPage;
 
-createPagination(200);
+// createPagination(200);
 
 window.addEventListener(`resize`, onResize);
 
@@ -32,10 +55,14 @@ function onResize() {
   }
 }
 
-function createPagination(totalPagination) {
+function createPagination(totalPagination, page) {
   totalPage = totalPagination;
   if (totalPagination <= 1) {
     return;
+  }
+
+  if (page) {
+    currentPage = page;
   }
 
   renderPagination(totalPagination);
@@ -86,12 +113,33 @@ function onClick(e) {
     reRenderPagination();
   }
 
-  // getTrendingMovies(currentPage);
+  renderPage(currentPage);
 
   activeCurrentPage();
   checkCurrentPosition();
   lockBtn();
   // console.log(currentPage);
+}
+
+async function renderPage(page) {
+  const currentQuery = getSessionStorage();
+  let data;
+
+  if (currentQuery[TRENDING]) {
+    data = await getTrendingMovies(page);
+  }
+
+  if (currentQuery[BY_KEY]) {
+    const query = currentQuery[BY_KEY];
+    data = await getMoviesByKey(query, page);
+  }
+
+  // if (currentQuery[LIBRARY]) {
+  //   getTrendingMovies(page);
+  //   return;
+  // }
+
+  console.log(data);
 }
 
 function activeCurrentPage() {
