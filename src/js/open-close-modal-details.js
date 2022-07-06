@@ -22,7 +22,7 @@ export function onOpenModal() {
   modalButtonsHandler(); /* Это Танина функция - запуск кнопок при открытии модалки */
 }
 
-export function onCloseModal() {
+function onCloseModal() {
   window.removeEventListener('keydown', onCloseModalByEscape);
   document.body.classList.remove('show-modal');
   filmDetailsRef.filmDetailsModal.classList.add('is-hidden');
