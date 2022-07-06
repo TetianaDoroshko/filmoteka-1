@@ -8,18 +8,13 @@ import { refs } from './refs/refs';
 // import { getStorage } from './storage/storage';
 import storageConfig from './constants/storage-config';
 import { getDetails } from './api-service/get-details';
+import { getStorage, setStorage, deleteStorage } from './storage/storage';
 
 const btnWatched = refs().libraryButtonsRef.btnWatched;
 const btnQueue = refs().libraryButtonsRef.btnQueue;
+const gallery = refs().galleryRef.galleryContainer;
 
 // ------temp-----
-//-----временный контейнер для галереи-----------
-const pag = document.querySelector('.pagination');
-const gallery = document.createElement('div');
-gallery.style.display = 'flex';
-pag.insertAdjacentElement('beforebegin', gallery);
-console.log(gallery);
-
 //----временная функция  getStorage--------------
 function getStorage(key) {
   return ['453395', '921987', '667739', '616037'];
@@ -45,52 +40,64 @@ function makeCard(movie) {
 
 libraryHandler(); // нужно вызвыть при переключении на страницу Library
 
-function libraryHandler() {
+export function libraryHandler() {
   addListenersBtnLib();
   showWatchedMovies();
   btnWatched.classList.add('active');
 }
+
 function addListenersBtnLib() {
   btnWatched.addEventListener('click', showWatchedMovies);
   btnQueue.addEventListener('click', showQueueOfMovies);
 }
 
-function showWatchedMovies() {
+async function showWatchedMovies() {
   btnQueue.classList.remove('active');
   btnWatched.classList.add('active');
+  gallery.innerHTML = '';
 
   const movieSetId = getStorage(storageConfig.KEY_WATCHED);
   if (!movieSetId || movieSetId.length === 0) {
     gallery.innerHTML =
       "You don't have any movies you've watched. Add the first one.";
   } else {
-    renderMovies(movieSetId);
+    const arrayOfPromises = await Promise.all(createPromises(movieSetId));
+    renderMoviesPromises(arrayOfPromises);
   }
 }
-function showQueueOfMovies() {
+
+async function showQueueOfMovies() {
   btnQueue.classList.add('active');
   btnWatched.classList.remove('active');
+  gallery.innerHTML = '';
 
   const movieSetId = getStorage(storageConfig.KEY_QUEUE);
   if (!movieSetId || movieSetId.length === 0) {
     gallery.innerHTML =
       "You don't have any movies in the queue. Add the first one.";
   } else {
-    renderMovies(movieSetId);
+    const arrayOfPromises = await Promise.all(createPromises(movieSetId));
+    renderMoviesPromises(arrayOfPromises);
   }
 }
 
-async function renderMovies(movieSetId) {
-  let markup = [];
-  for (const movieID of movieSetId) {
-    const movieDetails = await getDetails(movieID);
-    if (movieDetails) {
-      const markupCard = makeCard(movieDetails);
-      markup.push(markupCard);
-    } else {
-      continue;
-    }
-  }
-  markup = markup.join('');
+function createPromises(movieSetId) {
+  return movieSetId.map(
+    movieId =>
+      new Promise(resolve => {
+        resolve(getDetails(movieId));
+        reject(getDetails(movieId));
+      })
+  );
+}
+
+function renderMoviesPromises(arrayOfPromises) {
+  const markup = arrayOfPromises
+    .map(element => {
+      if (element) {
+        return makeCard(element);
+      }
+    })
+    .join('');
   gallery.innerHTML = markup;
 }
