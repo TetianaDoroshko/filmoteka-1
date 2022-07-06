@@ -8,7 +8,7 @@ export function refs() {
       searchInput: document.querySelector('.js-form-input'),
     },
     searchRef: {
-      // ref: document.querySelector('.selector')
+      searchForm: document.querySelector('.search-form'),
     },
     libraryButtonsRef: {
       btnContainer: document.querySelector('.js-btn-container'),
