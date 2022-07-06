@@ -33,7 +33,7 @@ export function refs() {
       // ref: document.querySelector('.selector')
     },
     filmDetailsRef: {
-      filmDetailsModalOpen: document.querySelector('.gallery-card'),
+      filmDetailsModalContainer: document.querySelector('#movies-gallery'),
       filmDetailsModalClose: document.querySelector(
         '[data-action="close-modal"]'
       ),

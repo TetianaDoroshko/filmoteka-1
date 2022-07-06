@@ -5,7 +5,6 @@
 // есть ли фильм в хранилище и подсвечивает кнопки.
 
 import { refs } from './refs/refs';
-import api from './api-service/get-details';
 import apiConfig from './constants/api-config';
 import { getDetails } from './api-service/get-details';
 
@@ -32,14 +31,16 @@ export async function renderModalDetails() {
   filmDetailsRef.popularity.textContent = Number(data.popularity.toFixed(1));
   filmDetailsRef.originTitle.textContent = data.original_title;
 
-  let genre = data.genres.map(genre => genre.name);
-  const genreList = genre.slice(0, 2);
+  // let genre = data.genres.map(genre => genre.name);
+  // const genreList = genre.slice(0, 2);
 
-  if (genre.length > 2) {
-    genreList.push('Others');
-  }
-  genre = genreList.join(', ');
+  // if (genre.length > 2) {
+  //   genreList.push('Others');
+  // }
+  // genre = genreList.join(', ');
 
-  filmDetailsRef.genres.textContent = genre;
+  filmDetailsRef.genres.textContent = data.genres
+    .map(genre => genre.name)
+    .join(', ');
   filmDetailsRef.about.textContent = data.overview;
 }

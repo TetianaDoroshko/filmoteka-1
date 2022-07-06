@@ -10,11 +10,11 @@ const { filmDetailsRef } = refs();
 
 const btn = document.querySelector('.js-btn-queue'); /* временная кнопка */
 
-btn.addEventListener('click', onFilmClick);
+btn.addEventListener('click', onFilmClick); /*  */
 filmDetailsRef.filmDetailsModalClose.addEventListener('click', onCloseModal);
 filmDetailsRef.modalBackdrop.addEventListener('click', onBackdropClick);
 
-// filmDetailsRef.filmDetailsModalOpen.addEventListener(
+// filmDetailsRef.filmDetailsModalContainer.addEventListener(
 //   'click',
 //   onFilmClick
 // ); /* нужно потом навесить слушателя на контейнер с карточками */
@@ -23,7 +23,7 @@ async function onFilmClick(event) {
   event.preventDefault();
   //   console.log(event.target);
 
-  //   if (!event.target.classList.contains('movie-card')) {
+  //   if (!event.target.classList.contains('gallery-card')) {
   //     return;
   //   } стиль лишки, на нем и id
 
