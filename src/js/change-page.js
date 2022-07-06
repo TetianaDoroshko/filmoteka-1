@@ -28,8 +28,10 @@ async function createPage() {
 refs().libraryRef.libBtn.addEventListener('click', showButtonsLibrary);
 refs().libraryRef.homeBtn.addEventListener('click', showSearchLabel);
 
-const btnWatch = refs().libraryButtonsRef.btnWatched;
-const btnQue = refs().libraryButtonsRef.btnQueue;
+// const btnWatch = refs().libraryButtonsRef.btnWatched;
+// const btnQue = refs().libraryButtonsRef.btnQueue;
+const btnContainer = refs().libraryButtonsRef.btnContainer;
+
 function showButtonsLibrary() {
   //   btnQue.classList.remove('is-hidden');
   //   btnWatch.classList.remove('is-hidden');
