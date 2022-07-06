@@ -5,15 +5,13 @@
 //если в хранилище есть данные, то делать запросы на каждый ид и с помощью функции в render-gallery
 // отрисовать карточки.
 import { refs } from './refs/refs';
-// import { getStorage } from './storage/storage';
 import storageConfig from './constants/storage-config';
 import { getDetails } from './api-service/get-details';
-import { getStorage, setStorage, deleteStorage } from './storage/storage';
+// import { getStorage, setStorage, deleteStorage } from './storage/storage';
 
 const btnWatched = refs().libraryButtonsRef.btnWatched;
 const btnQueue = refs().libraryButtonsRef.btnQueue;
 const gallery = refs().galleryRef.galleryContainer;
-
 // ------temp-----
 //----временная функция  getStorage--------------
 function getStorage(key) {
@@ -68,6 +66,7 @@ async function showWatchedMovies() {
 
 async function showQueueOfMovies() {
   btnQueue.classList.add('active');
+  console.log(btnQueue);
   btnWatched.classList.remove('active');
   gallery.innerHTML = '';
 
@@ -95,7 +94,7 @@ function renderMoviesPromises(arrayOfPromises) {
   const markup = arrayOfPromises
     .map(element => {
       if (element) {
-        return makeCard(element);
+        return createSingleMovieMarkup(element);
       }
     })
     .join('');

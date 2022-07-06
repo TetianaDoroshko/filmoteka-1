@@ -42,7 +42,7 @@ function deleteStorage(key, id) {
 
 modalButtonsHandler('921987'); //функционал кнопок запускается при открытии модального окна
 
-function modalButtonsHandler(movieId) {
+export function modalButtonsHandler(movieId) {
   checkInStorageWatched(movieId);
   checkInStorageQueue(movieId);
   btnWatched.setAttribute('id', movieId);
