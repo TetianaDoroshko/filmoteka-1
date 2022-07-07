@@ -8,9 +8,13 @@
   padding: 20px;
   transition: opacity var(--timingFunction), visibility var(--timingFunction);
 
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: rgba(0, 0, 0, 0.25);
 
   overflow-y: auto;
+
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
 
   @include tablet {
     padding-top: 219px;

@@ -15,18 +15,22 @@
   @media screen and (max-width: 767px) {
     align-items: flex-start;
   }
+
+  @media screen and (max-height: 634px) {
+    align-self: flex-start;
+  }
 }
 
-.modal-backdrop {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
+// .modal-backdrop {
+//   position: absolute;
+//   top: 0;
+//   left: 0;
+//   width: 100vw;
+//   height: 100vh;
 
-  background-color: #000000;
-  opacity: 0.25;
-}
+//   background-color: #000000;
+//   opacity: 0.25;
+// }
 
 body.show-modal .backdrop {
   opacity: 1;
