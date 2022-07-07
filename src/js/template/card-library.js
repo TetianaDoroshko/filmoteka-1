@@ -4,7 +4,7 @@ const { IMAGE_BASE_URL } = apiConfig;
 
 export function createSingleMovieMarkup(movie) {
   let genres = movie.genres.map(el => el.name);
-  console.log(genres);
+  // console.log(genres);
 
   if (genres.length > 3) {
     genres = [genres[0], genres[1], 'Other'].join(', ');

@@ -13,10 +13,15 @@
 import storageConfig from '../constants/storage-config';
 import { refs } from '../refs/refs';
 import { getStorage, setStorage, deleteStorage } from '../storage/storage';
+import { showWatchedMovies, showQueueOfMovies } from '../btn-library';
+import storageConfig from '../constants/storage-config';
+import { getSessionStorage } from '../storage/session-storage';
 
 const keyWatched = storageConfig.KEY_WATCHED;
 const keyQueue = storageConfig.KEY_QUEUE;
 
+const { btnWatched: headerBtnWatched, btnQueue: headerBtnQueue } =
+  refs().libraryButtonsRef;
 const btnWatched = refs().filmDetailsRef.btnWatched;
 const btnQueue = refs().filmDetailsRef.btnQueue;
 
@@ -79,9 +84,9 @@ function checkInStorageQueue(id) {
 
 function onWatchedBtnClick(event) {
   const id = event.currentTarget.getAttribute('id');
-  console.log(btnWatched.getAttribute('actions'));
+  // console.log(btnWatched.getAttribute('actions'));
   if (btnWatched.getAttribute('actions') === 'added') {
-    console.log('delete');
+    // console.log('delete');
     deleteStorage(keyWatched, id);
   } else {
     setStorage(keyWatched, id);
@@ -89,6 +94,15 @@ function onWatchedBtnClick(event) {
   }
   checkInStorageWatched(id);
   checkInStorageQueue(id);
+
+  if (getSessionStorage()[storageConfig.LIBRARY]) {
+    if (headerBtnWatched.classList.contains('active')) {
+      // console.log(getSessionStorage().page);
+      showWatchedMovies(getSessionStorage().page);
+    } else {
+      showQueueOfMovies(getSessionStorage().page);
+    }
+  }
 }
 
 function onQueueBtnClick(event) {
@@ -101,4 +115,13 @@ function onQueueBtnClick(event) {
   }
   checkInStorageWatched(id);
   checkInStorageQueue(id);
+
+  if (getSessionStorage()[storageConfig.LIBRARY]) {
+    if (headerBtnWatched.classList.contains('active')) {
+      // console.log(getSessionStorage().page);
+      showWatchedMovies(getSessionStorage().page);
+    } else {
+      showQueueOfMovies(getSessionStorage().page);
+    }
+  }
 }

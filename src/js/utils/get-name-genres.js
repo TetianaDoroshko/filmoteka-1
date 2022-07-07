@@ -26,11 +26,15 @@ function makingGenresList(list) {
 
 export function getNameGenres(movie) {
   const genresName = [];
-  movie.genre_ids.forEach(el => {
-    if (genresList[el]) {
-      genresName.push(genresList[el]); // genresList -объект, созданный при старте кода. находится в get-name-genres
-    }
-  });
+  if (movie.genre_ids) {
+    movie.genre_ids.forEach(el => {
+      if (genresList[el]) {
+        genresName.push(genresList[el]); // genresList -объект, созданный при старте кода. находится в get-name-genres
+      }
+    });
+  } else {
+    genresName.push('N/A');
+  }
 
   if (genresName.length === 0) {
     genresName.push('N/A');

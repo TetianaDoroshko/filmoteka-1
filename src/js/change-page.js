@@ -14,8 +14,9 @@ import { hideLoader, showLoader } from './loader/loader';
 import { renderMovies } from './render/render-gallery';
 import { refs } from './refs/refs';
 import { libraryHandler } from './btn-library';
-import { createPagination } from './pagination';
-import { setStorage } from './storage/storage';
+import { createPagination, clearContainerPagination } from './pagination';
+import { setSessionStorage } from './storage/session-storage';
+import storageConfig from './constants/storage-config';
 
 // ===================================================
 showLoader();
@@ -23,15 +24,16 @@ window.addEventListener('DOMContentLoaded', createPage);
 
 async function createPage() {
   showLoader();
+  clearContainerPagination();
   const data = await getTrendingMovies();
-  console.log(data);
 
   renderMovies(data);
-  createPagination(data.total_pages);
+  setSessionStorage(storageConfig.TRENDING);
+  createPagination(data.total_pages, 1);
   hideLoader();
 
-  refs().libraryRef.homeBtn.setAttribute('style', 'pointer-events:none');
-  refs().libraryRef.libBtn.setAttribute('style', 'pointer-events:visible');
+  // refs().libraryRef.homeBtn.setAttribute('style', 'pointer-events:none');
+  // refs().libraryRef.libBtn.setAttribute('style', 'pointer-events:visible');
 }
 
 // ====================================================
@@ -53,8 +55,8 @@ function switchPageToHome() {
   refs().libraryRef.homeBtn.classList.add('current');
   refs().libraryRef.libBtn.classList.remove('current');
 
-  refs().libraryRef.homeBtn.setAttribute('style', 'pointer-events:none');
-  refs().libraryRef.libBtn.setAttribute('style', 'pointer-events:visible');
+  // refs().libraryRef.homeBtn.setAttribute('style', 'pointer-events:none');
+  // refs().libraryRef.libBtn.setAttribute('style', 'pointer-events:visible');
   // setStorage(key, value);
   createPage();
 }
@@ -71,8 +73,8 @@ function switchPageToLibrary() {
   refs().libraryRef.libBtn.classList.add('current');
   refs().libraryRef.homeBtn.classList.remove('current');
 
-  refs().libraryRef.libBtn.setAttribute('style', 'pointer-events:none');
-  refs().libraryRef.homeBtn.setAttribute('style', 'pointer-events:visible');
-
+  // refs().libraryRef.libBtn.setAttribute('style', 'pointer-events:none');
+  // refs().libraryRef.homeBtn.setAttribute('style', 'pointer-events:visible');
+  clearContainerPagination();
   libraryHandler();
 }

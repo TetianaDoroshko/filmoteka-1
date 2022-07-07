@@ -9,7 +9,12 @@ import storageConfig from './constants/storage-config';
 import { getDetails } from './api-service/get-details';
 import { createSingleMovieMarkup } from './template/card-library';
 import { getStorage } from './storage/storage';
-import { createPagination } from './pagination';
+import { createPagination, clearContainerPagination } from './pagination';
+import {
+  setSessionStorage,
+  updatePageSessionStorage,
+} from './storage/session-storage';
+import { hideLoader, showLoader } from './loader/loader';
 
 const btnWatched = refs().libraryButtonsRef.btnWatched;
 const btnQueue = refs().libraryButtonsRef.btnQueue;
@@ -111,6 +116,7 @@ let arrayOfPromises;
 export function libraryHandler() {
   addListenersBtnLib();
   showWatchedMovies();
+  setSessionStorage(storageConfig.LIBRARY);
   btnWatched.classList.add('active');
 }
 
@@ -119,40 +125,77 @@ function addListenersBtnLib() {
   btnQueue.addEventListener('click', showQueueOfMovies);
 }
 
-async function showWatchedMovies() {
+export async function showWatchedMovies(page) {
+  let currentPage;
+  if (typeof page === 'number') {
+    currentPage = page;
+  } else {
+    currentPage = 1;
+  }
+
   btnQueue.classList.remove('active');
   btnWatched.classList.add('active');
-  gallery.innerHTML = '';
+  clearContainerPagination();
+  updatePageSessionStorage(currentPage);
+
+  // gallery.innerHTML = '';
 
   const movieSetId = getStorage(storageConfig.KEY_WATCHED);
   if (!movieSetId || movieSetId.length === 0) {
     gallery.innerHTML =
       "You don't have any movies you've watched. Add the first one.";
   } else {
+    showLoader();
+
     arrayOfPromises = await Promise.all(createPromises(movieSetId));
     arrayOfPromises = arrayOfPromises.filter(el => el !== undefined);
 
-    renderMoviesPromises();
-    createPagination(Math.ceil(arrayOfPromises.length / 20));
+    const totalPages = Math.ceil(arrayOfPromises.length / 20);
+
+    if (totalPages < currentPage) {
+      currentPage -= 1;
+    }
+
+    renderMoviesPromises(currentPage);
+    createPagination(totalPages, currentPage);
+    hideLoader();
   }
 }
 
-async function showQueueOfMovies() {
+export async function showQueueOfMovies(page) {
+  let currentPage;
+  if (typeof page === 'number') {
+    currentPage = page;
+  } else {
+    currentPage = 1;
+  }
+
   btnQueue.classList.add('active');
   btnWatched.classList.remove('active');
-  gallery.innerHTML = '';
+  clearContainerPagination();
+  updatePageSessionStorage(currentPage);
+
+  // gallery.innerHTML = '';
 
   const movieSetId = getStorage(storageConfig.KEY_QUEUE);
-  console.log(movieSetId);
+  // console.log(movieSetId);
   if (!movieSetId || movieSetId.length === 0) {
     gallery.innerHTML =
       "You don't have any movies in the queue. Add the first one.";
   } else {
+    showLoader();
     arrayOfPromises = await Promise.all(createPromises(movieSetId));
     arrayOfPromises = arrayOfPromises.filter(el => el !== undefined);
-    console.log(arrayOfPromises);
-    renderMoviesPromises();
-    createPagination(Math.ceil(arrayOfPromises.length / 20));
+
+    const totalPages = Math.ceil(arrayOfPromises.length / 20);
+
+    if (totalPages < currentPage) {
+      currentPage -= 1;
+    }
+
+    renderMoviesPromises(currentPage);
+    createPagination(totalPages, currentPage);
+    hideLoader();
   }
 }
 

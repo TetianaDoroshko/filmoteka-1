@@ -7,6 +7,9 @@ import { renderMovies } from './render/render-gallery';
 import { showLoader } from './loader/loader';
 import { hideLoader } from './loader/loader';
 import { notify } from './notify';
+import { createPagination, clearContainerPagination } from './pagination';
+import { setSessionStorage } from './storage/session-storage';
+import storageConfig from './constants/storage-config';
 const { moviesDiv } = refs().galleryRef;
 const { searchForm } = refs().searchRef;
 // const { modalError } = refs().modalErrorRef;
@@ -22,7 +25,7 @@ searchForm.addEventListener('submit', onSubmit);
 function onSubmit(e) {
   e.preventDefault();
   searchNameFilm = e.target.elements.searchQuery.value.trim();
-  console.log(searchNameFilm);
+  // console.log(searchNameFilm);
 
   if (searchNameFilm === '') {
     const text = 'Enter the name of the movie, for a correct search!';
@@ -32,6 +35,7 @@ function onSubmit(e) {
   showLoader();
   // resetPage();
   clearContainerGallery();
+  clearContainerPagination();
   getMoviesByKey(searchNameFilm)
     .then(res => {
       if (!res) {
@@ -39,11 +43,14 @@ function onSubmit(e) {
         notify(text);
         return;
       }
+
+      setSessionStorage(storageConfig.BY_KEY, searchNameFilm);
+      createPagination(res.total_pages, 1);
       renderMovies(res);
     })
     .finally(hideLoader);
   clearInput();
-  console.log(clearInput);
+  // console.log(clearInput);
 }
 
 // function resetPage() {

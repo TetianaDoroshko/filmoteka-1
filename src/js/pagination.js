@@ -1,6 +1,32 @@
 import { renderPagination } from './render/render-pagination';
 import { refs } from './refs/refs';
 import { getTrendingMovies } from './api-service/get-trending-movies';
+import { getMoviesByKey } from './api-service/get-movies-by-key';
+import {
+  getSessionStorage,
+  updatePageSessionStorage,
+} from './storage/session-storage';
+import storageConfig from './constants/storage-config';
+import { renderMovies } from './render/render-gallery';
+import { hideLoader, showLoader } from './loader/loader';
+import { renderMoviesPromises } from './btn-library';
+
+const { TRENDING, BY_KEY, LIBRARY } = storageConfig;
+
+//==================================================
+// const { btnWatched, btnQueue } = refs().libraryButtonsRef;
+// btnWatched.addEventListener('click', () => {
+//   createPagination(200, 1);
+//   setSessionStorage(BY_KEY, 'game');
+//   console.log('1');
+// });
+
+// btnQueue.addEventListener('click', () => {
+//   createPagination(100, 1);
+//   setSessionStorage(TRENDING);
+//   console.log('2');
+// });
+//==================================================
 
 const {
   paginationRef: { container },
@@ -36,11 +62,16 @@ function onResize() {
   }
 }
 
-export function createPagination(totalPagination) {
+export function createPagination(totalPagination, page) {
   totalPage = totalPagination;
+  updatePageSessionStorage(page);
   if (totalPagination <= 1) {
     clearContainerPagination();
     return;
+  }
+
+  if (page) {
+    currentPage = page;
   }
 
   renderPagination(totalPagination);
@@ -91,12 +122,35 @@ function onClick(e) {
     reRenderPagination();
   }
 
-  // getTrendingMovies(currentPage);
+  renderPage(currentPage);
 
   activeCurrentPage();
   checkCurrentPosition();
   lockBtn();
   // console.log(currentPage);
+}
+
+async function renderPage(page) {
+  updatePageSessionStorage(page);
+  const currentQuery = getSessionStorage();
+  let data;
+  showLoader();
+  if (currentQuery[TRENDING]) {
+    data = await getTrendingMovies(page);
+    renderMovies(data);
+  }
+
+  if (currentQuery[BY_KEY]) {
+    const query = currentQuery[BY_KEY];
+    data = await getMoviesByKey(query, page);
+    renderMovies(data);
+  }
+
+  if (currentQuery[LIBRARY]) {
+    renderMoviesPromises(page);
+  }
+  hideLoader();
+  // console.log(data);
 }
 
 function activeCurrentPage() {
