@@ -1,12 +1,13 @@
-<form class="search-form display-none">
+<form class="search-form js-search-form">
   <input
-    class="search-form__input"
+    class="search-form__input js-form-input"
     type="text"
     name="searchQuery"
     placeholder="Movie search"
+    autocomplete="off"
   />
   <button class="search-form__btn" type="submit">
-    <svg width="12" height="12">
+    <svg width="12" height="12" class="search-form__btn-icon">
       <use href="./images/sprite.svg#icon-search"></use>
     </svg>
   </button>

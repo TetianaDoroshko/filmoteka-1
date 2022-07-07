@@ -43,9 +43,9 @@ function makeCard(movie) {
 }
 //------------
 
-libraryHandler(); // нужно вызвыть при переключении на страницу Library
+// libraryHandler(); // нужно вызвыть при переключении на страницу Library
 
-function libraryHandler() {
+export function libraryHandler() {
   addListenersBtnLib();
   showWatchedMovies();
   btnWatched.classList.add('active');
