@@ -47,6 +47,7 @@ function onSubmit(e) {
       setSessionStorage(storageConfig.BY_KEY, searchNameFilm);
       createPagination(res.total_pages, 1);
       renderMovies(res);
+      scroll();
     })
     .finally(hideLoader);
   clearInput();
@@ -62,6 +63,16 @@ function clearContainerGallery() {
 
 function clearInput() {
   searchForm.elements.searchQuery.value = '';
+}
+
+function scroll() {
+  const { top } = moviesDiv.getBoundingClientRect();
+  console.log(top);
+
+  window.scrollBy({
+    top: top,
+    behavior: 'smooth',
+  });
 }
 
 // function onAttentionClick() {
