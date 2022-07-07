@@ -210,7 +210,7 @@ function createPromises(movieSetId) {
 }
 
 export function renderMoviesPromises(page = 1) {
-  arrayForPage = arrayOfPromises.slice(
+  const arrayForPage = arrayOfPromises.slice(
     0 + 20 * (page - 1),
     20 + 20 * (page - 1)
   );
