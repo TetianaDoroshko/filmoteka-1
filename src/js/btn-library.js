@@ -133,7 +133,7 @@ async function showWatchedMovies() {
     arrayOfPromises = arrayOfPromises.filter(el => el !== undefined);
 
     renderMoviesPromises();
-    createPagination(Math.ceil(arrayOfPromises.length / 2));
+    createPagination(Math.ceil(arrayOfPromises.length / 20));
   }
 }
 
@@ -152,7 +152,7 @@ async function showQueueOfMovies() {
     arrayOfPromises = arrayOfPromises.filter(el => el !== undefined);
     console.log(arrayOfPromises);
     renderMoviesPromises();
-    createPagination(Math.ceil(arrayOfPromises.length / 2));
+    createPagination(Math.ceil(arrayOfPromises.length / 20));
   }
 }
 

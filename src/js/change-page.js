@@ -61,7 +61,7 @@ function switchPageToLibrary() {
   refs().libraryRef.libBtn.classList.add('current');
   refs().libraryRef.homeBtn.classList.remove('current');
 
-  refs().paginationRef.container.classList.add('display-none');
+  // refs().paginationRef.container.classList.add('display-none');
 
   libraryHandler();
 }

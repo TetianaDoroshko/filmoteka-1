@@ -1,38 +1,22 @@
-.windov-modal {
-    background: rgba(102, 102, 102, 0.5);
-    width: 100%;
-    height: 100%;
-    position: fixed;
-    top: 0;
-    left: 0;
-};
-
 .error-modal {
-    width: 500px;
-    height: 70px;
-    text-align: center;
-    padding: 15px;
-    border: 3px solid var(--accentBtnColor);
-    border-radius: 10px;
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    margin: auto;
-    background: var(--accentBtnColor);
-    display: block;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-};
+  width: 500px;
+  padding: 10px 10px;
+  text-align: center;
+  padding: 15px;
+  border: 3px solid var(--accentBtnColor);
+  border-radius: 10px;
+  position: fixed;
+  top: 15px;
+  left: 50%;
+  transform: translate(-50%);
+  background: var(--accentBtnColor);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
 
 .error-modal__text {
-    color: var(--primaryTextDark);
-    position: relative;
-    width: 100%;
-    @include font(18px,
-        1.2,
-        500,
-        null)
-};
+  color: var(--primaryTextLight);
+  @include font(18px, 1.2, 500, null);
+}

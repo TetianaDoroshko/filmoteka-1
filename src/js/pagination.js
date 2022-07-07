@@ -2,6 +2,10 @@ import { renderPagination } from './render/render-pagination';
 import { refs } from './refs/refs';
 import { getTrendingMovies } from './api-service/get-trending-movies';
 
+const {
+  paginationRef: { container },
+} = refs();
+
 let paginationRef;
 let currentPage = 1;
 let totalPage;
@@ -35,6 +39,7 @@ function onResize() {
 export function createPagination(totalPagination) {
   totalPage = totalPagination;
   if (totalPagination <= 1) {
+    clearContainerPagination();
     return;
   }
 
@@ -218,4 +223,8 @@ function lockBtn() {
   } else {
     paginationRef.next.classList.remove('disabled');
   }
+}
+
+export function clearContainerPagination() {
+  container.innerHTML = '';
 }

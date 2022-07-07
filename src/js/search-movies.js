@@ -6,17 +6,18 @@ import { refs } from './refs/refs';
 import { renderMovies } from './render/render-gallery';
 import { showLoader } from './loader/loader';
 import { hideLoader } from './loader/loader';
+import { notify } from './notify';
 const { moviesDiv } = refs().galleryRef;
 const { searchForm } = refs().searchRef;
-const { modalError } = refs().modalErrorRef;
-const { modalErrorText } = refs().modalErrorRef;
+// const { modalError } = refs().modalErrorRef;
+// const { modalErrorText } = refs().modalErrorRef;
 
-const delay = 3000;
+// const delay = 3000;
 let searchNameFilm = '';
-let timeoutID = null;
+// let timeoutID = null;
 
 searchForm.addEventListener('submit', onSubmit);
-modalError.addEventListener('click', onAttentionClick);
+// modalError.addEventListener('click', onAttentionClick);
 
 function onSubmit(e) {
   e.preventDefault();
@@ -25,7 +26,7 @@ function onSubmit(e) {
 
   if (searchNameFilm === '') {
     const text = 'Enter the name of the movie, for a correct search!';
-    return showError(text);
+    return notify(text);
   }
 
   showLoader();
@@ -33,19 +34,17 @@ function onSubmit(e) {
   clearContainerGallery();
   getMoviesByKey(searchNameFilm)
     .then(res => {
-     
       if (!res) {
-     
-      const text = 'Nothing is found. Wrong query.';
-      showError(text);
-      return; 
+        const text = 'Nothing is found. Wrong query.';
+        notify(text);
+        return;
       }
       renderMovies(res);
     })
     .finally(hideLoader);
   clearInput();
   console.log(clearInput);
-  }
+}
 
 function resetPage() {
   page = 1;
@@ -55,29 +54,29 @@ function clearContainerGallery() {
 }
 
 function clearInput() {
-searchNameFilm = '';
+  searchNameFilm = '';
 }
 
-function onAttentionClick() {
-  hideError();
-  clearInterval(timeoutID);
-}
+// function onAttentionClick() {
+//   hideError();
+//   clearInterval(timeoutID);
+// }
 
-function showError(text) {
-  modalError.classList.remove('is-hidden');
+// function showError(text) {
+//   modalError.classList.remove('is-hidden');
 
-  attentionText(text);
-  clearInput();
+//   attentionText(text);
+//   clearInput();
 
-  timeoutID = setTimeout(() => {
-    hideError();
-  }, delay);
-}
+//   timeoutID = setTimeout(() => {
+//     hideError();
+//   }, delay);
+// }
 
-function hideError() {
-  modalError.classList.add('is-hidden');
-}
+// function hideError() {
+//   modalError.classList.add('is-hidden');
+// }
 
-function attentionText(text) {
-  modalErrorText.innerHTML = `${text}`;
-}
+// function attentionText(text) {
+//   modalErrorText.innerHTML = `${text}`;
+// }
