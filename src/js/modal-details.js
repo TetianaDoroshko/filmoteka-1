@@ -8,14 +8,16 @@ import { getDetails } from './api-service/get-details';
 import { modalButtonsHandler } from './modal-details/watched';
 import { onOpenModal } from './open-close-modal-details';
 import { renderModalDetails } from './render/render-details';
+import { showLoader, hideLoader } from './loader/loader';
 
 export async function onFilmClick(event) {
   event.preventDefault();
-  // console.log(event.target);
 
   if (!event.target.closest('.gallery-card')) {
     return;
   }
+
+  showLoader();
 
   let movieId = event.target.closest('.gallery-card').dataset.id;
   const data = await getDetails(movieId);
@@ -27,4 +29,6 @@ export async function onFilmClick(event) {
   } else {
     window.alert('Oops, movie not found. Please, choose another movie');
   }
+
+  hideLoader();
 }

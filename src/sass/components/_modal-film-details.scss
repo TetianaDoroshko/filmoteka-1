@@ -17,7 +17,6 @@
   }
 }
 
-
 .modal-backdrop {
   position: absolute;
   top: 0;
@@ -113,6 +112,8 @@ body.show-modal .modal {
     width: 375px;
     height: 478px;
     margin-right: 16px;
+    flex-shrink: 0;
+    object-fit: cover;
   }
 }
 
@@ -244,9 +245,3 @@ body.show-modal .modal {
     width: 136px;
   }
 }
-
-// .film-details-btn:disabled {
-//   background-color: #ffffff;
-//   color: #000000;
-//   border: 1px solid #000000;
-// }
