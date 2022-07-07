@@ -21,3 +21,17 @@ img {
 .icon {
   fill: currentColor;
 }
+
+body {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+header {
+  flex-shrink: 0;
+}
+
+main {
+  flex-grow: 1;
+}

@@ -30,7 +30,7 @@ function onSubmit(e) {
   }
 
   showLoader();
-  resetPage();
+  // resetPage();
   clearContainerGallery();
   getMoviesByKey(searchNameFilm)
     .then(res => {
@@ -46,15 +46,15 @@ function onSubmit(e) {
   console.log(clearInput);
 }
 
-function resetPage() {
-  page = 1;
-}
+// function resetPage() {
+//   page = 1;
+// }
 function clearContainerGallery() {
   moviesDiv.innerHTML = '';
 }
 
 function clearInput() {
-  searchNameFilm = '';
+  searchForm.elements.searchQuery.value = '';
 }
 
 // function onAttentionClick() {

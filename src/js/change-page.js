@@ -15,7 +15,7 @@ import { renderMovies } from './render/render-gallery';
 import { refs } from './refs/refs';
 import { libraryHandler } from './btn-library';
 import { createPagination } from './pagination';
-// import { libraryHandler } from './utils/get-name-genres';
+import { setStorage } from './storage/storage';
 
 // ===================================================
 showLoader();
@@ -29,12 +29,17 @@ async function createPage() {
   renderMovies(data);
   createPagination(data.total_pages);
   hideLoader();
+
+  refs().libraryRef.homeBtn.setAttribute('style', 'pointer-events:none');
+  refs().libraryRef.libBtn.setAttribute('style', 'pointer-events:visible');
 }
 
 // ====================================================
 refs().libraryRef.homeBtn.addEventListener('click', switchPageToHome);
 refs().libraryRef.libBtn.addEventListener('click', switchPageToLibrary);
 refs().headerRef.navLogo.addEventListener('click', switchPageToHome);
+
+// ====================================================
 
 function switchPageToHome() {
   refs().headerRef.searchInput.value = null;
@@ -48,8 +53,13 @@ function switchPageToHome() {
   refs().libraryRef.homeBtn.classList.add('current');
   refs().libraryRef.libBtn.classList.remove('current');
 
+  refs().libraryRef.homeBtn.setAttribute('style', 'pointer-events:none');
+  refs().libraryRef.libBtn.setAttribute('style', 'pointer-events:visible');
+  // setStorage(key, value);
   createPage();
 }
+
+// ====================================================
 
 function switchPageToLibrary() {
   refs().headerRef.header.classList.remove('header--home');
@@ -61,7 +71,8 @@ function switchPageToLibrary() {
   refs().libraryRef.libBtn.classList.add('current');
   refs().libraryRef.homeBtn.classList.remove('current');
 
-  // refs().paginationRef.container.classList.add('display-none');
+  refs().libraryRef.libBtn.setAttribute('style', 'pointer-events:none');
+  refs().libraryRef.homeBtn.setAttribute('style', 'pointer-events:visible');
 
   libraryHandler();
 }
