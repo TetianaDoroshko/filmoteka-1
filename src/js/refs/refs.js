@@ -8,7 +8,7 @@ export function refs() {
       searchInput: document.querySelector('.js-form-input'),
     },
     searchRef: {
-      // ref: document.querySelector('.selector')
+      searchForm: document.querySelector('.search-form'),
     },
     libraryButtonsRef: {
       btnContainer: document.querySelector('.js-btn-container'),
@@ -40,7 +40,11 @@ export function refs() {
       moviesDiv: document.querySelector('#movies-gallery'),
     },
     filmDetailsRef: {
-      filmDetailsModalOpen: document.querySelector('li'),
+      filmDetailsModalContainer: document.querySelector('#movies-gallery'),
+      filmDetailsModalClose: document.querySelector(
+        '[data-action="close-modal"]'
+      ),
+      modalBackdrop: document.querySelector('.modal-backdrop'),
       filmDetailsModal: document.querySelector('.modal'),
       image: document.querySelector('.js-image'),
       title: document.querySelector('.js-title'),
@@ -58,6 +62,10 @@ export function refs() {
     },
     loaderRef: {
       loader: document.querySelector('.js-loader'),
+    },
+    modalErrorRef: {
+      modalError: document.querySelector('.windov-modal'),
+      modalErrorText: document.querySelector('.error-modal__text'),
     },
   };
 }

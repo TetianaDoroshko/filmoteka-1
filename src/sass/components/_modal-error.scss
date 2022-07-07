@@ -1,0 +1,22 @@
+.error-modal {
+  width: 500px;
+  padding: 10px 10px;
+  text-align: center;
+  padding: 15px;
+  border: 3px solid var(--accentBtnColor);
+  border-radius: 10px;
+  position: fixed;
+  top: 15px;
+  left: 50%;
+  transform: translate(-50%);
+  background: var(--accentBtnColor);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.error-modal__text {
+  color: var(--primaryTextLight);
+  @include font(18px, 1.2, 500, null);
+}

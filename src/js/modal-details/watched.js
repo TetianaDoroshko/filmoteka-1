@@ -12,7 +12,7 @@
 
 import storageConfig from '../constants/storage-config';
 import { refs } from '../refs/refs';
-// import {getStorage, setStorage, deleteStorage} from '../storage/storage';
+import { getStorage, setStorage, deleteStorage } from '../storage/storage';
 
 const keyWatched = storageConfig.KEY_WATCHED;
 const keyQueue = storageConfig.KEY_QUEUE;
@@ -21,28 +21,28 @@ const btnWatched = refs().filmDetailsRef.btnWatched;
 const btnQueue = refs().filmDetailsRef.btnQueue;
 
 //-----временные функции storage-----
-function getStorage(key) {
-  return JSON.parse(localStorage.getItem(key)) ?? [];
-}
-function setStorage(key, id) {
-  const storage = getStorage(key);
-  console.log(storage);
-  storage.push(id);
-  localStorage.setItem(key, JSON.stringify(storage));
-}
-function deleteStorage(key, id) {
-  const storage = getStorage(key);
-  const index = storage.indexOf(id);
-  console.log(index);
-  storage.splice(index, 1);
-  localStorage.setItem(key, JSON.stringify(storage));
-}
+// function getStorage(key) {
+//   return JSON.parse(localStorage.getItem(key)) ?? [];
+// }
+// function setStorage(key, id) {
+//   const storage = getStorage(key);
+//   console.log(storage);
+//   storage.push(id);
+//   localStorage.setItem(key, JSON.stringify(storage));
+// }
+// function deleteStorage(key, id) {
+//   const storage = getStorage(key);
+//   const index = storage.indexOf(id);
+//   console.log(index);
+//   storage.splice(index, 1);
+//   localStorage.setItem(key, JSON.stringify(storage));
+// }
 
 //--------------------------------------
 
-modalButtonsHandler('921987'); //функционал кнопок запускается при открытии модального окна
+// modalButtonsHandler('921987'); //функционал кнопок запускается при открытии модального окна
 
-function modalButtonsHandler(movieId) {
+export function modalButtonsHandler(movieId) {
   checkInStorageWatched(movieId);
   checkInStorageQueue(movieId);
   btnWatched.setAttribute('id', movieId);

@@ -2,37 +2,81 @@
 // после сабмита делается запрос с помощью функции getMoviesByKey передав в нее query.
 // то что вернет функция отправляем в функцию в файле render-gallery.
 import { getMoviesByKey } from '../js/api-service/get-movies-by-key';
-// Нужно перенести в рефсы
-const refs = {
-  searchInput: document.querySelector('input[name="searchQuery"]'),
-  containerGallery: document.querySelector('.gallery-container'),
-};
+import { refs } from './refs/refs';
+import { renderMovies } from './render/render-gallery';
+import { showLoader } from './loader/loader';
+import { hideLoader } from './loader/loader';
+import { notify } from './notify';
+const { moviesDiv } = refs().galleryRef;
+const { searchForm } = refs().searchRef;
+// const { modalError } = refs().modalErrorRef;
+// const { modalErrorText } = refs().modalErrorRef;
 
+// const delay = 3000;
 let searchNameFilm = '';
+// let timeoutID = null;
 
-refs.searchInput.addEventListener('submit', onSubmit);
+searchForm.addEventListener('submit', onSubmit);
+// modalError.addEventListener('click', onAttentionClick);
 
 function onSubmit(e) {
   e.preventDefault();
-  searchNameFilm = e.currentTarget.elements.query.value.trim();
-  // console.log(searchNameFilm);
+  searchNameFilm = e.target.elements.searchQuery.value.trim();
+  console.log(searchNameFilm);
 
   if (searchNameFilm === '') {
-    return alert('Nothing is found. Wrong query.');
+    const text = 'Enter the name of the movie, for a correct search!';
+    return notify(text);
   }
-  // Пока так, завтра таймер и модалку повешу
-  // showLoader();
-  resetPage();
-  getMoviesByKey(searchNameFilm).then(collection => {
-    clearContainerGallery();
-    console.log(collection);
-    // hideLoader()
-  });
+
+  showLoader();
+  // resetPage();
+  clearContainerGallery();
+  getMoviesByKey(searchNameFilm)
+    .then(res => {
+      if (!res) {
+        const text = 'Nothing is found. Wrong query.';
+        notify(text);
+        return;
+      }
+      renderMovies(res);
+    })
+    .finally(hideLoader);
+  clearInput();
+  console.log(clearInput);
 }
 
-function resetPage() {
-  page = 1;
-}
+// function resetPage() {
+//   page = 1;
+// }
 function clearContainerGallery() {
-  refs.containerGallery.innerHTML = '';
+  moviesDiv.innerHTML = '';
 }
+
+function clearInput() {
+  searchForm.elements.searchQuery.value = '';
+}
+
+// function onAttentionClick() {
+//   hideError();
+//   clearInterval(timeoutID);
+// }
+
+// function showError(text) {
+//   modalError.classList.remove('is-hidden');
+
+//   attentionText(text);
+//   clearInput();
+
+//   timeoutID = setTimeout(() => {
+//     hideError();
+//   }, delay);
+// }
+
+// function hideError() {
+//   modalError.classList.add('is-hidden');
+// }
+
+// function attentionText(text) {
+//   modalErrorText.innerHTML = `${text}`;
+// }

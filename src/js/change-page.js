@@ -55,7 +55,7 @@ function switchPageToHome() {
 
   refs().libraryRef.homeBtn.setAttribute('style', 'pointer-events:none');
   refs().libraryRef.libBtn.setAttribute('style', 'pointer-events:visible');
-  setStorage(key, value);
+  // setStorage(key, value);
   createPage();
 }
 
@@ -70,8 +70,6 @@ function switchPageToLibrary() {
 
   refs().libraryRef.libBtn.classList.add('current');
   refs().libraryRef.homeBtn.classList.remove('current');
-
-  // refs().paginationRef.container.classList.add('display-none');
 
   refs().libraryRef.libBtn.setAttribute('style', 'pointer-events:none');
   refs().libraryRef.homeBtn.setAttribute('style', 'pointer-events:visible');

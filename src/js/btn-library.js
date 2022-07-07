@@ -5,42 +5,105 @@
 //если в хранилище есть данные, то делать запросы на каждый ид и с помощью функции в render-gallery
 // отрисовать карточки.
 import { refs } from './refs/refs';
-// import { getStorage } from './storage/storage';
 import storageConfig from './constants/storage-config';
 import { getDetails } from './api-service/get-details';
+import { createSingleMovieMarkup } from './template/card-library';
+import { getStorage } from './storage/storage';
+import { createPagination } from './pagination';
 
 const btnWatched = refs().libraryButtonsRef.btnWatched;
 const btnQueue = refs().libraryButtonsRef.btnQueue;
-
+const gallery = refs().galleryRef.moviesDiv;
+let arrayOfPromises;
 // ------temp-----
-//-----временный контейнер для галереи-----------
-const pag = document.querySelector('.pagination');
-const gallery = document.createElement('div');
-gallery.style.display = 'flex';
-pag.insertAdjacentElement('beforebegin', gallery);
-console.log(gallery);
-
 //----временная функция  getStorage--------------
-function getStorage(key) {
-  return ['453395', '921987', '667739', '616037'];
-}
-//----временная функция создания карточки фильма--
-function makeCard(movie) {
-  return `
-        <article class="movie-card" id="${movie.id}">
-        <div class="thumb">
-        <img class="movie-card__img" src="https://image.tmdb.org/t/p/w1280/${
-          movie.poster_path
-        }" width="300" sizes="100%" alt="${movie.title}"/>
-        </div>
-        <div class="movie-card__description">
-            <p class="movie-card__name">${movie.title}</p>
-            <p class="movie-card__info">Genres | ${Number.parseInt(
-              movie.release_date
-            )}</p>
-        </div>
-        </article>`;
-}
+// function getStorage(key) {
+//   return [
+//     '453395',
+//     '921987',
+//     '667739',
+//     '616037',
+//     '507086',
+//     '453395',
+//     '616037',
+//     '120011',
+//     '759175',
+//     '438148',
+//     '745376',
+//     '92782',
+//     '102903',
+//     '76479',
+//     '361743',
+//     '545611',
+//     '63247',
+//     '64196',
+//     '634649',
+//     '204852',
+//     '72636',
+//     '453395',
+//     '921987',
+//     '667739',
+//     '616037',
+//     '507086',
+//     '453395',
+//     '616037',
+//     '120111',
+//     '759175',
+//     '438148',
+//     '745376',
+//     '92782',
+//     '102903',
+//     '76479',
+//     '361743',
+//     '545611',
+//     '63247',
+//     '64196',
+//     '634649',
+//     '204852',
+//     '72636',
+//     '111277',
+//     '667739',
+//     '616037',
+//     '507086',
+//     '453395',
+//     '616037',
+//     '120011',
+//     '759175',
+//     '438148',
+//     '745376',
+//     '92782',
+//     '102903',
+//     '76479',
+//     '361743',
+//     '545611',
+//     '63247',
+//     '64196',
+//     '634649',
+//     '204852',
+//     '72636',
+//     '453395',
+//     '921987',
+//     '667739',
+//     '616037',
+//     '507086',
+//     '453395',
+//     '616037',
+//     '120111',
+//     '759175',
+//     '438148',
+//     '745376',
+//     '92782',
+//     '102903',
+//     '76479',
+//     '361743',
+//     '545611',
+//     '63247',
+//     '64196',
+//     '634649',
+//     '204852',
+//     '72636',
+//   ];
+// }
 //------------
 
 // libraryHandler(); // нужно вызвыть при переключении на страницу Library
@@ -50,47 +113,70 @@ export function libraryHandler() {
   showWatchedMovies();
   btnWatched.classList.add('active');
 }
+
 function addListenersBtnLib() {
   btnWatched.addEventListener('click', showWatchedMovies);
   btnQueue.addEventListener('click', showQueueOfMovies);
 }
 
-function showWatchedMovies() {
+async function showWatchedMovies() {
   btnQueue.classList.remove('active');
   btnWatched.classList.add('active');
+  gallery.innerHTML = '';
 
   const movieSetId = getStorage(storageConfig.KEY_WATCHED);
   if (!movieSetId || movieSetId.length === 0) {
     gallery.innerHTML =
       "You don't have any movies you've watched. Add the first one.";
   } else {
-    renderMovies(movieSetId);
+    arrayOfPromises = await Promise.all(createPromises(movieSetId));
+    arrayOfPromises = arrayOfPromises.filter(el => el !== undefined);
+
+    renderMoviesPromises();
+    createPagination(Math.ceil(arrayOfPromises.length / 20));
   }
 }
-function showQueueOfMovies() {
+
+async function showQueueOfMovies() {
   btnQueue.classList.add('active');
   btnWatched.classList.remove('active');
+  gallery.innerHTML = '';
 
   const movieSetId = getStorage(storageConfig.KEY_QUEUE);
+  console.log(movieSetId);
   if (!movieSetId || movieSetId.length === 0) {
     gallery.innerHTML =
       "You don't have any movies in the queue. Add the first one.";
   } else {
-    renderMovies(movieSetId);
+    arrayOfPromises = await Promise.all(createPromises(movieSetId));
+    arrayOfPromises = arrayOfPromises.filter(el => el !== undefined);
+    console.log(arrayOfPromises);
+    renderMoviesPromises();
+    createPagination(Math.ceil(arrayOfPromises.length / 20));
   }
 }
 
-async function renderMovies(movieSetId) {
-  let markup = [];
-  for (const movieID of movieSetId) {
-    const movieDetails = await getDetails(movieID);
-    if (movieDetails) {
-      const markupCard = makeCard(movieDetails);
-      markup.push(markupCard);
-    } else {
-      continue;
-    }
-  }
-  markup = markup.join('');
-  gallery.innerHTML = markup;
+function createPromises(movieSetId) {
+  return movieSetId.map(
+    movieId =>
+      new Promise(resolve => {
+        resolve(getDetails(movieId));
+        reject(getDetails(movieId));
+      })
+  );
+}
+
+export function renderMoviesPromises(page = 1) {
+  arrayForPage = arrayOfPromises.slice(
+    0 + 20 * (page - 1),
+    20 + 20 * (page - 1)
+  );
+  const markup = arrayForPage
+    .map(element => {
+      if (element) {
+        return createSingleMovieMarkup(element);
+      }
+    })
+    .join('');
+  gallery.innerHTML = `<ul class="gallery-container">${markup}</ul>`;
 }
