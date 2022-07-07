@@ -9,14 +9,100 @@ import storageConfig from './constants/storage-config';
 import { getDetails } from './api-service/get-details';
 import { createSingleMovieMarkup } from './template/card-library';
 // import { getStorage, setStorage, deleteStorage } from './storage/storage';
+import { createPagination } from './pagination';
 
 const btnWatched = refs().libraryButtonsRef.btnWatched;
 const btnQueue = refs().libraryButtonsRef.btnQueue;
 const gallery = refs().galleryRef.moviesDiv;
+let arrayOfPromises;
 // ------temp-----
 //----временная функция  getStorage--------------
 function getStorage(key) {
-  return ['453395', '921987', '667739', '616037'];
+  return [
+    '453395',
+    '921987',
+    '667739',
+    '616037',
+    '507086',
+    '453395',
+    '616037',
+    '120011',
+    '759175',
+    '438148',
+    '745376',
+    '92782',
+    '102903',
+    '76479',
+    '361743',
+    '545611',
+    '63247',
+    '64196',
+    '634649',
+    '204852',
+    '72636',
+    '453395',
+    '921987',
+    '667739',
+    '616037',
+    '507086',
+    '453395',
+    '616037',
+    '120111',
+    '759175',
+    '438148',
+    '745376',
+    '92782',
+    '102903',
+    '76479',
+    '361743',
+    '545611',
+    '63247',
+    '64196',
+    '634649',
+    '204852',
+    '72636',
+    '111277',
+    '667739',
+    '616037',
+    '507086',
+    '453395',
+    '616037',
+    '120011',
+    '759175',
+    '438148',
+    '745376',
+    '92782',
+    '102903',
+    '76479',
+    '361743',
+    '545611',
+    '63247',
+    '64196',
+    '634649',
+    '204852',
+    '72636',
+    '453395',
+    '921987',
+    '667739',
+    '616037',
+    '507086',
+    '453395',
+    '616037',
+    '120111',
+    '759175',
+    '438148',
+    '745376',
+    '92782',
+    '102903',
+    '76479',
+    '361743',
+    '545611',
+    '63247',
+    '64196',
+    '634649',
+    '204852',
+    '72636',
+  ];
 }
 //------------
 
@@ -43,8 +129,11 @@ async function showWatchedMovies() {
     gallery.innerHTML =
       "You don't have any movies you've watched. Add the first one.";
   } else {
-    const arrayOfPromises = await Promise.all(createPromises(movieSetId));
-    renderMoviesPromises(arrayOfPromises);
+    arrayOfPromises = await Promise.all(createPromises(movieSetId));
+    arrayOfPromises = arrayOfPromises.filter(el => el !== undefined);
+
+    renderMoviesPromises();
+    createPagination(arrayOfPromises / 20);
   }
 }
 
@@ -54,12 +143,16 @@ async function showQueueOfMovies() {
   gallery.innerHTML = '';
 
   const movieSetId = getStorage(storageConfig.KEY_QUEUE);
+  console.log(movieSetId);
   if (!movieSetId || movieSetId.length === 0) {
     gallery.innerHTML =
       "You don't have any movies in the queue. Add the first one.";
   } else {
-    const arrayOfPromises = await Promise.all(createPromises(movieSetId));
-    renderMoviesPromises(arrayOfPromises);
+    arrayOfPromises = await Promise.all(createPromises(movieSetId));
+    arrayOfPromises = arrayOfPromises.filter(el => el !== undefined);
+    console.log(arrayOfPromises);
+    renderMoviesPromises();
+    createPagination(arrayOfPromises / 20);
   }
 }
 
@@ -73,8 +166,12 @@ function createPromises(movieSetId) {
   );
 }
 
-function renderMoviesPromises(arrayOfPromises) {
-  const markup = arrayOfPromises
+export function renderMoviesPromises(page = 1) {
+  arrayForPage = arrayOfPromises.slice(
+    0 + 20 * (page - 1),
+    20 + 20 * (page - 1)
+  );
+  const markup = arrayForPage
     .map(element => {
       if (element) {
         return createSingleMovieMarkup(element);
