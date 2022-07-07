@@ -1,5 +1,7 @@
 import { refs } from '../refs/refs';
-import apiConfig from '../constants/api-config';
+import { getNameGenres } from '../utils/get-name-genres';
+import { createSingleMovieMarkup } from '../template/card';
+const { moviesDiv } = refs().galleryRef;
 
 // import {функция} from '../template/card'
 // Принимает data, и подставляет значения в шаблон карточки.
@@ -7,14 +9,17 @@ import apiConfig from '../constants/api-config';
 
 // функция должна запускаться после прорисовки DOM
 
-async function renderMovies() {
-  const movies = await getPopularMovies(); // функция, которая делает запрос на популярные фильмы и возвращает DATA из 20 фильмов
+export function renderMovies(movies) {
+  // const movies = await getPopularMovies(); // функция, которая делает запрос на популярные фильмы и возвращает DATA из 20 фильмов
   //   console.log('this is movies=', movies);
   //   console.log('this is movies.result=', movies.results);
+  // console.log(movies);
 
-  refs.moviesDiv.innerHTML = movies.results
+  const itemMovie = movies.results
     .map(movie => renderSingleMovie(movie)) // obrabotka sozdaniya 1 karto4ki
     .join('');
+
+  moviesDiv.innerHTML = `<ul class="gallery-container">${itemMovie}</ul>`;
 }
 
 function renderSingleMovie(movie) {
@@ -23,27 +28,13 @@ function renderSingleMovie(movie) {
   // console.log('inside', genresList);
   //   console.log(movie.genre_ids);
   // const genresName = movie.genre_ids.map(el => genresList[el]);
-  const genresName = [];
-  movie.genre_ids.forEach(el => {
-    if (genresList[el]) {
-      genresName.push(genresList[el]); // genresList -объект, созданный при старте кода. находится в get-name-genres
-    }
-  });
 
-  if (genresName.length === 0) {
-    genresName.push('N/A');
-  }
-  if (genresName.length > 3) {
-    genresName.splice(3);
-    genresName[2] = 'Other';
-  }
-  //   console.log(genresName);
-
-  const listOfGenres = genresName.map(el => `${el}`).join(', ');
   //   console.log(listOfGenres);
   // let listOfGenres = movie.genre_ids.map(el => `${el}`).join(',');
   // console.log(listOfGenres);
   // console.log(movie.genre_ids);
+
+  const listOfGenres = getNameGenres(movie);
 
   let movieYear;
   if (movie.release_date) {
@@ -52,20 +43,11 @@ function renderSingleMovie(movie) {
     movieYear = Number.parseInt(movie.first_air_date);
   }
 
-  if (movie.name) {
-    return ` <div class="">
-            <img src="${IMAGE_BASE_URL + movie.poster_path}" alt="${
-      movie.original_title
-    }" data-id ="${movie.id}" class="" ><p class="">${
-      movie.name
-    }</p><p class="">${listOfGenres} | ${movieYear}</p>
-        </div>`;
-  } else {
-    return ` <div class="">
-            <img src="${IMAGE_BASE_URL + movie.poster_path}" alt="${
-      movie.original_title
-    }" data-id ="${movie.id}" class="" ><p class="">${movie.original_title}</p>
-    <p class="">${listOfGenres} | ${movieYear}</p>
-        </div>`;
-  }
+  const SingleMovieMarkup = createSingleMovieMarkup(
+    movie,
+    listOfGenres,
+    movieYear
+  );
+
+  return SingleMovieMarkup;
 }

@@ -4,9 +4,12 @@ import { getTrendingMovies } from './api-service/get-trending-movies';
 import { getMoviesByKey } from './api-service/get-movies-by-key';
 import {
   getSessionStorage,
-  setSessionStorage,
+  updatePageSessionStorage,
 } from './storage/session-storage';
 import storageConfig from './constants/storage-config';
+import { renderMovies } from './render/render-gallery';
+import { hideLoader, showLoader } from './loader/loader';
+import { renderMoviesPromises } from './btn-library';
 
 const { TRENDING, BY_KEY, LIBRARY } = storageConfig;
 
@@ -24,6 +27,10 @@ const { TRENDING, BY_KEY, LIBRARY } = storageConfig;
 //   console.log('2');
 // });
 //==================================================
+
+const {
+  paginationRef: { container },
+} = refs();
 
 let paginationRef;
 let currentPage = 1;
@@ -55,9 +62,11 @@ function onResize() {
   }
 }
 
-function createPagination(totalPagination, page) {
+export function createPagination(totalPagination, page) {
   totalPage = totalPagination;
+  updatePageSessionStorage(page);
   if (totalPagination <= 1) {
+    clearContainerPagination();
     return;
   }
 
@@ -122,24 +131,26 @@ function onClick(e) {
 }
 
 async function renderPage(page) {
+  updatePageSessionStorage(page);
   const currentQuery = getSessionStorage();
   let data;
-
+  showLoader();
   if (currentQuery[TRENDING]) {
     data = await getTrendingMovies(page);
+    renderMovies(data);
   }
 
   if (currentQuery[BY_KEY]) {
     const query = currentQuery[BY_KEY];
     data = await getMoviesByKey(query, page);
+    renderMovies(data);
   }
 
-  // if (currentQuery[LIBRARY]) {
-  //   getTrendingMovies(page);
-  //   return;
-  // }
-
-  console.log(data);
+  if (currentQuery[LIBRARY]) {
+    renderMoviesPromises(page);
+  }
+  hideLoader();
+  // console.log(data);
 }
 
 function activeCurrentPage() {
@@ -266,4 +277,8 @@ function lockBtn() {
   } else {
     paginationRef.next.classList.remove('disabled');
   }
+}
+
+export function clearContainerPagination() {
+  container.innerHTML = '';
 }

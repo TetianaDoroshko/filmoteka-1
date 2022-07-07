@@ -1,17 +1,26 @@
-// .gallery {
-//   padding: 20px 0 40px;
+.gallery {
+  padding-top: 20px;
 
-//   @include tablet {
-//     padding: 60px 0;
-//   }
-// }
-// .gallery__container {
-//   @include tablet {
-//     display: flex;
-//     flex-wrap: wrap;
-//     margin: -16px;
-//   }
-//   @include desktop {
-//     margin: -8px;
-//   }
-// }
+  @include tablet {
+    padding-top: 60px;
+  }
+}
+
+.gallery-container {
+  @include flex(flex);
+  flex-wrap: wrap;
+  margin: -20px 0;
+  //   @include mobile {
+  //     margin-bottom: -20px;
+  //   }
+
+  @include tablet {
+    // @include centrFlex(flex);
+    margin: -16px -16px;
+  }
+
+  @include desktop {
+    // @include flex(flex, start, flex-start);
+    margin: -16px -8px;
+  }
+}

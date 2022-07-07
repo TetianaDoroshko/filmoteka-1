@@ -13,13 +13,27 @@ export function getSessionStorage() {
   }
 }
 
-export function setSessionStorage(key, value = true) {
+export function setSessionStorage(key, value = true, page = 1) {
   const storageValue = {
     [key]: value,
+    page: page,
   };
 
   try {
     const strData = JSON.stringify(storageValue);
+    sessionStorage.setItem(CURRENT_QUERY, strData);
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export function updatePageSessionStorage(page) {
+  const savedData = getSessionStorage();
+
+  try {
+    savedData.page = page;
+
+    const strData = JSON.stringify(savedData);
     sessionStorage.setItem(CURRENT_QUERY, strData);
   } catch (error) {
     console.log(error);
