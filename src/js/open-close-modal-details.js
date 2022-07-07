@@ -2,14 +2,9 @@
 // должна закрывать по esc и по клику в бекдроп
 
 import { refs } from './refs/refs';
-import { modalButtonsHandler } from './modal-details/watched';
+import { clearImgSrc } from './render/render-details';
 import { onFilmClick } from './modal-details';
 const { filmDetailsRef } = refs();
-
-/* временная кнопка */
-
-// const btn = document.querySelector('.js-btn-queue');
-// btn.addEventListener('click', onFilmClick); /*  */
 
 filmDetailsRef.filmDetailsModalClose.addEventListener('click', onCloseModal);
 filmDetailsRef.modalBackdrop.addEventListener('click', onBackdropClick);
@@ -19,13 +14,14 @@ export function onOpenModal() {
   window.addEventListener('keydown', onCloseModalByEscape);
   document.body.classList.add('show-modal');
   filmDetailsRef.filmDetailsModal.classList.remove('is-hidden');
-  modalButtonsHandler(); /* Это Танина функция - запуск кнопок при открытии модалки */
 }
 
 function onCloseModal() {
   window.removeEventListener('keydown', onCloseModalByEscape);
   document.body.classList.remove('show-modal');
   filmDetailsRef.filmDetailsModal.classList.add('is-hidden');
+  document.body.style.overflow = '';
+  clearImgSrc();
 }
 
 function onBackdropClick() {

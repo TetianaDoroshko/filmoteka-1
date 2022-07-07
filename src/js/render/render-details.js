@@ -7,8 +7,8 @@ const { filmDetailsRef } = refs();
 // // Получить ссылки на эл.
 // // принимает data одного фильма и подставляет в соответсвующие елементы значения.
 
-export async function renderModalDetails(movieId) {
-  const data = await getDetails(movieId);
+export async function renderModalDetails(data) {
+  // const data = await getDetails(movieId);
   const imgUrl = apiConfig.IMAGE_BASE_URL;
 
   if (!data.poster_path) {
@@ -36,4 +36,8 @@ export async function renderModalDetails(movieId) {
     .map(genre => genre.name)
     .join(', ');
   filmDetailsRef.about.textContent = data.overview;
+}
+
+export function clearImgSrc() {
+  filmDetailsRef.image.src.innerHTML = '';
 }
