@@ -25,28 +25,35 @@ function onSubmit(e) {
   if (searchNameFilm === '') {
     const text = 'Enter the name of the movie, for a correct search!';
     return showError(text);
-  };  
+  }
 
   showLoader();
   resetPage();
   clearContainerGallery();
-  getMoviesByKey(searchNameFilm).then(renderMovies).finally(hideLoader);
-};
-
+  getMoviesByKey(searchNameFilm)
+    .then(res => {
+      if (!res) {
+        alert('плохой запрос');
+        return;
+      }
+      renderMovies(res);
+    })
+    .finally(hideLoader);
+}
 
 function resetPage() {
   page = 1;
-};
+}
 function clearContainerGallery() {
   moviesDiv.innerHTML = '';
-};
+}
 
 modalError.addEventListener('click', onAttentionClick);
 
 function onAttentionClick() {
   hideError();
   clearInterval(timeoutID);
-};
+}
 
 function showError(text) {
   modalError.classList.remove('is-hidden');
@@ -56,12 +63,12 @@ function showError(text) {
   timeoutID = setTimeout(() => {
     hideError();
   }, delay);
-};
+}
 
 function hideError() {
   modalError.classList.add('is-hidden');
-};
+}
 
 function attentionText(text) {
   modalErrorText.innerHTML = `${text}`;
-};
+}
