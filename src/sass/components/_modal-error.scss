@@ -20,7 +20,6 @@
     bottom: 0;
     left: 0;
     margin: auto;
-    // background: #fff;
     background: var(--accentBtnColor);
     display: block;
     display: flex;
@@ -29,7 +28,6 @@
 };
 
 .error-modal__text {
-    // color: var(--notificationTextColor);
     color: var(--primaryTextDark);
     position: relative;
     width: 100%;
