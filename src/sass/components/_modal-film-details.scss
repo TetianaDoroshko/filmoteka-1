@@ -8,7 +8,8 @@
   // opacity: 0;
   width: 100vw;
   height: 100vh;
-
+  transform: scale(1.1);
+  transition: transform var(--timingFunction);
   overflow-y: auto;
 
   @media screen and (max-width: 767px) {
@@ -16,9 +17,6 @@
   }
 }
 
-// .modal.is-open {
-//   opacity: 1;
-// }
 
 .modal-backdrop {
   position: absolute;
@@ -29,6 +27,16 @@
 
   background-color: #000000;
   opacity: 0.25;
+}
+
+body.show-modal .backdrop {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: initial;
+}
+
+body.show-modal .modal {
+  transform: scale(1);
 }
 
 .modal-wrapper {
