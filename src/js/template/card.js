@@ -7,7 +7,7 @@ export function createSingleMovieMarkup(movie, listOfGenres, movieYear) {
   const movieName = movie.name || movie.original_title;
 
   return `<li class="gallery-card" data-id ="${movie.id}">
-<a class="gallery-card__link">
+<a href="#" class="gallery-card__link">
             <img src="${IMAGE_BASE_URL + movie.poster_path}" alt="${
     movie.original_title
   }"  class="gallery-card__image" >

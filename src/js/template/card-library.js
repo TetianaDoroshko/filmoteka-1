@@ -10,7 +10,7 @@ export function createSingleMovieMarkup(movie) {
 
   return `
   <li class="gallery-card" data-id ="${movie.id}">
-    <a class="gallery-card__item">
+    <a href="#" class="gallery-card__item">
       <img src="${IMAGE_BASE_URL + movie.poster_path}" alt="${
     movie.title
   }"  class="gallery-card__image" >
