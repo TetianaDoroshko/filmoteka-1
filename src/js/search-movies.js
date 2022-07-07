@@ -16,6 +16,7 @@ let searchNameFilm = '';
 let timeoutID = null;
 
 searchForm.addEventListener('submit', onSubmit);
+modalError.addEventListener('click', onAttentionClick);
 
 function onSubmit(e) {
   e.preventDefault();
@@ -32,14 +33,19 @@ function onSubmit(e) {
   clearContainerGallery();
   getMoviesByKey(searchNameFilm)
     .then(res => {
+     
       if (!res) {
-        alert('плохой запрос');
-        return;
+     
+      const text = 'Nothing is found. Wrong query.';
+      showError(text);
+      return; 
       }
       renderMovies(res);
     })
     .finally(hideLoader);
-}
+  clearInput();
+  console.log(clearInput);
+  }
 
 function resetPage() {
   page = 1;
@@ -48,7 +54,9 @@ function clearContainerGallery() {
   moviesDiv.innerHTML = '';
 }
 
-modalError.addEventListener('click', onAttentionClick);
+function clearInput() {
+searchNameFilm = '';
+}
 
 function onAttentionClick() {
   hideError();
@@ -59,6 +67,7 @@ function showError(text) {
   modalError.classList.remove('is-hidden');
 
   attentionText(text);
+  clearInput();
 
   timeoutID = setTimeout(() => {
     hideError();
