@@ -1,13 +1,14 @@
 .header,
 .header--home {
   height: 230px;
-  width: 100vw;
+  width: 100%;
   padding-top: 20px;
   background-color: #000000b0;
   background-image: url(../images/header@1x.png);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  overflow-x: hidden;
   @include retinabg {
     background-image: url(../images/header@2x.png);
   }
