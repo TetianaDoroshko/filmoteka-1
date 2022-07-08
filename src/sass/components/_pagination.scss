@@ -3,10 +3,10 @@
 }
 .pagination__list {
   @include flex($dflex: flex, $aligni: null, $justc: center);
-  padding: 40px 0;
+  padding-top: 40px;
 
   @include tablet {
-    padding: 60px 0;
+    padding-top: 60px;
   }
 }
 

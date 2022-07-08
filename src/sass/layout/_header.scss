@@ -101,10 +101,19 @@
   }
 }
 
+.header .container {
+  position: relative;
+  height: 100%;
+}
+
 .header__swither {
-  display: flex;
-  justify-content: end;
-  margin-top: 50px;
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+
+  @include tablet {
+    right: 32px;
+  }
 }
 // ==================================
 // .anime-text-logo {
