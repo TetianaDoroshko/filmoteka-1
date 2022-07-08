@@ -11,19 +11,10 @@
   background-color: rgba(0, 0, 0, 0.25);
 
   overflow-y: auto;
-
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-
   @include tablet {
     padding-top: 219px;
   }
   @include desktop {
     padding-top: 150px;
   }
-}
-
-.backdrop.is-hidden {
-  display: none;
 }

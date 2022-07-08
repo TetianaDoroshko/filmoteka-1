@@ -4,6 +4,7 @@
 import { refs } from './refs/refs';
 import { clearImgSrc } from './render/render-details';
 import { onFilmClick } from './modal-details';
+import { bodyLock, bodyUnlock } from './utils/body-lock';
 const { filmDetailsRef } = refs();
 
 filmDetailsRef.filmDetailsModalClose.addEventListener('click', onCloseModal);
@@ -12,16 +13,15 @@ filmDetailsRef.filmDetailsModalContainer.addEventListener('click', onFilmClick);
 
 export function onOpenModal() {
   window.addEventListener('keydown', onCloseModalByEscape);
-  document.body.classList.add('show-modal');
   filmDetailsRef.filmDetailsModal.classList.remove('is-hidden');
+  bodyLock();
 }
 
 function onCloseModal() {
   window.removeEventListener('keydown', onCloseModalByEscape);
-  document.body.classList.remove('show-modal');
   filmDetailsRef.filmDetailsModal.classList.add('is-hidden');
-  document.body.style.overflow = '';
   clearImgSrc();
+  bodyUnlock(250);
 }
 
 function onBackdropClick(event) {

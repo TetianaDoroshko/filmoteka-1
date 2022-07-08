@@ -47,4 +47,5 @@ export async function renderModalDetails(data) {
 
 export function clearImgSrc() {
   filmDetailsRef.image.src = '#';
+  filmDetailsRef.image.srcset = '#';
 }
