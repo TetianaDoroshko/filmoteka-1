@@ -20,7 +20,7 @@
   }
 }
 
-.header--library {
+.header.header--library {
   background-image: url(../images/header-lib-overlay.png),
     url(../images/header-lib@1x.png);
   @include retinabg {
