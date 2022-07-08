@@ -136,12 +136,16 @@
   display: flex;
   align-items: center;
 }
-.qwe {
+.logo__text {
   display: inline-block;
   font-size: 10.5em;
   width: 141px;
   height: 34px;
   margin-left: 3px;
+
+  @media screen and (max-width: 400px) {
+    display: none;
+  }
 }
 
 .text-copy {
