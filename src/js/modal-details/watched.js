@@ -16,6 +16,9 @@ import { getStorage, setStorage, deleteStorage } from '../storage/storage';
 import { showWatchedMovies, showQueueOfMovies } from '../btn-library';
 import storageConfig from '../constants/storage-config';
 import { getSessionStorage } from '../storage/session-storage';
+import langs from '../language/language-map';
+
+const { languageSelect } = refs().panel;
 
 const keyWatched = storageConfig.KEY_WATCHED;
 const keyQueue = storageConfig.KEY_QUEUE;
@@ -61,11 +64,11 @@ function checkInStorageWatched(id) {
   if (watchedMovieSet.includes(id)) {
     btnWatched.setAttribute('actions', 'added');
     btnWatched.classList.add('active');
-    btnWatched.textContent = 'Remove from Watched';
+    btnWatched.textContent = langs.delwatched[languageSelect.value];
   } else {
     btnWatched.setAttribute('actions', 'not-added');
     btnWatched.classList.remove('active');
-    btnWatched.textContent = 'Add to Watched';
+    btnWatched.textContent = langs.addwatched[languageSelect.value];
   }
 }
 
@@ -74,11 +77,11 @@ function checkInStorageQueue(id) {
   if (queueMovieSet.includes(id)) {
     btnQueue.setAttribute('actions', 'added');
     btnQueue.classList.add('active');
-    btnQueue.textContent = 'Remove from Queue';
+    btnQueue.textContent = langs.delqueue[languageSelect.value];
   } else {
     btnQueue.setAttribute('actions', 'not-added');
     btnQueue.classList.remove('active');
-    btnQueue.textContent = 'Add to Queue';
+    btnQueue.textContent = langs.addqueue[languageSelect.value];
   }
 }
 

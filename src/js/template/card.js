@@ -6,7 +6,9 @@ import defaultImg2x from '../../images/img-default@2x.jpg';
 const { IMAGE_BASE_URL_1X, IMAGE_BASE_URL_2X } = apiConfig;
 
 export function createSingleMovieMarkup(movie, listOfGenres, movieYear) {
-  const movieName = movie.name || movie.original_title;
+  const movieName =
+    movie.title || movie.name || movie.original_name || movie.original_title;
+
   let imgSrcset;
   let imgSrc;
 
@@ -24,7 +26,7 @@ export function createSingleMovieMarkup(movie, listOfGenres, movieYear) {
   return `<li class="gallery-card" data-id ="${movie.id}">
 <a href="#" class="gallery-card__link">
             <img srcset="${imgSrcset}"
-  src="${imgSrc}" alt="${movie.original_title}"  class="gallery-card__image" >
+  src="${imgSrc}" alt="${movieName}"  class="gallery-card__image" >
   <div class="gallery-card__info">
 <p class="gallery-card__name">${movieName}</p>
 <p class="gallery-card__genre">${listOfGenres} | ${movieYear}</p>

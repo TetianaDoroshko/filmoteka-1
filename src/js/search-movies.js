@@ -10,6 +10,9 @@ import { notify } from './notify';
 import { createPagination, clearContainerPagination } from './pagination';
 import { setSessionStorage } from './storage/session-storage';
 import storageConfig from './constants/storage-config';
+import langs from './language/language-map';
+
+const { languageSelect } = refs().panel;
 const { moviesDiv } = refs().galleryRef;
 const { searchForm } = refs().searchRef;
 // const { modalError } = refs().modalErrorRef;
@@ -18,6 +21,9 @@ const { searchForm } = refs().searchRef;
 // const delay = 3000;
 let searchNameFilm = '';
 // let timeoutID = null;
+
+searchForm.elements.searchQuery.placeholder =
+  langs.searchplaceholder[languageSelect.value];
 
 searchForm.addEventListener('submit', onSubmit);
 // modalError.addEventListener('click', onAttentionClick);
@@ -28,7 +34,7 @@ function onSubmit(e) {
   // console.log(searchNameFilm);
 
   if (searchNameFilm === '') {
-    const text = 'Enter the name of the movie, for a correct search!';
+    const text = langs.emptySearch[languageSelect.value];
     return notify(text);
   }
 
@@ -39,7 +45,7 @@ function onSubmit(e) {
   getMoviesByKey(searchNameFilm)
     .then(res => {
       if (!res) {
-        const text = 'Nothing is found. Wrong query.';
+        const text = langs.badQuery[languageSelect.value];
         notify(text);
         return;
       }

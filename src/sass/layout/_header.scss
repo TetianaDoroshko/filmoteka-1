@@ -107,10 +107,11 @@
   height: 100%;
 }
 
-.header__swither {
+.header__panel {
   position: absolute;
   right: 20px;
   bottom: 20px;
+  display: flex;
 
   @include tablet {
     right: 32px;

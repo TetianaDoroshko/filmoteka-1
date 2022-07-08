@@ -8,9 +8,9 @@ upArrowRef.upArrow.addEventListener('click', ScrollToTop);
 
 function HideElementOnScroll() {
   if (window.scrollY > 800) {
-    upArrowRef.upArrow.classList.remove('visually-hidden');
+    upArrowRef.upArrow.classList.remove('is-hidden');
   } else {
-    upArrowRef.upArrow.classList.add('visually-hidden');
+    upArrowRef.upArrow.classList.add('is-hidden');
   }
 }
 
