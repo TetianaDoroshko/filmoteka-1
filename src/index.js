@@ -18,3 +18,4 @@ import './js/storage/storage';
 import './js/refs/refs';
 import './js/btn-library';
 import './js/modal-details/watched';
+import './js/to-top-btn';

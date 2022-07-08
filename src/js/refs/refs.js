@@ -71,5 +71,8 @@ export function refs() {
       switcherBtn: document.querySelector('.switcher-toggle'),
       languageSelect: document.querySelector('.js-language-btn'),
     },
+    upArrowRef: {
+      upArrow: document.querySelector('.to-top-button'),
+    },
   };
 }
