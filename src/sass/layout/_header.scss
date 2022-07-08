@@ -120,7 +120,7 @@
 
 .text-copy {
   fill: none;
-  stroke: white;
+  stroke: #ffffff;
   stroke-dasharray: 6% 29%;
   stroke-width: 5px;
   stroke-dashoffset: 0%;
@@ -129,7 +129,7 @@
 
 .text-copy:nth-child(1) {
   stroke: #bd0034;
-  animation-delay: -1;
+  animation-delay: -1s;
 }
 
 .text-copy:nth-child(2) {
