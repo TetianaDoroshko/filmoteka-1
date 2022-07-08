@@ -1,4 +1,4 @@
-export default langs = {
+const langs = {
   home: {
     en: 'home',
     ru: 'главная',
@@ -213,3 +213,5 @@ export default langs = {
     uk: 'Розробник',
   },
 };
+
+export default langs;
