@@ -7,9 +7,9 @@ body {
   background-color: var(--primaryLightThemeBgColor);
   -webkit-tap-highlight-color: transparent;
 
-  &.show-modal {
-    overflow: hidden;
-  }
+  // &.show-modal {
+  //   overflow: hidden;
+  // }
 }
 
 img {
