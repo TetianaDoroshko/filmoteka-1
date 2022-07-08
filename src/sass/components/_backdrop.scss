@@ -11,9 +11,11 @@
   background-color: rgba(0, 0, 0, 0.25);
 
   overflow-y: auto;
+
   @include tablet {
     padding-top: 219px;
   }
+
   @include desktop {
     padding-top: 150px;
   }

@@ -31,11 +31,15 @@
 .modal-wrapper {
   position: relative;
   padding: 48px 20px 40px 20px;
-  width: 280px;
+  width: 100%;
   border: 1px solid var(--primaryTextDark);
 
   background-color: var(--primaryLightThemeBgColor);
   transition: transform var(--timingFunction);
+
+  @include mobile {
+    width: 440px;
+  }
 
   @include tablet {
     width: 704px;
@@ -87,8 +91,9 @@
 }
 
 .film-details__image {
-  width: 240px;
-  height: 357px;
+  width: 440px;
+  height: auto;
+  // height: 357px;
   border-radius: 5px;
   flex-shrink: 0;
   object-fit: cover;
@@ -134,7 +139,7 @@
 }
 
 .film-details__text {
-  min-width: 109px;
+  min-width: 145px;
 
   font-weight: 500;
   font-size: 12px;
@@ -210,7 +215,8 @@
 }
 
 .film-details-btn {
-  width: 112px;
+  // width: 112px;
+  width: 130px;
   height: 44px;
 
   text-align: center;
