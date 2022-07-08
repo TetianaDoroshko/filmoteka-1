@@ -31,6 +31,7 @@ export function createSingleMovieMarkup(movie) {
   const movieName =
     movie.title || movie.name || movie.original_name || movie.original_title;
 
+  console.log(movie);
   return `
   <li class="gallery-card" data-id ="${movie.id}">
     <a href="#" class="gallery-card__item">
@@ -40,7 +41,7 @@ export function createSingleMovieMarkup(movie) {
         <p class="gallery-card__name">${movieName}</p>
         <p class="gallery-card__genre">${genres} | ${
     Number.parseInt(movie.release_date) || 'N/A'
-  }
+  }   <span class="film-details__span--accent">${movie.vote_average}</span>
         </p>
       </div>
     </a>        

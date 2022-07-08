@@ -36,7 +36,7 @@
 
 .gallery-card__info {
   padding-top: 10px;
-  @include font(12px, 1.17, 500, null);
+  @include font(12px, 1.33, 500, null);
 
   @include desktop {
     @include font(20px, 1.2, 500, null);
@@ -49,6 +49,10 @@
 
   & .gallery-card__genre {
     color: var(--accentTextColor);
+  }
+  & .film-details__span--accent {
+    margin-left: 8px;
+    padding: 2px 11px;
   }
 }
 
