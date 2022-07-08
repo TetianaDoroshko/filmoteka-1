@@ -24,8 +24,10 @@ function onCloseModal() {
   clearImgSrc();
 }
 
-function onBackdropClick() {
-  onCloseModal();
+function onBackdropClick(event) {
+  if (event.currentTarget === event.target) {
+    onCloseModal();
+  }
 }
 
 function onCloseModalByEscape(event) {

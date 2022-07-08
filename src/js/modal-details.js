@@ -9,6 +9,7 @@ import { modalButtonsHandler } from './modal-details/watched';
 import { onOpenModal } from './open-close-modal-details';
 import { renderModalDetails } from './render/render-details';
 import { showLoader, hideLoader } from './loader/loader';
+import { notify } from './notify';
 
 export async function onFilmClick(event) {
   event.preventDefault();
@@ -27,7 +28,7 @@ export async function onFilmClick(event) {
     modalButtonsHandler(movieId);
     onOpenModal();
   } else {
-    window.alert('Oops, movie not found. Please, choose another movie');
+    notify('Oops, movie not found. Please, choose another movie');
   }
 
   hideLoader();

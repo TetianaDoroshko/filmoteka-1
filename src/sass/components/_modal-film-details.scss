@@ -5,9 +5,10 @@
   padding: 20px 20px 48px 20px;
   top: 0;
   left: 0;
-  // opacity: 0;
+  width: 100%;
   width: 100vw;
   height: 100vh;
+
   transform: scale(1.1);
   transition: transform var(--timingFunction);
   overflow-y: auto;
@@ -15,17 +16,10 @@
   @media screen and (max-width: 767px) {
     align-items: flex-start;
   }
-}
 
-.modal-backdrop {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-
-  background-color: #000000;
-  opacity: 0.25;
+  @media screen and (max-height: 634px) {
+    align-self: flex-start;
+  }
 }
 
 body.show-modal .backdrop {
@@ -221,6 +215,7 @@ body.show-modal .modal {
 .film-details-btn {
   width: 112px;
   height: 44px;
+
   text-align: center;
   text-transform: uppercase;
   border-radius: 5px;
@@ -228,6 +223,7 @@ body.show-modal .modal {
   background-color: var(--primaryLightThemeBgColor);
   cursor: pointer;
   border: 1px solid var(--primaryTextDark);
+
   transition: background-color var(--timingFunction),
     border-color var(--timingFunction), transform var(--timingFunction);
 
