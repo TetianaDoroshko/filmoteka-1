@@ -9,8 +9,6 @@
   width: 100vw;
   height: 100vh;
 
-  transform: scale(1.1);
-  transition: transform var(--timingFunction);
   overflow-y: auto;
 
   @media screen and (max-width: 767px) {
@@ -22,15 +20,13 @@
   }
 }
 
-body.show-modal .backdrop {
-  opacity: 1;
-  visibility: visible;
-  pointer-events: initial;
+.modal.is-hidden .modal-wrapper {
+  transform: scale(1.1);
 }
 
-body.show-modal .modal {
-  transform: scale(1);
-}
+// body.show-modal .modal {
+//   transform: scale(1);
+// }
 
 .modal-wrapper {
   position: relative;
@@ -39,6 +35,7 @@ body.show-modal .modal {
   border: 1px solid var(--primaryTextDark);
 
   background-color: var(--primaryLightThemeBgColor);
+  transition: transform var(--timingFunction);
 
   @include tablet {
     width: 704px;

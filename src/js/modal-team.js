@@ -1,4 +1,5 @@
 import { refs } from './refs/refs';
+import { bodyLock, bodyUnlock } from './utils/body-lock';
 
 let modalTeamRef;
 modalTeamRef = refs().modalTeamRef;
@@ -12,10 +13,12 @@ function openModal(e) {
   window.addEventListener('keydown', closeModalByEsc);
   window.addEventListener('click', closeModalByClick);
   modalTeamRef.teamModalBtn.addEventListener('click', closeModal);
+  bodyLock();
 
   function clearEventListeners() {
     window.removeEventListener('click', closeModalByClick);
     window.removeEventListener('keydown', closeModalByEsc);
+    bodyUnlock(250);
     modalTeamRef.teamModalBtn.removeEventListener('click', closeModal);
   }
 
