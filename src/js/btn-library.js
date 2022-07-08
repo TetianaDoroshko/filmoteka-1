@@ -20,98 +20,6 @@ const btnWatched = refs().libraryButtonsRef.btnWatched;
 const btnQueue = refs().libraryButtonsRef.btnQueue;
 const gallery = refs().galleryRef.moviesDiv;
 let arrayOfPromises;
-// ------temp-----
-//----временная функция  getStorage--------------
-// function getStorage(key) {
-//   return [
-//     '453395',
-//     '921987',
-//     '667739',
-//     '616037',
-//     '507086',
-//     '453395',
-//     '616037',
-//     '120011',
-//     '759175',
-//     '438148',
-//     '745376',
-//     '92782',
-//     '102903',
-//     '76479',
-//     '361743',
-//     '545611',
-//     '63247',
-//     '64196',
-//     '634649',
-//     '204852',
-//     '72636',
-//     '453395',
-//     '921987',
-//     '667739',
-//     '616037',
-//     '507086',
-//     '453395',
-//     '616037',
-//     '120111',
-//     '759175',
-//     '438148',
-//     '745376',
-//     '92782',
-//     '102903',
-//     '76479',
-//     '361743',
-//     '545611',
-//     '63247',
-//     '64196',
-//     '634649',
-//     '204852',
-//     '72636',
-//     '111277',
-//     '667739',
-//     '616037',
-//     '507086',
-//     '453395',
-//     '616037',
-//     '120011',
-//     '759175',
-//     '438148',
-//     '745376',
-//     '92782',
-//     '102903',
-//     '76479',
-//     '361743',
-//     '545611',
-//     '63247',
-//     '64196',
-//     '634649',
-//     '204852',
-//     '72636',
-//     '453395',
-//     '921987',
-//     '667739',
-//     '616037',
-//     '507086',
-//     '453395',
-//     '616037',
-//     '120111',
-//     '759175',
-//     '438148',
-//     '745376',
-//     '92782',
-//     '102903',
-//     '76479',
-//     '361743',
-//     '545611',
-//     '63247',
-//     '64196',
-//     '634649',
-//     '204852',
-//     '72636',
-//   ];
-// }
-//------------
-
-// libraryHandler(); // нужно вызвыть при переключении на страницу Library
 
 export function libraryHandler() {
   addListenersBtnLib();
@@ -143,7 +51,7 @@ export async function showWatchedMovies(page) {
   const movieSetId = getStorage(storageConfig.KEY_WATCHED);
   if (!movieSetId || movieSetId.length === 0) {
     gallery.innerHTML =
-      "You don't have any movies you've watched. Add the first one.";
+      "<p class='gallery__info'>You don't have any movies you've watched.</p><p class='gallery__info'>Add the first one.</p>";
   } else {
     showLoader();
 
@@ -181,7 +89,7 @@ export async function showQueueOfMovies(page) {
   // console.log(movieSetId);
   if (!movieSetId || movieSetId.length === 0) {
     gallery.innerHTML =
-      "You don't have any movies in the queue. Add the first one.";
+      "<p class='gallery__info'>You don't have any movies in the queue.</p><p class='gallery__info'>Add the first one.</p>";
   } else {
     showLoader();
     arrayOfPromises = await Promise.all(createPromises(movieSetId));
