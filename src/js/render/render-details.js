@@ -13,9 +13,10 @@ export async function renderModalDetails(data) {
   // const data = await getDetails(movieId);
   const { IMAGE_BASE_URL_1X, IMAGE_BASE_URL_2X } = apiConfig;
 
-  if (!data.poster_path) {
-    console.log('yaya');
+  const movieName =
+    data.title || data.name || data.original_name || data.original_title;
 
+  if (!data.poster_path) {
     filmDetailsRef.image.srcset = `${defaultImg1x} 1x, ${defaultImg2x} 2x`;
     filmDetailsRef.image.src = defaultImg1x;
     filmDetailsRef.image.alt = 'Movie photo';
@@ -24,8 +25,8 @@ export async function renderModalDetails(data) {
     filmDetailsRef.image.src = `${IMAGE_BASE_URL_1X}${data.poster_path}`;
   }
 
-  filmDetailsRef.image.alt = data.title;
-  filmDetailsRef.title.textContent = data.title;
+  filmDetailsRef.image.alt = movieName;
+  filmDetailsRef.title.textContent = movieName;
   filmDetailsRef.voteAverage.textContent = data.vote_average;
   filmDetailsRef.voteCount.textContent = data.vote_count;
   filmDetailsRef.popularity.textContent = Number(data.popularity.toFixed(1));
