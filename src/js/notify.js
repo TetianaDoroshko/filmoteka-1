@@ -14,6 +14,7 @@ function onAttentionClick() {
 
 export function notify(text) {
   modalError.classList.remove('is-hidden');
+  modalError.classList.add('show-hide');
 
   attentionText(text);
 
@@ -24,6 +25,7 @@ export function notify(text) {
 
 function hideError() {
   modalError.classList.add('is-hidden');
+  modalError.classList.remove('show-hide');
 }
 
 function attentionText(text) {

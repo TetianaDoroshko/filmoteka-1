@@ -3,13 +3,19 @@
   padding: 10px 10px;
   text-align: center;
   padding: 15px;
-  border: 3px solid var(--accentBtnColor);
-  border-radius: 10px;
+  border: 1px solid transparent;
+  border-radius: 50px;
   position: fixed;
   top: 15px;
   left: 50%;
   transform: translate(-50%);
-  background: var(--accentBtnColor);
+  // background: var(--accentBtnColor);
+  background: linear-gradient(
+    352deg,
+    rgba(254, 85, 0, 1) 14%,
+    rgba(156, 1, 1, 1) 32%,
+    rgba(0, 0, 9, 1) 90%
+  );
   display: flex;
   justify-content: center;
   align-items: center;
@@ -19,4 +25,25 @@
 .error-modal__text {
   color: var(--primaryTextLight);
   @include font(18px, 1.2, 500, null);
+}
+
+// Style to beautiful show/hide modal-error
+
+.windov-modal.show-hide .error-modal {
+  animation: anim 3000ms linear;
+}
+
+@keyframes anim {
+  0% {
+    transform: translate(-50%, -200%);
+  }
+  10% {
+    transform: translate(-50%, 0);
+  }
+  90% {
+    transform: translate(-50%, 0);
+  }
+  100% {
+    transform: translate(-50%, -200%);
+  }
 }
