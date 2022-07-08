@@ -67,5 +67,8 @@ export function refs() {
       modalError: document.querySelector('.windov-modal'),
       modalErrorText: document.querySelector('.error-modal__text'),
     },
+    upArrowRef: {
+      upArrow: document.querySelector('.to-top-button'),
+    },
   };
 }
