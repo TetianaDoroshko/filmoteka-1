@@ -141,13 +141,13 @@ const langs = {
   },
   tetiana: {
     en: 'Tetiana Doroshko',
-    ru: 'Татьяна Дорошка',
+    ru: 'Татьяна Дорошко',
     uk: 'Тетяна Дорошко',
   },
   anast: {
     en: 'Anastasia Slezko',
     ru: 'Анастасия Слезко',
-    uk: 'Анастасія Слізко',
+    uk: 'Анастасія Слезко',
   },
   liliia: {
     en: 'Liliia Kostiurenko',
