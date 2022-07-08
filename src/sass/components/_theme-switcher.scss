@@ -1,21 +1,12 @@
-.theme-light {
-  --primaryTextDark: #000000;
-  --secondaryTextDetailsColor: #8c8c8c;
-  --primaryTextLight: #ffffff;
-  --primaryLightThemeBgColor: #ffffff;
-  --secondaryLightThemeBgColor: #f7f7f7;
-  --headerGradientColor: rgba(0, 0, 0, 0.56);
-  --accentTextColor: #ff6b08;
-  --timingFunction: 250ms cubic-bezier(0.4, 0, 0.2, 1);
-}
 .theme-dark {
-  --secondaryTextDetailsColor: #8c8c8c;
-  --accentTextColor: #ff6b08;
+  // Цвет текста
+  --primaryTextDark: #ffffff;
   --primaryTextLight: #ffffff;
-  --secondaryLightThemeBgColor: #f7f7f7;
-  --second-bg-color: #1a1818;
-  --main-bg-color: #383838;
-  --timingFunction: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  --secondaryTextColor: #ffffff;
+
+  // Цвет фона
+  --primaryLightThemeBgColor: #0d0c0c;
+  --secondaryLightThemeBgColor: #000000;
 }
 .theme-dark {
   .movie-card__poster {
@@ -30,19 +21,19 @@
   }
 }
 .switcher {
-  position: absolute;
-  top: 45px;
-  left: 28px;
+  // position: absolute;
+  // top: 45px;
+  // left: 28px;
   display: flex;
-  width: 30px;
+  // width: 50px;
   background: #2a2c2d;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   background-color: inherit;
   @include tablet {
-    top: 50px;
-    left: 80px;
+    // top: 50px;
+    // left: 80px;
   }
 }
 
@@ -92,7 +83,8 @@
   -webkit-transition: 0.4s;
   transition: 0.4s;
   box-shadow: 0 0px 15px #2020203d;
-  background: white url('https://i.ibb.co/7JfqXxB/sunny.png');
+  background: url('https://i.ibb.co/7JfqXxB/sunny.png');
+  background-color: #ffffff;
   background-size: 20px;
   background-repeat: no-repeat;
   background-position: center;
@@ -110,7 +102,9 @@ input:checked + .slider:before {
   -webkit-transform: translateX(20px);
   -ms-transform: translateX(20px);
   transform: translateX(20px);
-  background: white url('https://i.ibb.co/FxzBYR9/night.png');
+  background: url('https://i.ibb.co/FxzBYR9/night.png');
+  background-color: #292829;
+
   background-size: 16px;
   background-repeat: no-repeat;
   background-position: center;

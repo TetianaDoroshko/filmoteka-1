@@ -12,6 +12,14 @@
     background-image: url(../images/header@2x.png);
   }
 }
+
+.theme-dark .header {
+  background-image: url(../images/header-dark@1x.jpg);
+  @include retinabg {
+    background-image: url(../images/header-dark@2x.jpg);
+  }
+}
+
 .header--library {
   background-image: url(../images/header-lib-overlay.png),
     url(../images/header-lib@1x.png);
@@ -20,6 +28,7 @@
       url(../images/header-lib@2x.png);
   }
 }
+
 .navigation {
   display: flex;
   align-items: center;
@@ -91,6 +100,12 @@
     pointer-events: none;
   }
 }
+
+.header__swither {
+  display: flex;
+  justify-content: end;
+  margin-top: 50px;
+}
 // ==================================
 // .anime-text-logo {
 //   animation: blur 2.75s ease-out infinite;
@@ -127,28 +142,28 @@
   animation: stroke-offset 5.5s infinite linear;
 }
 
-.text-copy:nth-child(1) {
-  stroke: #bd0034;
-  animation-delay: -1s;
-}
+// .text-copy:nth-child(1) {
+//   // stroke: #bd0034;
+//   animation-delay: -1s;
+// }
 
 .text-copy:nth-child(2) {
-  stroke: #840037;
+  // stroke: #840037;
   animation-delay: -2s;
 }
 
 .text-copy:nth-child(3) {
-  stroke: #bd0034;
+  // stroke: #bd0034;
   animation-delay: -3s;
 }
 
 .text-copy:nth-child(4) {
-  stroke: #bd0034;
+  // stroke: #bd0034;
   animation-delay: -4s;
 }
 
 .text-copy:nth-child(5) {
-  stroke: #fdb731;
+  // stroke: #fdb731;
   animation-delay: -5s;
 }
 

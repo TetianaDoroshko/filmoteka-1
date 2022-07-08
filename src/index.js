@@ -6,6 +6,7 @@ import './js/modal-details';
 import './js/open-close-modal-details';
 import './js/pagination';
 import './js/modal-team';
+import './js/theme-switcher';
 
 // import './js/api-service/get-trending-movies';
 // import './js/api-service/get-movies-by-key';

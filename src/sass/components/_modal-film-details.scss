@@ -43,7 +43,7 @@ body.show-modal .modal {
   padding: 48px 20px 40px 20px;
   width: 280px;
 
-  background-color: #ffffff;
+  background-color: var(--primaryLightThemeBgColor);
 
   @include tablet {
     width: 704px;
@@ -78,6 +78,7 @@ body.show-modal .modal {
   right: 8px;
   top: 8px;
   font-size: 26px;
+  color: var(--primaryTextDark);
 
   &:hover,
   &:focus {
