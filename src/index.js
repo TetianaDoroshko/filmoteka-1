@@ -1,3 +1,4 @@
+import './js/multi-language';
 import './js/utils/get-name-genres';
 import './js/change-page';
 import './js/btn-library';
@@ -16,5 +17,4 @@ import './js/render/render-pagination';
 import './js/storage/storage';
 import './js/refs/refs';
 import './js/btn-library';
-import './js/multi-language';
 import './js/modal-details/watched';

@@ -37,8 +37,8 @@ export default langs = {
 
   by: {
     en: 'by',
-    ru: '',
-    uk: '',
+    ru: ' ',
+    uk: ' ',
   },
 
   students: {
@@ -82,10 +82,37 @@ export default langs = {
     ru: 'Добавить в просмотренные',
     uk: 'Додати до переглянутих',
   },
+  delwatched: {
+    en: 'Remove from watched',
+    ru: 'Удалить из просмотренных',
+    uk: 'Видалити з переглянутих',
+  },
   addqueue: {
     en: 'add to queue',
     ru: 'добавить в очередь',
     uk: 'додати до черги',
+  },
+  delqueue: {
+    en: 'Remove from queue',
+    ru: 'Удалить из очереди',
+    uk: 'Видалити з черги',
+  },
+
+  emptySearch: {
+    en: 'Enter the name of the movie, for a correct search!',
+    ru: 'Введите название фильма, для корректного поиска!',
+    uk: 'Введіть назву фільму, для правильного пошуку!',
+  },
+
+  badQuery: {
+    en: 'Nothing is found. Wrong query.',
+    ru: 'Ничего не найдено. Неверный запрос.',
+    uk: 'Нічого не знайдено. Неправильний запит.',
+  },
+  searchplaceholder: {
+    en: 'Movie search',
+    ru: 'Поиск фильмов',
+    uk: 'Пошук фільмів',
   },
   group: {
     en: 'Group',

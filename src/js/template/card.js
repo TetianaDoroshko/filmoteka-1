@@ -6,7 +6,9 @@ import defaultImg2x from '../../images/img-default@2x.jpg';
 const { IMAGE_BASE_URL_1X, IMAGE_BASE_URL_2X } = apiConfig;
 
 export function createSingleMovieMarkup(movie, listOfGenres, movieYear) {
-  const movieName = movie.name || movie.original_title;
+  const movieName =
+    movie.title || movie.name || movie.original_name || movie.original_title;
+
   let imgSrcset;
   let imgSrc;
 

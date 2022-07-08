@@ -1,12 +1,6 @@
-const input = document.querySelector('.switcher-toggle');
+import { refs } from './refs/refs';
+const { switcherBtn } = refs().panel;
 
-input.addEventListener('change', function toggleTheme() {
+switcherBtn.addEventListener('change', function toggleTheme() {
   document.body.classList.toggle('theme-dark');
-  // (function () {
-  //   if (document.body.classList.toggle('theme-dark')) {
-  //     document.getElementById('slider').checked = false;
-  //   } else {
-  //     document.getElementById('slider').checked = true;
-  //   }
-  // });
 });
