@@ -1,4 +1,4 @@
-export default langs = {
+const langs = {
   home: {
     en: 'home',
     ru: 'главная',
@@ -141,13 +141,13 @@ export default langs = {
   },
   tetiana: {
     en: 'Tetiana Doroshko',
-    ru: 'Татьяна Дорошка',
+    ru: 'Татьяна Дорошко',
     uk: 'Тетяна Дорошко',
   },
   anast: {
     en: 'Anastasia Slezko',
     ru: 'Анастасия Слезко',
-    uk: 'Анастасія Слізко',
+    uk: 'Анастасія Слезко',
   },
   liliia: {
     en: 'Liliia Kostiurenko',
@@ -213,3 +213,5 @@ export default langs = {
     uk: 'Розробник',
   },
 };
+
+export default langs;
