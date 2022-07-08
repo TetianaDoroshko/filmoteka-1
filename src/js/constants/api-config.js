@@ -4,7 +4,8 @@ const apiConfig = {
   TRENDING_PATH_PARAMS: 'trending/all/day',
   SEARCH_PATH_PARAMS: 'search/movie',
   DETAILS_PATH_PARAMS: 'movie/',
-  IMAGE_BASE_URL: 'https://image.tmdb.org/t/p/w1280',
+  IMAGE_BASE_URL_1X: 'https://image.tmdb.org/t/p/w500',
+  IMAGE_BASE_URL_2X: 'https://image.tmdb.org/t/p/w780',
   GENRES_PATH_PARAMS: 'genre/movie/list',
 };
 

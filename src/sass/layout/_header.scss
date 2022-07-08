@@ -1,6 +1,7 @@
-.header {
+.header,
+.header--home {
   height: 230px;
-  width: 100%;
+  width: 100vw;
   padding-top: 20px;
   background-color: #000000b0;
   background-image: url(../images/header@1x.png);
@@ -11,7 +12,15 @@
     background-image: url(../images/header@2x.png);
   }
 }
-.header--library {
+
+.theme-dark .header {
+  background-image: url(../images/header-dark@1x.jpg);
+  @include retinabg {
+    background-image: url(../images/header-dark@2x.jpg);
+  }
+}
+
+.header.header--library {
   background-image: url(../images/header-lib-overlay.png),
     url(../images/header-lib@1x.png);
   @include retinabg {
@@ -19,6 +28,7 @@
       url(../images/header-lib@2x.png);
   }
 }
+
 .navigation {
   display: flex;
   align-items: center;
@@ -40,6 +50,7 @@
   display: flex;
 }
 .navigation__page {
+  position: relative;
   display: block;
   padding: 20px 0;
   margin-right: 40px;
@@ -49,19 +60,124 @@
   font-size: 12px;
   line-height: 1.17;
   font-weight: 500;
+  overflow: hidden;
+
+  // &:hover {
+  //   text-shadow: 0px 0px 10px #fff, 0px 0px 10px #fff, 0px 0px 25px #fd1b1b,
+  //     0px 0px 25px #fd1b1b, 0px 0px 25px #fd1b1b, 0px 0px 25px #fd1b1b;
+  // }
+
+  &::after {
+    position: absolute;
+    left: 0;
+    bottom: 17px;
+    content: '';
+    height: 3px;
+    width: 100%;
+    background-color: #ff001b;
+    transform: translate(105%);
+    transition: 250ms linear;
+  }
+
+  &:last-child::after {
+    transform: translate(-105%);
+  }
+
+  &:last-child {
+    margin-right: 0px;
+  }
+
+  &.current::after {
+    transform: translate(0);
+    // transition: 250ms linear;
+  }
+
+  &:last-child.current::after {
+    transform: translate(0);
+  }
+
+  &.current {
+    pointer-events: none;
+  }
 }
-.navigation__page:last-child {
-  margin-right: 0px;
-}
-.current {
+
+.header .container {
   position: relative;
+  height: 100%;
 }
-.current::after {
+
+.header__swither {
   position: absolute;
-  left: 0;
-  bottom: 17px;
-  content: '';
-  height: 3px;
-  width: 100%;
-  background-color: #ff001b;
+  right: 20px;
+  bottom: 20px;
+
+  @include tablet {
+    right: 32px;
+  }
+}
+// ==================================
+// .anime-text-logo {
+//   animation: blur 2.75s ease-out infinite;
+//   text-shadow: 0px 0px 5px #fff, 0px 0px 8px #fff;
+// }
+
+// @keyframes blur {
+//   from {
+//     text-shadow: 0px 0px 10px #fff, 0px 0px 10px #fff, 0px 0px 25px #fff,
+//       0px 0px 25px #fff, 0px 0px 25px #fd1b1b, 0px 0px 25px #fd1b1b,
+//       0px 0px 50px #fd1b1b;
+//   }
+// }
+// ===================================
+
+.navigation__link {
+  display: flex;
+  align-items: center;
+}
+.qwe {
+  display: inline-block;
+  font-size: 10.5em;
+  width: 141px;
+  height: 34px;
+  margin-left: 3px;
+}
+
+.text-copy {
+  fill: none;
+  stroke: #ffffff;
+  stroke-dasharray: 6% 29%;
+  stroke-width: 5px;
+  stroke-dashoffset: 0%;
+  animation: stroke-offset 5.5s infinite linear;
+}
+
+// .text-copy:nth-child(1) {
+//   // stroke: #bd0034;
+//   animation-delay: -1s;
+// }
+
+.text-copy:nth-child(2) {
+  // stroke: #840037;
+  animation-delay: -2s;
+}
+
+.text-copy:nth-child(3) {
+  // stroke: #bd0034;
+  animation-delay: -3s;
+}
+
+.text-copy:nth-child(4) {
+  // stroke: #bd0034;
+  animation-delay: -4s;
+}
+
+.text-copy:nth-child(5) {
+  // stroke: #fdb731;
+  animation-delay: -5s;
+}
+
+@keyframes stroke-offset {
+  100% {
+    stroke-dashoffset: -35%;
+  }
 }

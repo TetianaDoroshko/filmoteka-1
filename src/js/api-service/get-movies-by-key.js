@@ -16,8 +16,8 @@ export async function getMoviesByKey(query, page = 1) {
       throw new Error(respJson.status_message);
     }
     const data = await response.json();
-    const collection = data.results;
-    if (collection.length) {
+    const collection = data;
+    if (collection.results.length) {
       return collection;
     } else {
       //   refs.searchInfo.textContent =

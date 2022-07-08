@@ -33,7 +33,7 @@
 //   }
 
 .footer {
-  background-color: #f7f7f7;
+  background-color: var(--secondaryLightThemeBgColor);
 }
 
 .footer-container {
@@ -58,14 +58,13 @@
 
 .footer-text {
   //move to mixin
-  font-family: 'Roboto';
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
   line-height: 1.14;
   //
 
-  color: #545454;
+  color: var(--secondaryTextColor);
 
   @include tablet {
     font-size: 16px;
@@ -101,7 +100,7 @@
 
 .footer-link {
   text-decoration: underline;
-  color: #545454;
+  color: currentColor;
   &:hover {
     cursor: pointer;
   }

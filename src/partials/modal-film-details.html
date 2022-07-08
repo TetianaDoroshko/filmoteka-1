@@ -1,8 +1,7 @@
-<div class="modal is-hidden">
-  <div class="modal-backdrop"></div>
+<div class="modal backdrop js-backdrop is-hidden">
   <div class="modal-wrapper">
     <button
-      data-modal-close
+      data-action="close-modal"
       class="modal-btn"
       type="button"
       aria-label="Закрыть модальное окно"
@@ -12,46 +11,40 @@
       </svg>
     </button>
     <article class="film-details">
-      <!-- Временная картинка -->
-      <img
-        class="film-details__image"
-        src="http://dummyimage.com/240x357.png/99cccc&text=The+image!"
-        alt="${title}"
-      />
-      <!-- <img
-        class="film-details__image"
-        src="http://image.tmdb.org/t/p/w500/${poster_path}"
-        alt="${title}"
-      /> -->
+      <img class="film-details__image js-image" src="#" alt="#" />
+      <!-- <img class="film-details__image js-image" src="#" alt="" /> -->
 
       <div class="film-details__wrapper">
-        <h2 class="film-details__title">A FISTFUL OF LEAD</h2>
+        <h2 class="film-details__title js-title">A FISTFUL OF LEAD</h2>
         <ul class="film-details__list list">
           <li class="film-details__item">
             <p class="film-details__text lang-rating">Vote / Votes</p>
-            <span class="film-details__span film-details__span--accent"
+            <span class="film-details__span film-details__span--accent js-vote"
               >7.3</span
             >
             <span>/</span>
-            <span class="film-details__span film-details__span--noaccent"
+            <span
+              class="film-details__span film-details__span--noaccent js-vote-count"
               >1260</span
             >
           </li>
           <li class="film-details__item">
             <p class="film-details__text lang-popularity">Popularity</p>
-            <span class="film-details__span">100.2</span>
+            <span class="film-details__span js-popularity">100.2</span>
           </li>
           <li class="film-details__item">
             <p class="film-details__text lang-original">Original Title</p>
-            <span class="film-details__span">A FISTFUL OF LEAD</span>
+            <span class="film-details__span js-title-orig"
+              >A FISTFUL OF LEAD</span
+            >
           </li>
           <li class="film-details__item">
             <p class="film-details__text lang-genre">Genre</p>
-            <span class="film-details__span">Western</span>
+            <span class="film-details__span js-genres">Western</span>
           </li>
         </ul>
         <p class="film-details__about lang-about">About</p>
-        <p class="film-details__overview">
+        <p class="film-details__overview js-about">
           Four of the West’s most infamous outlaws assemble to steal a huge
           stash of gold from the most corrupt settlement of the gold rush towns.
           But not all goes to plan one is killed and the other three escapes
@@ -62,6 +55,7 @@
           double crossed – but by who and how?
         </p>
 
+<<<<<<< HEAD
         <!-- Кнопки переиспользуемые, как будут добавлю -->
 
         <ul>
@@ -72,6 +66,18 @@
           </li>
           <li>
             <button class="lang-addqueue" type="button">add to queue</button>
+=======
+        <ul class="film-details-btn__list">
+          <li class="film-details-btn__item">
+            <button class="film-details-btn js-btn-modal-watched" type="button">
+              add to Watched
+            </button>
+          </li>
+          <li class="film-details-btn__item">
+            <button class="film-details-btn js-btn-modal-queue" type="button">
+              add to queue
+            </button>
+>>>>>>> main
           </li>
         </ul>
       </div>

@@ -5,7 +5,7 @@
   padding: 20px 20px 48px 20px;
   top: 0;
   left: 0;
-  // opacity: 0;
+  width: 100%;
   width: 100vw;
   height: 100vh;
 
@@ -14,29 +14,28 @@
   @media screen and (max-width: 767px) {
     align-items: flex-start;
   }
+
+  @media screen and (max-height: 634px) {
+    align-self: flex-start;
+  }
 }
 
-// .modal.is-open {
-//   opacity: 1;
+.modal.is-hidden .modal-wrapper {
+  transform: scale(1.1);
+}
+
+// body.show-modal .modal {
+//   transform: scale(1);
 // }
-
-.modal-backdrop {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-
-  background-color: #000000;
-  opacity: 0.25;
-}
 
 .modal-wrapper {
   position: relative;
   padding: 48px 20px 40px 20px;
   width: 280px;
+  border: 1px solid var(--primaryTextDark);
 
-  background-color: #ffffff;
+  background-color: var(--primaryLightThemeBgColor);
+  transition: transform var(--timingFunction);
 
   @include tablet {
     width: 704px;
@@ -71,6 +70,7 @@
   right: 8px;
   top: 8px;
   font-size: 26px;
+  color: var(--primaryTextDark);
 
   &:hover,
   &:focus {
@@ -90,6 +90,8 @@
   width: 240px;
   height: 357px;
   border-radius: 5px;
+  flex-shrink: 0;
+  object-fit: cover;
 
   @media screen and (max-width: 767px) {
     margin-bottom: 20px;
@@ -97,13 +99,13 @@
 
   @include tablet {
     width: 264px;
-    height: 374px;
+    height: 395px;
     margin-right: 68px;
   }
 
   @include desktop {
     width: 375px;
-    height: 478px;
+    height: 560px;
     margin-right: 16px;
   }
 }
@@ -193,4 +195,48 @@
   font-size: 12px;
   line-height: 1.67;
   color: var(--primaryTextDark);
+}
+
+.film-details-btn__list {
+  display: flex;
+}
+
+.film-details-btn__item {
+  margin-right: 15px;
+
+  &:last-child {
+    margin-right: 0;
+  }
+}
+
+.film-details-btn {
+  width: 112px;
+  height: 44px;
+
+  text-align: center;
+  text-transform: uppercase;
+  border-radius: 5px;
+  color: var(--primaryTextDark);
+  background-color: var(--primaryLightThemeBgColor);
+  cursor: pointer;
+  border: 1px solid var(--primaryTextDark);
+
+  transition: background-color var(--timingFunction),
+    border-color var(--timingFunction), transform var(--timingFunction);
+
+  &.active,
+  &:focus,
+  &:hover {
+    border: 1px solid var(--accentBtnColor);
+    background-color: var(--accentBtnColor);
+    color: #ffffff;
+    box-shadow: 0px 8px 43px rgba(255, 107, 1, 0.6);
+  }
+
+  @include tablet {
+    width: 125px;
+  }
+  @include desktop {
+    width: 136px;
+  }
 }

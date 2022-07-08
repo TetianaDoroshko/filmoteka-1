@@ -1,12 +1,17 @@
 export function refs() {
   return {
     headerRef: {
-      // ref: document.querySelector('.selector')
+      header: document.querySelector('.header'),
+      navLogo: document.querySelector('.navigation__logo'),
+      searchForm: document.querySelector('.js-search-form'),
+      headLibBackGr: document.querySelector('.header--library'),
+      searchInput: document.querySelector('.js-form-input'),
     },
-    homeRef: {
-      // ref: document.querySelector('.selector')
+    searchRef: {
+      searchForm: document.querySelector('.search-form'),
     },
     libraryButtonsRef: {
+      btnContainer: document.querySelector('.js-btn-container'),
       btnWatched: document.querySelector('.js-btn-watched'),
       btnQueue: document.querySelector('.js-btn-queue'),
     },
@@ -27,16 +32,40 @@ export function refs() {
       teamModalOpen: document.querySelector('.footer-link'),
     },
     libraryRef: {
-      // ref: document.querySelector('.selector')
+      libBtn: document.querySelector('.js-library'),
+      homeBtn: document.querySelector('.js-home'),
     },
     galleryRef: {
       // ref: document.querySelector('.selector')
+      moviesDiv: document.querySelector('#movies-gallery'),
     },
     filmDetailsRef: {
-      // ref: document.querySelector('.selector')
+      filmDetailsModalContainer: document.querySelector('#movies-gallery'),
+      filmDetailsModalClose: document.querySelector(
+        '[data-action="close-modal"]'
+      ),
+      modalBackdrop: document.querySelector('.js-backdrop'),
+      filmDetailsModal: document.querySelector('.modal'),
+      image: document.querySelector('.js-image'),
+      title: document.querySelector('.js-title'),
+      voteAverage: document.querySelector('.js-vote'),
+      voteCount: document.querySelector('.js-vote-count'),
+      popularity: document.querySelector('.js-popularity'),
+      originTitle: document.querySelector('.js-title-orig'),
+      genres: document.querySelector('.js-genres'),
+      about: document.querySelector('.js-about'),
+      btnWatched: document.querySelector('.js-btn-modal-watched'),
+      btnQueue: document.querySelector('.js-btn-modal-queue'),
     },
     footerRef: {
       // ref: document.querySelector('.selector')
+    },
+    loaderRef: {
+      loader: document.querySelector('.js-loader'),
+    },
+    modalErrorRef: {
+      modalError: document.querySelector('.windov-modal'),
+      modalErrorText: document.querySelector('.error-modal__text'),
     },
   };
 }

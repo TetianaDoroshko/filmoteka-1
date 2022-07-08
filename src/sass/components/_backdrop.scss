@@ -1,6 +1,6 @@
 .backdrop {
   position: fixed;
-  z-index: 99;
+  z-index: 101;
   top: 0;
   left: 0;
   width: 100vw;
@@ -8,17 +8,13 @@
   padding: 20px;
   transition: opacity var(--timingFunction), visibility var(--timingFunction);
 
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: rgba(0, 0, 0, 0.25);
 
   overflow-y: auto;
-
   @include tablet {
     padding-top: 219px;
   }
   @include desktop {
     padding-top: 150px;
   }
-}
-.backdrop.is-hidden {
-  display: none;
 }
