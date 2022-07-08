@@ -9,14 +9,15 @@ const { filmDetailsRef } = refs();
 
 export async function renderModalDetails(data) {
   // const data = await getDetails(movieId);
-  const imgUrl = apiConfig.IMAGE_BASE_URL;
+  const { IMAGE_BASE_URL_1X, IMAGE_BASE_URL_2X } = apiConfig;
 
   if (!data.poster_path) {
     filmDetailsRef.image.src = '../images/modal-img.jpg';
     filmDetailsRef.image.alt = 'Movie photo';
   }
 
-  filmDetailsRef.image.src = `${imgUrl}${data.poster_path}`;
+  filmDetailsRef.image.srcset = `${IMAGE_BASE_URL_1X}${data.poster_path} 1x, ${IMAGE_BASE_URL_2X}${data.poster_path} 2x`;
+  filmDetailsRef.image.src = `${IMAGE_BASE_URL_1X}${data.poster_path}`;
   filmDetailsRef.image.alt = data.title;
   filmDetailsRef.title.textContent = data.title;
   filmDetailsRef.voteAverage.textContent = data.vote_average;

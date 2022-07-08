@@ -1,6 +1,6 @@
 import apiConfig from '../constants/api-config';
 
-const { IMAGE_BASE_URL } = apiConfig;
+const { IMAGE_BASE_URL_1X, IMAGE_BASE_URL_2X } = apiConfig;
 
 export function createSingleMovieMarkup(movie) {
   let genres = movie.genres.map(el => el.name);
@@ -15,8 +15,11 @@ export function createSingleMovieMarkup(movie) {
   return `
   <li class="gallery-card" data-id ="${movie.id}">
     <a href="#" class="gallery-card__item">
-      <img src="${IMAGE_BASE_URL + movie.poster_path}" alt="${
-    movie.title
+      <img srcset="${IMAGE_BASE_URL_1X + movie.poster_path} 1x,${
+    IMAGE_BASE_URL_2X + movie.poster_path
+  } 2x"
+  src="${IMAGE_BASE_URL_1X + movie.poster_path}" alt="${
+    movie.original_title
   }"  class="gallery-card__image" >
       <div class="gallery-card__info">
         <p class="gallery-card__name">${movie.title}</p>
