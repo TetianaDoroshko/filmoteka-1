@@ -9,7 +9,6 @@ const { filmDetailsRef } = refs();
 filmDetailsRef.filmDetailsModalClose.addEventListener('click', onCloseModal);
 filmDetailsRef.modalBackdrop.addEventListener('click', onBackdropClick);
 filmDetailsRef.filmDetailsModalContainer.addEventListener('click', onFilmClick);
-console.log(filmDetailsRef.modalBackdrop);
 
 export function onOpenModal() {
   window.addEventListener('keydown', onCloseModalByEscape);
@@ -26,9 +25,9 @@ function onCloseModal() {
 }
 
 function onBackdropClick(event) {
-  console.log(event.target);
-  console.log('Клик по бекдропу');
-  onCloseModal();
+  if (event.currentTarget === event.target) {
+    onCloseModal();
+  }
 }
 
 function onCloseModalByEscape(event) {
