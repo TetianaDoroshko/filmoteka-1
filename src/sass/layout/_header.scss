@@ -78,6 +78,10 @@
     background-color: #ff001b;
     transform: translate(105%);
     transition: 250ms linear;
+
+    .theme-dark & {
+      background-color: var(--accentDarkTheme);
+    }
   }
 
   &:last-child::after {
@@ -100,10 +104,6 @@
   &.current {
     pointer-events: none;
   }
-
-  // &.theme-dark {
-  //   background-color: var(--accentDarkTheme);
-  // }
 }
 
 .header .container {
