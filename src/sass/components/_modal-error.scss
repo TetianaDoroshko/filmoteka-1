@@ -1,22 +1,64 @@
 .error-modal {
-  width: 500px;
-  padding: 10px 10px;
+  width: 310px;
+  padding: 7px 7px;
   text-align: center;
-  padding: 15px;
-  border: 3px solid var(--accentBtnColor);
-  border-radius: 10px;
+  border: 1px solid transparent;
+  border-radius: 5px;
   position: fixed;
-  top: 15px;
+  top: 156px;
   left: 50%;
   transform: translate(-50%);
-  background: var(--accentBtnColor);
+  background: rgb(159, 5, 22);
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
+
+  @include tablet {
+    top: 15px;
+    padding: 12px;
+    width: 370px;
+    background: linear-gradient(
+      340deg,
+      rgb(78, 34, 47) 14%,
+      rgb(159, 5, 22) 32%,
+      rgb(35, 47, 56) 90%
+    );
+  }
+  @include desktop {
+    padding: 15px;
+    width: 500px;
+  }
 }
 
 .error-modal__text {
   color: var(--primaryTextLight);
-  @include font(18px, 1.2, 500, null);
+  @include font(12px, 1.2, 400, null);
+  @include tablet {
+    @include font(15px, 1.2, 400, null);
+  }
+  @include desktop {
+    @include font(17px, 1.2, 500, null);
+  }
+}
+
+// Style to beautiful show/hide modal-error
+
+.windov-modal.show-hide .error-modal {
+  animation: anim 3000ms linear;
+}
+
+@keyframes anim {
+  0% {
+    transform: translate(-50%, -200%);
+  }
+  10% {
+    transform: translate(-50%, 0);
+  }
+  90% {
+    transform: translate(-50%, 0);
+  }
+  100% {
+    transform: translate(-50%, -200%);
+  }
 }
