@@ -40,13 +40,17 @@ function onSubmit(e) {
 
   showLoader();
   // resetPage();
-  clearContainerGallery();
-  clearContainerPagination();
+//   clearContainerGallery();
+//   clearContainerPagination();
   getMoviesByKey(searchNameFilm)
     .then(res => {
       if (!res) {
         const text = langs.badQuery[languageSelect.value];
         notify(text);
+        
+        clearContainerGallery();
+        clearContainerPagination();
+        
         return;
       }
 
