@@ -8,6 +8,7 @@
   --primaryLightThemeBgColor: #0d0c0c;
   --secondaryLightThemeBgColor: #000000;
   --bg-select: #cccccc;
+  --accentDarkTheme: #ff6b02;
 }
 .theme-dark {
   .movie-card__poster {
@@ -19,6 +20,9 @@
       box-shadow: 0 0 40px rgba(146, 105, 76, 0.7);
       filter: saturate(165%);
     }
+  }
+  .navigation__page::after {
+    background-color: var(--accentDarkTheme);
   }
 }
 .switcher {
