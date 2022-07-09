@@ -16,6 +16,8 @@ export function notify(text) {
   if (modalError.classList.contains('show-hide')) {
     onAttentionClick();
   }
+  setTimeout(()=>{
+  
   modalError.classList.remove('is-hidden');
   modalError.classList.add('show-hide');
 
@@ -24,6 +26,8 @@ export function notify(text) {
   timeoutID = setTimeout(() => {
     hideError();
   }, delay);
+  
+  },0)
 }
 
 function hideError() {
