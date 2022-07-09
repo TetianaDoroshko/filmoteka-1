@@ -70,6 +70,13 @@ const langs = {
     ru: 'Жанр',
     uk: 'Жанр',
   },
+  
+  other: {
+    en: 'Other',
+    ru: 'Другое',
+    uk: 'Інше',
+  },
+
 
   about: {
     en: 'About',
