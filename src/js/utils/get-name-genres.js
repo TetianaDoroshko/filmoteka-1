@@ -21,7 +21,7 @@ const genresList = {};
 //   getGenres().then(data => makingGenresList(data));
 
 
- function makingGenresList(list) {
+export function makingGenresList(list) {
   
   list.genres.forEach(el => {
     genresList[el.id] = el.name;
