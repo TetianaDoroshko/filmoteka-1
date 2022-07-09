@@ -13,6 +13,9 @@ function onAttentionClick() {
 }
 
 export function notify(text) {
+  if (modalError.classList.contains('show-hide')) {
+    onAttentionClick();
+  }
   modalError.classList.remove('is-hidden');
 
   attentionText(text);
