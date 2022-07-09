@@ -2,7 +2,6 @@
   @include centrFlex;
 
   position: fixed;
-  padding: 20px 20px 48px 20px;
   top: 0;
   left: 0;
   width: 100%;
@@ -11,12 +10,21 @@
 
   overflow-y: auto;
 
-  @media screen and (max-width: 767px) {
-    align-items: flex-start;
+  align-items: start;
+  padding: 0 20px;
+
+  @include tablet {
+    align-items: center;
+
+    @media screen and (max-height: 477px) {
+      align-items: start;
+    }
   }
 
-  @media screen and (max-height: 634px) {
-    align-self: flex-start;
+  @include desktop {
+    @media screen and (max-height: 652px) {
+      align-items: start;
+    }
   }
 }
 
