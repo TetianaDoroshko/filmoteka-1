@@ -17,7 +17,8 @@ import { libraryHandler } from './btn-library';
 import { createPagination, clearContainerPagination } from './pagination';
 import { setSessionStorage } from './storage/session-storage';
 import storageConfig from './constants/storage-config';
-import { gettingGenresList } from './utils/get-name-genres';
+import { makingGenresList } from './utils/get-name-genres';
+import { getGenres } from './api-service/get-genres';
 
 // ===================================================
 showLoader();
@@ -26,10 +27,11 @@ window.addEventListener('DOMContentLoaded', createPage);
 async function createPage() {
   showLoader();
   clearContainerPagination();
-  await gettingGenresList();
-  const data = await getTrendingMovies();
+  
+  const data = await Promise.all([getGenres(),getTrendingMovies()]);
 
-  renderMovies(data);
+  makingGenresList(data[0])
+  renderMovies(data[1]);
   setSessionStorage(storageConfig.TRENDING);
   createPagination(data.total_pages, 1);
   hideLoader();
