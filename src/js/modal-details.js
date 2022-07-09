@@ -4,6 +4,7 @@
 // нужно при открытии вызывать функцию реализованую в файлах queue или watched которая проверяет
 // есть ли фильм в хранилище и подсвечивает кнопки.
 
+import { refs } from './refs/refs';
 import { getDetails } from './api-service/get-details';
 import { modalButtonsHandler } from './modal-details/watched';
 import { onOpenModal } from './open-close-modal-details';
