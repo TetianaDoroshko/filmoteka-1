@@ -17,6 +17,7 @@ import { libraryHandler } from './btn-library';
 import { createPagination, clearContainerPagination } from './pagination';
 import { setSessionStorage } from './storage/session-storage';
 import storageConfig from './constants/storage-config';
+import { gettingGenresList } from './utils/get-name-genres';
 
 // ===================================================
 showLoader();
@@ -25,6 +26,7 @@ window.addEventListener('DOMContentLoaded', createPage);
 async function createPage() {
   showLoader();
   clearContainerPagination();
+  await gettingGenresList();
   const data = await getTrendingMovies();
 
   renderMovies(data);

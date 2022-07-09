@@ -16,7 +16,10 @@
 import { getGenres } from '../api-service/get-genres';
 //========getting list of movies=====
 const genresList = {};
-getGenres().then(data => makingGenresList(data));
+
+export async function gettingGenresList() {
+  getGenres().then(data => makingGenresList(data));
+}
 
 function makingGenresList(list) {
   list.genres.forEach(el => {
