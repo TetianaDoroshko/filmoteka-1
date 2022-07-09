@@ -33,7 +33,7 @@ async function createPage() {
   makingGenresList(data[0])
   renderMovies(data[1]);
   setSessionStorage(storageConfig.TRENDING);
-  createPagination(data.total_pages, 1);
+  createPagination(data[1].total_pages, 1);
   hideLoader();
 
   // refs().libraryRef.homeBtn.setAttribute('style', 'pointer-events:none');
