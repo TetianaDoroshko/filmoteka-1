@@ -52,11 +52,13 @@
   @include tablet {
     width: 704px;
     padding: 40px 72px 40px 36px;
+    min-height: 552px;
   }
 
   @include desktop {
     width: 806px;
     padding: 50px 12px 40px 12px;
+    min-height: 558px;
   }
 }
 
@@ -101,7 +103,6 @@
 .film-details__image {
   width: 440px;
   height: auto;
-  // height: 357px;
   border-radius: 5px;
   flex-shrink: 0;
   object-fit: cover;
@@ -112,13 +113,13 @@
 
   @include tablet {
     width: 264px;
-    height: 395px;
+    min-height: 374px;
     margin-right: 68px;
   }
 
   @include desktop {
     width: 375px;
-    height: 560px;
+    min-height: 478px;
     margin-right: 16px;
   }
 }
