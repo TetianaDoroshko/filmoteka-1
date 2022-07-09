@@ -1,15 +1,20 @@
+import { refs } from '../refs/refs';
 import apiConfig from '../constants/api-config';
 import defaultImg1x from '../../images/img-default@1x.jpg';
 import defaultImg2x from '../../images/img-default@2x.jpg';
+import langs from '../language/language-map';
+
+const { languageSelect } = refs().panel;
 
 const { IMAGE_BASE_URL_1X, IMAGE_BASE_URL_2X } = apiConfig;
 
 export function createSingleMovieMarkup(movie) {
   let genres = movie.genres.map(el => el.name);
+  const otherText = langs.other[languageSelect.value]
   // console.log(genres);
 
   if (genres.length > 3) {
-    genres = [genres[0], genres[1], 'Other'].join(', ');
+    genres = [genres[0], genres[1], otherText].join(', ');
   } else {
     genres = genres.join(', ');
   }
