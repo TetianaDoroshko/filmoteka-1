@@ -26,7 +26,7 @@ export function createSingleMovieMarkup(movie, listOfGenres, movieYear) {
   return `<li class="gallery-card" data-id ="${movie.id}">
 <a href="#" class="gallery-card__link">
             <img srcset="${imgSrcset}"
-  src="${imgSrc}" alt="${movieName}"  class="gallery-card__image" >
+  src="${imgSrc}" alt="${movieName}"  class="gallery-card__image" loading="lazy">
   <div class="gallery-card__info">
 <p class="gallery-card__name">${movieName}</p>
 <p class="gallery-card__genre">${listOfGenres} | ${movieYear}</p>
