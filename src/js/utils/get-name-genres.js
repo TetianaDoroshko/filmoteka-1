@@ -13,7 +13,11 @@
 
 //!!!!!!!!! ОБЕ функции надо вызывать при старте
 
-import { getGenres } from '../api-service/get-genres';
+// import { getGenres } from '../api-service/get-genres';
+import { refs } from '../refs/refs';
+import langs from '../language/language-map';
+
+const { languageSelect } = refs().panel;
 //========getting list of movies=====
 const genresList = {};
 
@@ -30,6 +34,8 @@ export function makingGenresList(list) {
 
 export function getNameGenres(movie) {
   const genresName = [];
+  const otherText = langs.other[languageSelect.value]
+  
   if (movie.genre_ids) {
     movie.genre_ids.forEach(el => {
       if (genresList[el]) {
@@ -45,7 +51,7 @@ export function getNameGenres(movie) {
   }
   if (genresName.length > 3) {
     genresName.splice(3);
-    genresName[2] = 'Other';
+    genresName[2] = otherText;
   }
   //   console.log(genresName);
 
