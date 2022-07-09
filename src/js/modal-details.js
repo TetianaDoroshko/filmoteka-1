@@ -10,6 +10,9 @@ import { onOpenModal } from './open-close-modal-details';
 import { renderModalDetails } from './render/render-details';
 import { showLoader, hideLoader } from './loader/loader';
 import { notify } from './notify';
+import langs from './language/language-map';
+
+const { languageSelect } = refs().panel;
 
 export async function onFilmClick(event) {
   event.preventDefault();
@@ -28,7 +31,8 @@ export async function onFilmClick(event) {
     modalButtonsHandler(movieId);
     onOpenModal();
   } else {
-    notify('Oops, movie not found. Please, choose another movie');
+    const text = langs.notMovie[languageSelect.value]
+    notify(text);
   }
 
   hideLoader();
