@@ -19,7 +19,7 @@ import { setSessionStorage } from './storage/session-storage';
 import storageConfig from './constants/storage-config';
 import { makingGenresList } from './utils/get-name-genres';
 import { getGenres } from './api-service/get-genres';
-
+import { trendingHandler } from './btn-trending';
 // ===================================================
 showLoader();
 window.addEventListener('DOMContentLoaded', createPage);
@@ -27,10 +27,10 @@ window.addEventListener('DOMContentLoaded', createPage);
 async function createPage() {
   showLoader();
   clearContainerPagination();
-  
-  const data = await Promise.all([getGenres(),getTrendingMovies()]);
+  trendingHandler();
+  const data = await Promise.all([getGenres(), getTrendingMovies()]);
 
-  makingGenresList(data[0])
+  makingGenresList(data[0]);
   renderMovies(data[1]);
   setSessionStorage(storageConfig.TRENDING);
   createPagination(data[1].total_pages, 1);
@@ -59,6 +59,7 @@ function switchPageToHome() {
   refs().libraryRef.homeBtn.classList.add('current');
   refs().libraryRef.libBtn.classList.remove('current');
 
+  refs().trendingBtnsRef.trendingButtons.classList.remove('visually-hidden');
   // refs().libraryRef.homeBtn.setAttribute('style', 'pointer-events:none');
   // refs().libraryRef.libBtn.setAttribute('style', 'pointer-events:visible');
   // setStorage(key, value);
@@ -77,6 +78,7 @@ function switchPageToLibrary() {
   refs().libraryRef.libBtn.classList.add('current');
   refs().libraryRef.homeBtn.classList.remove('current');
 
+  refs().trendingBtnsRef.trendingButtons.classList.add('visually-hidden');
   // refs().libraryRef.libBtn.setAttribute('style', 'pointer-events:none');
   // refs().libraryRef.homeBtn.setAttribute('style', 'pointer-events:visible');
   clearContainerPagination();
