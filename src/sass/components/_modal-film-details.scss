@@ -1,28 +1,16 @@
 .modal {
   @include centrFlex;
 
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  width: 100vw;
-  height: 100vh;
-
-  overflow-y: auto;
-
   align-items: start;
-  padding: 0 20px;
+
+  @media screen and (max-width: 767px) {
+    padding: 20px 20px;
+  }
 
   @include tablet {
     align-items: center;
 
-    @media screen and (max-height: 477px) {
-      align-items: start;
-    }
-  }
-
-  @include desktop {
-    @media screen and (max-height: 652px) {
+    @media screen and (max-height: 578px) {
       align-items: start;
     }
   }
@@ -31,10 +19,6 @@
 .modal.is-hidden .modal-wrapper {
   transform: scale(1.1);
 }
-
-// body.show-modal .modal {
-//   transform: scale(1);
-// }
 
 .modal-wrapper {
   position: relative;
@@ -52,12 +36,12 @@
   @include tablet {
     width: 704px;
     padding: 40px 72px 40px 36px;
-    min-height: 552px;
+    min-height: 454px;
   }
 
   @include desktop {
     width: 806px;
-    padding: 50px 12px 40px 12px;
+    padding: 40px 12px;
     min-height: 558px;
   }
 }
@@ -97,12 +81,24 @@
   @include tablet {
     @include flex;
     align-items: flex-start;
+    justify-content: space-between;
+  }
+}
+
+.film-details__wrapper {
+  @include tablet {
+    width: 260px;
+  }
+
+  @include desktop {
+    width: 391px;
   }
 }
 
 .film-details__image {
   width: 440px;
   height: auto;
+  min-height: 374px;
   border-radius: 5px;
   flex-shrink: 0;
   object-fit: cover;
@@ -113,14 +109,12 @@
 
   @include tablet {
     width: 264px;
-    min-height: 374px;
-    margin-right: 68px;
+    height: 374px;
   }
 
   @include desktop {
     width: 375px;
-    min-height: 478px;
-    margin-right: 16px;
+    height: 478px;
   }
 }
 
@@ -215,34 +209,46 @@
 
 .film-details-btn__list {
   display: flex;
-
+  justify-content: center;
   @media screen and(max-width:360px) {
-    align-items: center;
     flex-direction: column;
+    align-items: center;
+  }
+
+  @include tablet {
+    justify-content: space-between;
+  }
+
+  @include desktop {
+    justify-content: flex-start;
   }
 }
 
 .film-details-btn__item {
-  margin-right: 15px;
-
   &:last-child {
-    margin-right: 0;
+    @media screen and(min-width:361px) {
+      margin-left: 20px;
+    }
 
     @media screen and(max-width:360px) {
       margin-top: 10px;
     }
-  }
 
-  @media screen and(max-width:360px) {
-    margin-right: 0;
+    @include tablet {
+      margin-left: 0;
+    }
+
+    @include desktop {
+      margin-left: 15px;
+    }
   }
 }
 
 .film-details-btn {
-  // width: 112px;
   width: 130px;
   min-height: 44px;
 
+  @include font(12px, 1.33, 500);
   text-align: center;
   text-transform: uppercase;
   border-radius: 5px;
