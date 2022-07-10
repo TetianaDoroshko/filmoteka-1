@@ -25,6 +25,7 @@
 
 .gallery-card__image {
   width: 100%;
+  min-height: 420px;
   //   height: 398px;
 
   object-fit: cover;
@@ -56,14 +57,21 @@
   }
 
   & .gallery-card__genre {
+    display: inline-flex;
+    flex-wrap: wrap;
+    align-items: center;
     color: var(--accentTextColor);
   }
   & .film-details__span--accent {
-    margin-left: 8px;
-    padding: 2px 11px;
+    @include flex(inline-flex, center, center);
+
+    @include font(12px, 1.33, 500);
+    min-width: 36px;
+    min-height: 16px;
 
     @include desktop {
-      font-size: 12px;
+      min-width: 40px;
+      min-height: 20px;
     }
   }
 }

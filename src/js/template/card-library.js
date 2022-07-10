@@ -10,7 +10,7 @@ const { IMAGE_BASE_URL_1X, IMAGE_BASE_URL_2X } = apiConfig;
 
 export function createSingleMovieMarkup(movie) {
   let genres = movie.genres.map(el => el.name);
-  const otherText = langs.other[languageSelect.value]
+  const otherText = langs.other[languageSelect.value];
   // console.log(genres);
 
   if (genres.length > 3) {
@@ -46,8 +46,11 @@ export function createSingleMovieMarkup(movie) {
         <p class="gallery-card__name">${movieName}</p>
         <p class="gallery-card__genre">${genres} | ${
     Number.parseInt(movie.release_date) || 'N/A'
-  }   <span class="film-details__span--accent">${movie.vote_average}</span>
+  }  &nbsp; <span class="film-details__span--accent">${
+    movie.vote_average
+  }</span>
         </p>
+        
       </div>
     </a>        
 	</li>`;
