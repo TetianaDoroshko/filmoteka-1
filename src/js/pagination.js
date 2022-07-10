@@ -281,4 +281,5 @@ function lockBtn() {
 
 export function clearContainerPagination() {
   container.innerHTML = '';
+  totalPage = 0;
 }
