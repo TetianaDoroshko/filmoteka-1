@@ -51,14 +51,14 @@ function onResize() {
   ) {
     paginationRef.container.classList.remove('desktop-js');
     paginationRef.container.classList.add('mobile-js');
-    createPagination(totalPage);
+    createPagination(totalPage, currentPage);
   } else if (
     window.matchMedia('(min-width: 768px)').matches &&
     !paginationRef.container.classList.contains('desktop-js')
   ) {
     paginationRef.container.classList.remove('mobile-js');
     paginationRef.container.classList.add('desktop-js');
-    createPagination(totalPage);
+    createPagination(totalPage, currentPage);
   }
 }
 
