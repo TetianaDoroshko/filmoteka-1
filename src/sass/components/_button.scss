@@ -16,7 +16,7 @@
   &.active,
   &:focus,
   &:hover {
-    border: 1px solid var(--accentBtnColor);
+    border-color: var(--accentBtnColor);
     background-color: var(--accentBtnColor);
     box-shadow: 0px 8px 25px rgba(255, 107, 1, 0.6);
   }
