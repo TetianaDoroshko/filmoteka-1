@@ -92,7 +92,10 @@
 }
 
 .trailer-btn {
+  @include centrFlex;
+
   position: absolute;
+
   top: 8px;
   left: 8px;
   width: 40px;

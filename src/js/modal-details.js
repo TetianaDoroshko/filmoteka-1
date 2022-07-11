@@ -18,7 +18,7 @@ import langs from './language/language-map';
 import { createIframe } from './modal-trailer';
 
 const { languageSelect } = refs().panel;
-const { image } = refs().filmDetailsRef;
+const { filmTrailerBtn } = refs().filmDetailsRef;
 
 export async function onFilmClick(event) {
   event.preventDefault();
@@ -54,9 +54,9 @@ function addListener(movieId) {
     createIframe(movieId);
   };
 
-  image.addEventListener('click', openModalTrailer);
+  filmTrailerBtn.addEventListener('click', openModalTrailer);
 }
 
 export function clearListener() {
-  image.removeEventListener('click', openModalTrailer);
+  filmTrailerBtn.removeEventListener('click', openModalTrailer);
 }
