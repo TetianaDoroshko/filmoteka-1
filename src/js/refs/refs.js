@@ -44,6 +44,7 @@ export function refs() {
       filmDetailsModalClose: document.querySelector(
         '[data-action="close-modal"]'
       ),
+      filmTrailerBtn: document.querySelector('[data-action="trailer"]'),
       modalBackdrop: document.querySelector('.modal'),
       filmDetailsModal: document.querySelector('.modal'),
       image: document.querySelector('.js-image'),
