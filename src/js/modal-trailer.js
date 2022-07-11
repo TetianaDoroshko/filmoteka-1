@@ -89,7 +89,7 @@ export async function createIframe(idMovie) {
   }
 
   const markup = `
-  <iframe width="800" height="420" src="https://www.youtube.com/embed/${trailer.key}"
+  <iframe width="854" height="480" src="https://www.youtube.com/embed/${trailer.key}"
     title="YouTube video player" frameborder="0"
     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
     allowfullscreen>
