@@ -87,6 +87,24 @@
   margin: auto;
 }
 
+.image-wrapper {
+  position: relative;
+}
+
+.trailer-btn {
+  @include centrFlex;
+
+  position: absolute;
+
+  top: 8px;
+  left: 8px;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  outline: none;
+  background-color: transparent;
+}
+
 .film-details {
   @include tablet {
     @include flex;

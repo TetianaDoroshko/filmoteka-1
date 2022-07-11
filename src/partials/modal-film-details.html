@@ -4,14 +4,26 @@
       data-action="close-modal"
       class="modal-btn"
       type="button"
-      aria-label="Закрыть модальное окно"
+      aria-label="Close modal"
     >
       <svg class="modal__icon icon" width="30" height="30">
         <use href="./images/sprite.svg#icon-close-modal"></use>
       </svg>
     </button>
     <article class="film-details">
-      <img class="film-details__image js-image" src="#" alt="#" />
+      <div class="image-wrapper">
+        <button
+          class="trailer-btn"
+          data-action="trailer"
+          type="button"
+          aria-label="Open trailer"
+        >
+          <svg class="trailer__icon icon" width="40" height="40">
+            <use href="./images/sprite.svg#icon-youtube"></use>
+          </svg>
+        </button>
+        <img class="film-details__image js-image" src="#" alt="#" />
+      </div>
       <!-- <img class="film-details__image js-image" src="#" alt="" /> -->
 
       <div class="film-details__wrapper">
