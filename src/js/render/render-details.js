@@ -30,20 +30,28 @@ export async function renderModalDetails(data) {
   filmDetailsRef.voteAverage.textContent = data.vote_average;
   filmDetailsRef.voteCount.textContent = data.vote_count;
   filmDetailsRef.popularity.textContent = Number(data.popularity.toFixed(1));
-  filmDetailsRef.originTitle.textContent = data.original_title;
 
-  // let genre = data.genres.map(genre => genre.name);
-  // const genreList = genre.slice(0, 2);
+  if (!data.original_title) {
+    filmDetailsRef.originTitle.textContent = 'No information';
+  } else {
+    filmDetailsRef.originTitle.textContent = data.original_title;
+  }
 
-  // if (genre.length > 2) {
-  //   genreList.push('Others');
-  // }
-  // genre = genreList.join(', ');
+  if (!data.overview) {
+    filmDetailsRef.about.textContent = 'No information';
+  } else {
+    filmDetailsRef.about.textContent = data.overview;
+  }
 
-  filmDetailsRef.genres.textContent = data.genres
-    .map(genre => genre.name)
-    .join(', ');
-  filmDetailsRef.about.textContent = data.overview;
+  const genre = data.genres.map(genre => genre.name);
+
+  if (genre.length === 0) {
+    filmDetailsRef.genres.textContent = 'No information';
+  } else {
+    filmDetailsRef.genres.textContent = data.genres
+      .map(genre => genre.name)
+      .join(', ');
+  }
 }
 
 export function clearImgSrc() {
