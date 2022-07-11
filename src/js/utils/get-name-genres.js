@@ -44,7 +44,7 @@ export function getNameGenres(movie) {
   }
 
   if (genresName.length === 0) {
-    genresName.push('');
+    genresName.push('Good Genre');
   }
   if (genresName.length > 3) {
     genresName.splice(3);

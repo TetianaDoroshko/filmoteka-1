@@ -41,7 +41,7 @@ function renderSingleMovie(movie) {
     movieYear = Number.parseInt(movie.release_date);
   } else if (movie.first_air_date) {
     movieYear = Number.parseInt(movie.first_air_date);
-  } else movieYear = '';
+  } else movieYear = 'Good Year';
 
   const SingleMovieMarkup = createSingleMovieMarkup(
     movie,
