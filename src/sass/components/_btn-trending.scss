@@ -26,7 +26,6 @@
   border-radius: 5px;
   color: var(--primaryTextLight);
   text-align: center;
-  cursor: pointer;
 
   .trending__input:not(:checked) + &.active,
   .trending__input:not(:checked) + &:focus,
@@ -34,6 +33,10 @@
     transform: scale(1.05);
     box-shadow: 0px 8px 43px rgba(255, 107, 1, 0.6);
     filter: drop-shadow(0px 8px 25px rgba(255, 107, 1, 0.6));
+  }
+
+  .trending__input:not(:checked) + & {
+    cursor: pointer;
   }
 }
 
