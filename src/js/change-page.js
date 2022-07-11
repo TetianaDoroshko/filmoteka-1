@@ -22,10 +22,13 @@ import {
 import storageConfig from './constants/storage-config';
 import { makingGenresList } from './utils/get-name-genres';
 import { getGenres } from './api-service/get-genres';
-import { trendingHandler } from './btn-trending';
+// import { trendingHandler } from './btn-trending';
 import { renderBySearch } from './search-movies';
 
 // ===================================================
+const { btnDay, btnWeek } = refs().trendingBtnsRef;
+let isWeekOrDay = 'day';
+
 showLoader();
 window.addEventListener('DOMContentLoaded', getPage);
 
@@ -40,6 +43,15 @@ async function getPage() {
     setSessionStorage(storageConfig.TRENDING);
     switchPageToHome(page);
   } else if (savedPage[storageConfig.TRENDING]) {
+    if (savedPage[storageConfig.TRENDING] === 'day') {
+      btnDay.checked = true;
+      isWeekOrDay = 'day';
+    } else if (savedPage[storageConfig.TRENDING] === 'week') {
+      isWeekOrDay = 'week';
+      btnWeek.checked = true;
+    }
+    console.log(isWeekOrDay);
+
     switchPageToHome(page);
   } else if (savedPage[storageConfig.LIBRARY]) {
     if (savedPage[storageConfig.LIBRARY] === 'watched') {
@@ -52,6 +64,10 @@ async function getPage() {
     }
   } else if (savedPage[storageConfig.BY_KEY]) {
     const query = savedPage[storageConfig.BY_KEY];
+
+    btnDay.checked = false;
+    btnWeek.checked = false;
+
     renderBySearch(query, page);
   }
 }
@@ -64,13 +80,16 @@ async function createPage(currentPage) {
   showLoader();
   clearContainerPagination();
 
-  trendingHandler();
+  if (btnDay.checked) {
+    setSessionStorage(storageConfig.TRENDING, 'day');
+  } else if (btnWeek.checked) {
+    setSessionStorage(storageConfig.TRENDING, 'week');
+  }
 
-  setSessionStorage(storageConfig.TRENDING);
-  console.log(currentPage);
+  console.log(isWeekOrDay);
 
   // const page = getPage(currentPage);
-
+  // trendingHandler();
   const data = await getTrendingMovies(currentPage);
 
   renderMovies(data);

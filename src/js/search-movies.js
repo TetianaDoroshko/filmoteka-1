@@ -15,6 +15,7 @@ import langs from './language/language-map';
 const { languageSelect } = refs().panel;
 const { moviesDiv } = refs().galleryRef;
 const { searchForm } = refs().searchRef;
+const { btnDay, btnWeek } = refs().trendingBtnsRef;
 // const { modalError } = refs().modalErrorRef;
 // const { modalErrorText } = refs().modalErrorRef;
 
@@ -37,6 +38,9 @@ function onSubmit(e) {
     const text = langs.emptySearch[languageSelect.value];
     return notify(text);
   }
+
+  btnDay.checked = false;
+  btnWeek.checked = false;
 
   renderBySearch(searchNameFilm, 1, true);
 
