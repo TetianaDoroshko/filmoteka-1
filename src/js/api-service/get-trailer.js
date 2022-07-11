@@ -50,23 +50,23 @@ console.log(getTrailer(560057));
 //   offTrailer = 'n4rhAy3ueVE'; //cats video
 // } else {
 //   // let offTrailer;
-//   const trailerResult = trailer.results.find(trailer => {
-//     if (
-//       trailer.name.includes('Official') ||
-//       trailer.name.includes('Trailer') ||
-//       trailer.name.includes('official') ||
-//       trailer.name.includes('trailer')
-//     ) {
-//       return trailer;
-//     } else if (
-//       trailer.name.includes('teaser') ||
-//       trailer.name.includes('Teaser')
-//     ) {
-//       return trailer;
-//     } else if (trailer.type === 'Trailer') {
-//       return trailer;
-//     }
-//   });
+// const trailerResult = trailer.results.find(trailer => {
+//   if (
+//     trailer.name.includes('Official') ||
+//     trailer.name.includes('Trailer') ||
+//     trailer.name.includes('official') ||
+//     trailer.name.includes('trailer')
+//   ) {
+//     return trailer;
+//   } else if (
+//     trailer.name.includes('teaser') ||
+//     trailer.name.includes('Teaser')
+//   ) {
+//     return trailer;
+//   } else if (trailer.type === 'Trailer') {
+//     return trailer;
+//   }
+// });
 
 //   console.log(trailerResult.key);
 //   offTrailer = trailerResult.key;
