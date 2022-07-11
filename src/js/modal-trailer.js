@@ -34,19 +34,19 @@ function onCloseModalByEscape(event) {
 export async function createIframe(idMovie) {
   showLoader();
   const dataTrailer = await getTrailer(idMovie);
-  // console.log(dataTrailer);
 
-  const trailerKey = dataTrailer.results.find(el => el.key).key;
-  // console.log(trailerKey);
+  const trailerKey = dataTrailer.results.find(el => el.key);
+  console.log(trailerKey);
 
   if (!trailerKey) {
     notify('Sorry, trailer not fount');
     hideLoader();
     return;
   }
+  console.log('yaya');
 
   const markup = `
-  <iframe width="800" height="420" src="https://www.youtube.com/embed/${trailerKey}"
+  <iframe width="800" height="420" src="https://www.youtube.com/embed/${trailerKey.key}"
     title="YouTube video player" frameborder="0"
     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
     allowfullscreen>

@@ -5,6 +5,7 @@ import { refs } from './refs/refs';
 import { clearImgSrc } from './render/render-details';
 import { onFilmClick } from './modal-details';
 import { bodyLock, bodyUnlock } from './utils/body-lock';
+import { clearListener } from './modal-details';
 const { filmDetailsRef } = refs();
 const { image } = refs().filmDetailsRef;
 
@@ -22,6 +23,7 @@ function onCloseModal() {
   window.removeEventListener('keydown', onCloseModalByEscape);
   filmDetailsRef.filmDetailsModal.classList.add('is-hidden');
   clearImgSrc();
+  clearListener();
   bodyUnlock(250);
 }
 

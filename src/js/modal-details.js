@@ -44,5 +44,19 @@ export async function onFilmClick(event) {
 
   hideLoader();
 
-  image.addEventListener('click', () => createIframe(movieId));
+  addListener(movieId);
+}
+
+let openModalTrailer;
+
+function addListener(movieId) {
+  openModalTrailer = () => {
+    createIframe(movieId);
+  };
+
+  image.addEventListener('click', openModalTrailer);
+}
+
+export function clearListener() {
+  image.removeEventListener('click', openModalTrailer);
 }
