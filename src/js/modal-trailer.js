@@ -2,6 +2,9 @@ import { refs } from './refs/refs';
 import { notify } from './notify';
 import { getTrailer } from './api-service/get-trailer';
 import { showLoader, hideLoader } from './loader/loader';
+import langs from './language/language-map';
+
+const { languageSelect } = refs().panel;
 
 const { modalTrailerRef } = refs();
 
@@ -94,7 +97,9 @@ export async function createIframe(idMovie) {
   const trailer = trailerName || teaserName || trailerType || teaserType || any;
 
   if (!trailer) {
-    notify('Sorry, trailer not found');
+    const text = langs.trailer[languageSelect.value];
+
+    notify(text);
     hideLoader();
     return;
   }

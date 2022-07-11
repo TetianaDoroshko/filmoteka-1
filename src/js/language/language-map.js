@@ -70,13 +70,12 @@ const langs = {
     ru: 'Жанр',
     uk: 'Жанр',
   },
-  
+
   other: {
     en: 'Other',
     ru: 'Другое',
     uk: 'Інше',
   },
-
 
   about: {
     en: 'About',
@@ -121,13 +120,13 @@ const langs = {
     ru: 'Поиск фильмов',
     uk: 'Пошук фільмів',
   },
-  
+
   notMovie: {
     en: 'Oops, movie not found. Please, choose another movie',
     ru: 'Упс, фильм не найден. Пожалуйста, выберите другой фильм',
     uk: 'На жаль, фільм не знайдено. Будь ласка, виберіть інший фільм',
   },
-  
+
   group: {
     en: 'Group',
     ru: 'Группа',
@@ -225,6 +224,38 @@ const langs = {
     en: 'Developer',
     ru: 'Разработчик',
     uk: 'Розробник',
+  },
+  trday: { en: 'Day', ru: 'День', uk: 'День' },
+  trweek: { en: 'Week', ru: 'Неделя', uk: 'Неділя' },
+  emptyWatched1: {
+    en: "You don't have any movies you've watched.",
+    ru: 'У вас еще нет фильмов, которые вы смотрели.',
+    uk: 'Ви ще не маєте фільмів, які ви дивилися.',
+  },
+  emptyWatched2: {
+    en: 'Add the first one.',
+    ru: 'Добавьте свой первый фильм.',
+    uk: 'Додайте свій перший фільм.',
+  },
+  emptyQueue1: {
+    en: "You don't have any movies in the queue.",
+    ru: 'У вас еще нет фильмов в очереди, для просмотра.',
+    uk: 'У вас ще немає фільмів у черзі, для перегляду.',
+  },
+  emptyQueue2: {
+    en: 'Add the first one.',
+    ru: 'Добавьте свой первый фильм.',
+    uk: 'Додайте свій перший фільм.',
+  },
+  trailer: {
+    en: 'Sorry, trailer not found',
+    ru: 'Извините, трейлер не найден',
+    uk: 'Вибачте, трейлер не знайдено',
+  },
+  detailsNotFound: {
+    en: 'No information',
+    ru: 'Нету информации',
+    uk: 'Інформації немає',
   },
 };
 
