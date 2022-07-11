@@ -46,7 +46,7 @@ export async function createIframe(idMovie) {
   for (let i = 0; i < 3; i += 1) {
     dataTrailer = await getTrailer(idMovie, langs[i]);
 
-    console.log(dataTrailer.results);
+    // console.log(dataTrailer.results);
 
     if (dataTrailer.results.length > 0) {
       break;

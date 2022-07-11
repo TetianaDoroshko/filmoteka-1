@@ -36,7 +36,7 @@ export function createSingleMovieMarkup(movie) {
   const movieName =
     movie.title || movie.name || movie.original_name || movie.original_title;
 
-  console.log(movie);
+  // console.log(movie);
   return `
   <li class="gallery-card" data-id ="${movie.id}">
     <a href="#" class="gallery-card__item">

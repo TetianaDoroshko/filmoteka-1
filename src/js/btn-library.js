@@ -26,19 +26,19 @@ let arrayOfPromises;
 
 export function libraryHandler(page, isWatchedOrQueue) {
   addListenersBtnLib();
-  console.log(isWatchedOrQueue);
+  // console.log(isWatchedOrQueue);
 
   if (isWatchedOrQueue === 'watched') {
     showWatchedMovies(page);
     btnWatched.classList.add('active');
-    console.log('1');
+    // console.log('1');
   } else if (isWatchedOrQueue === 'queue') {
     showQueueOfMovies(page);
-    console.log('2');
+    // console.log('2');
   } else {
     showWatchedMovies(page);
     btnWatched.classList.add('active');
-    console.log('3');
+    // console.log('3');
   }
 }
 

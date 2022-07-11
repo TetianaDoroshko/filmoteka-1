@@ -50,16 +50,16 @@ async function getPage() {
       isWeekOrDay = 'week';
       btnWeek.checked = true;
     }
-    console.log(isWeekOrDay);
+    // console.log(isWeekOrDay);
 
     switchPageToHome(page);
   } else if (savedPage[storageConfig.LIBRARY]) {
     if (savedPage[storageConfig.LIBRARY] === 'watched') {
-      console.log('watched');
+      // console.log('watched');
 
       switchPageToLibrary(page, 'watched');
     } else if (savedPage[storageConfig.LIBRARY] === 'queue') {
-      console.log('queue');
+      // console.log('queue');
       switchPageToLibrary(page, 'queue');
     }
   } else if (savedPage[storageConfig.BY_KEY]) {
@@ -86,7 +86,7 @@ async function createPage(currentPage) {
     setSessionStorage(storageConfig.TRENDING, 'week');
   }
 
-  console.log(isWeekOrDay);
+  // console.log(isWeekOrDay);
 
   // const page = getPage(currentPage);
   // trendingHandler();
