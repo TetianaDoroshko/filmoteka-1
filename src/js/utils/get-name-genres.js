@@ -21,12 +21,9 @@ const { languageSelect } = refs().panel;
 //========getting list of movies=====
 const genresList = {};
 
-
 //   getGenres().then(data => makingGenresList(data));
 
-
 export function makingGenresList(list) {
-  
   list.genres.forEach(el => {
     genresList[el.id] = el.name;
   });
@@ -34,8 +31,8 @@ export function makingGenresList(list) {
 
 export function getNameGenres(movie) {
   const genresName = [];
-  const otherText = langs.other[languageSelect.value]
-  
+  const otherText = langs.other[languageSelect.value];
+
   if (movie.genre_ids) {
     movie.genre_ids.forEach(el => {
       if (genresList[el]) {
@@ -43,11 +40,11 @@ export function getNameGenres(movie) {
       }
     });
   } else {
-    genresName.push('N/A');
+    genresName.push('');
   }
 
   if (genresName.length === 0) {
-    genresName.push('N/A');
+    genresName.push('');
   }
   if (genresName.length > 3) {
     genresName.splice(3);

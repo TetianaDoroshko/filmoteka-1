@@ -75,6 +75,11 @@ export function refs() {
     upArrowRef: {
       upArrow: document.querySelector('.to-top-button'),
     },
+
+    modalTrailerRef: {
+      modalTrailer: document.querySelector('.js-trailer'),
+    },
+    
     trendingBtnsRef: {
       btnDay: document.querySelector('#day'),
       btnWeek: document.querySelector('#week'),
