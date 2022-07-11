@@ -54,12 +54,20 @@ export function clearImgSrc() {
 export async function renderModalBackdrop(data) {
   const { IMAGE_BASE_URL_2X } = apiConfig;
   if (data.backdrop_path) {
-    filmDetailsRef.modalBackdrop.style.cssText = `background-image: url(${IMAGE_BASE_URL_2X}${data.backdrop_path});
-      background-position: center;
-      background-size: cover;`;
+    // filmDetailsRef.modalBackdrop.style.cssText = `background-image: url(${IMAGE_BASE_URL_2X}${data.backdrop_path});
+    //   background-position: center;
+    //   background-size: cover;`;
+    filmDetailsRef.modalBackdrop.style.setProperty(
+      '--defaultBackdrop',
+      `url(${IMAGE_BASE_URL_2X}${data.backdrop_path})`
+    );
   } else {
-    filmDetailsRef.modalBackdrop.style.cssText = `background-image: url(${backdropDefault});
-      background-position: center;
-      background-size: cover;`;
+    // filmDetailsRef.modalBackdrop.style.cssText = `background-image: url(${backdropDefault});
+    //   background-position: center;
+    //   background-size: cover;`;
+    filmDetailsRef.modalBackdrop.style.setProperty(
+      '--defaultBackdrop',
+      `url(${backdropDefault})`
+    );
   }
 }
