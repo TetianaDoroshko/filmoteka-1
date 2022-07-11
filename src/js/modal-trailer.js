@@ -50,11 +50,7 @@ export async function createIframe(idMovie) {
 
     const isIquel = findArr.some(el => nameNormalized.includes(el));
 
-    if (isIquel) {
-      return true;
-    } else {
-      return false;
-    }
+    return isIquel;
   });
 
   const teaserName = dataTrailer.results.find(trailer => {
@@ -63,33 +59,21 @@ export async function createIframe(idMovie) {
 
     const isIquel = findArr.some(el => nameNormalized.includes(el));
 
-    if (isIquel) {
-      return true;
-    } else {
-      return false;
-    }
+    return isIquel;
   });
 
   const trailerType = dataTrailer.results.find(trailer => {
     const nameNormalized = trailer.type.toLowerCase();
     const find = 'trailer';
 
-    if (nameNormalized === find) {
-      return true;
-    } else {
-      return false;
-    }
+    return nameNormalized === find;
   });
 
   const teaserType = dataTrailer.results.find(trailer => {
     const nameNormalized = trailer.type.toLowerCase();
     const find = 'teaser';
 
-    if (nameNormalized === find) {
-      return true;
-    } else {
-      return false;
-    }
+    return nameNormalized === find;
   });
 
   const any = dataTrailer.results.find(el => el.key);
