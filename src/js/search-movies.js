@@ -15,6 +15,7 @@ import langs from './language/language-map';
 const { languageSelect } = refs().panel;
 const { moviesDiv } = refs().galleryRef;
 const { searchForm } = refs().searchRef;
+const { btnDay, btnWeek } = refs().trendingBtnsRef;
 // const { modalError } = refs().modalErrorRef;
 // const { modalErrorText } = refs().modalErrorRef;
 
@@ -68,6 +69,9 @@ export function renderBySearch(searchNameFilm, page, isScroll) {
 
         return;
       }
+
+      btnDay.checked = false;
+      btnWeek.checked = false;
 
       setSessionStorage(storageConfig.BY_KEY, searchNameFilm);
       createPagination(res.total_pages, page);

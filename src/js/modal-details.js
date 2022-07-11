@@ -8,7 +8,10 @@ import { refs } from './refs/refs';
 import { getDetails } from './api-service/get-details';
 import { modalButtonsHandler } from './modal-details/watched';
 import { onOpenModal } from './open-close-modal-details';
-import { renderModalDetails } from './render/render-details';
+import {
+  renderModalDetails,
+  renderModalBackdrop,
+} from './render/render-details';
 import { showLoader, hideLoader } from './loader/loader';
 import { notify } from './notify';
 import langs from './language/language-map';
@@ -31,6 +34,7 @@ export async function onFilmClick(event) {
 
   if (data) {
     renderModalDetails(data);
+    renderModalBackdrop(data);
     modalButtonsHandler(movieId);
     onOpenModal();
   } else {

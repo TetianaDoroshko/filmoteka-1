@@ -3,6 +3,7 @@ import apiConfig from '../constants/api-config';
 import { getDetails } from '../api-service/get-details';
 import defaultImg1x from '../../images/img-default@1x.jpg';
 import defaultImg2x from '../../images/img-default@2x.jpg';
+import backdropDefault from '../../images/backdropDefault.jpg';
 
 const { filmDetailsRef } = refs();
 
@@ -30,23 +31,51 @@ export async function renderModalDetails(data) {
   filmDetailsRef.voteAverage.textContent = data.vote_average;
   filmDetailsRef.voteCount.textContent = data.vote_count;
   filmDetailsRef.popularity.textContent = Number(data.popularity.toFixed(1));
-  filmDetailsRef.originTitle.textContent = data.original_title;
 
-  // let genre = data.genres.map(genre => genre.name);
-  // const genreList = genre.slice(0, 2);
+  if (!data.original_title) {
+    filmDetailsRef.originTitle.textContent = 'No information';
+  } else {
+    filmDetailsRef.originTitle.textContent = data.original_title;
+  }
 
-  // if (genre.length > 2) {
-  //   genreList.push('Others');
-  // }
-  // genre = genreList.join(', ');
+  if (!data.overview) {
+    filmDetailsRef.about.textContent = 'No information';
+  } else {
+    filmDetailsRef.about.textContent = data.overview;
+  }
 
-  filmDetailsRef.genres.textContent = data.genres
-    .map(genre => genre.name)
-    .join(', ');
-  filmDetailsRef.about.textContent = data.overview;
+  const genre = data.genres.map(genre => genre.name);
+
+  if (genre.length === 0) {
+    filmDetailsRef.genres.textContent = 'No information';
+  } else {
+    filmDetailsRef.genres.textContent = data.genres
+      .map(genre => genre.name)
+      .join(', ');
+  }
 }
 
 export function clearImgSrc() {
   filmDetailsRef.image.src = '#';
   filmDetailsRef.image.srcset = '#';
+}
+export async function renderModalBackdrop(data) {
+  const { IMAGE_BASE_URL_2X } = apiConfig;
+  if (data.backdrop_path) {
+    // filmDetailsRef.modalBackdrop.style.cssText = `background-image: url(${IMAGE_BASE_URL_2X}${data.backdrop_path});
+    //   background-position: center;
+    //   background-size: cover;`;
+    filmDetailsRef.modalBackdrop.style.setProperty(
+      '--defaultBackdrop',
+      `url(${IMAGE_BASE_URL_2X}${data.backdrop_path})`
+    );
+  } else {
+    // filmDetailsRef.modalBackdrop.style.cssText = `background-image: url(${backdropDefault});
+    //   background-position: center;
+    //   background-size: cover;`;
+    filmDetailsRef.modalBackdrop.style.setProperty(
+      '--defaultBackdrop',
+      `url(${backdropDefault})`
+    );
+  }
 }
