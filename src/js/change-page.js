@@ -22,6 +22,7 @@ import {
 import storageConfig from './constants/storage-config';
 import { makingGenresList } from './utils/get-name-genres';
 import { getGenres } from './api-service/get-genres';
+import { trendingHandler } from './btn-trending';
 import { renderBySearch } from './search-movies';
 
 // ===================================================
@@ -62,6 +63,9 @@ async function createPage(currentPage) {
 
   showLoader();
   clearContainerPagination();
+
+  trendingHandler();
+
   setSessionStorage(storageConfig.TRENDING);
   console.log(currentPage);
 
@@ -100,6 +104,7 @@ function switchPageToHome(currentPage) {
   refs().libraryRef.homeBtn.classList.add('current');
   refs().libraryRef.libBtn.classList.remove('current');
 
+  refs().trendingBtnsRef.trendingButtons.classList.remove('visually-hidden');
   // refs().libraryRef.homeBtn.setAttribute('style', 'pointer-events:none');
   // refs().libraryRef.libBtn.setAttribute('style', 'pointer-events:visible');
   // setStorage(key, value);
@@ -121,6 +126,7 @@ function switchPageToLibrary(currentPage, isWatchedOrQueue) {
   refs().libraryRef.libBtn.classList.add('current');
   refs().libraryRef.homeBtn.classList.remove('current');
 
+  refs().trendingBtnsRef.trendingButtons.classList.add('visually-hidden');
   // refs().libraryRef.libBtn.setAttribute('style', 'pointer-events:none');
   // refs().libraryRef.homeBtn.setAttribute('style', 'pointer-events:visible');
   clearContainerPagination();

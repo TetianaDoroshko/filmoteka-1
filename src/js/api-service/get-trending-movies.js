@@ -2,6 +2,7 @@ import apiConfig from '../constants/api-config';
 import { refs } from '../refs/refs';
 
 const { languageSelect } = refs().panel;
+const btnDay = refs().trendingBtnsRef.btnDay;
 
 let lang;
 
@@ -13,10 +14,17 @@ if (languageSelect.value === 'en') {
   lang = 'ru-RU';
 }
 
-const { API_KEY, API_BASE_URL, TRENDING_PATH_PARAMS } = apiConfig;
+const {
+  API_KEY,
+  API_BASE_URL,
+  TRENDING_PATH_PARAMS_DAY,
+  TRENDING_PATH_PARAMS_WEEK,
+} = apiConfig;
 
 export async function getTrendingMovies(page = 1) {
-  const url = new URL(API_BASE_URL + TRENDING_PATH_PARAMS);
+  const url = btnDay.checked
+    ? new URL(API_BASE_URL + TRENDING_PATH_PARAMS_DAY)
+    : new URL(API_BASE_URL + TRENDING_PATH_PARAMS_WEEK);
   url.searchParams.set('api_key', API_KEY);
   url.searchParams.set('page', page);
   url.searchParams.set('language', lang);

@@ -74,5 +74,10 @@ export function refs() {
     upArrowRef: {
       upArrow: document.querySelector('.to-top-button'),
     },
+    trendingBtnsRef: {
+      btnDay: document.querySelector('#day'),
+      btnWeek: document.querySelector('#week'),
+      trendingButtons: document.querySelector('.trending'),
+    },
   };
 }
