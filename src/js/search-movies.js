@@ -38,38 +38,53 @@ function onSubmit(e) {
     return notify(text);
   }
 
-  showLoader();
-  // resetPage();
-//   clearContainerGallery();
-//   clearContainerPagination();
-  getMoviesByKey(searchNameFilm)
-    .then(res => {
-      if (!res) {
-        const text = langs.badQuery[languageSelect.value];
-        notify(text);
-        
-        clearContainerGallery();
-        clearContainerPagination();
-        
-        return;
-      }
+  renderBySearch(searchNameFilm, 1, true);
 
-      setSessionStorage(storageConfig.BY_KEY, searchNameFilm);
-      createPagination(res.total_pages, 1);
-      renderMovies(res);
-      scroll();
-    })
-    .finally(hideLoader);
-  clearInput();
+  // resetPage();
+  //   clearContainerGallery();
+  //   clearContainerPagination();
+
   // console.log(clearInput);
 }
 
 // function resetPage() {
 //   page = 1;
 // }
-function clearContainerGallery() {
-  moviesDiv.innerHTML = '';
+
+export function renderBySearch(searchNameFilm, page, isScroll) {
+  if (!page) {
+    page = 1;
+  }
+  showLoader();
+
+  getMoviesByKey(searchNameFilm, page)
+    .then(res => {
+      if (!res) {
+        const text = langs.badQuery[languageSelect.value];
+        notify(text);
+
+        // clearContainerGallery();
+        // clearContainerPagination();
+
+        return;
+      }
+
+      setSessionStorage(storageConfig.BY_KEY, searchNameFilm);
+      createPagination(res.total_pages, page);
+      renderMovies(res);
+
+      if (isScroll) {
+        scroll();
+      }
+    })
+    .finally(hideLoader);
+
+  clearInput();
 }
+
+// function clearContainerGallery() {
+//   moviesDiv.innerHTML = '';
+// }
 
 function clearInput() {
   searchForm.elements.searchQuery.value = '';

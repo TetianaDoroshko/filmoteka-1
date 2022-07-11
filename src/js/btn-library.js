@@ -21,11 +21,22 @@ const btnQueue = refs().libraryButtonsRef.btnQueue;
 const gallery = refs().galleryRef.moviesDiv;
 let arrayOfPromises;
 
-export function libraryHandler() {
+export function libraryHandler(page, isWatchedOrQueue) {
   addListenersBtnLib();
-  showWatchedMovies();
-  setSessionStorage(storageConfig.LIBRARY);
-  btnWatched.classList.add('active');
+  console.log(isWatchedOrQueue);
+
+  if (isWatchedOrQueue === 'watched') {
+    showWatchedMovies(page);
+    btnWatched.classList.add('active');
+    console.log('1');
+  } else if (isWatchedOrQueue === 'queue') {
+    showQueueOfMovies(page);
+    console.log('2');
+  } else {
+    showWatchedMovies(page);
+    btnWatched.classList.add('active');
+    console.log('3');
+  }
 }
 
 function addListenersBtnLib() {
@@ -44,6 +55,7 @@ export async function showWatchedMovies(page) {
   btnQueue.classList.remove('active');
   btnWatched.classList.add('active');
   clearContainerPagination();
+  setSessionStorage(storageConfig.LIBRARY, 'watched');
   updatePageSessionStorage(currentPage);
 
   // gallery.innerHTML = '';
@@ -52,6 +64,7 @@ export async function showWatchedMovies(page) {
   if (!movieSetId || movieSetId.length === 0) {
     gallery.innerHTML =
       "<p class='gallery__info'>You don't have any movies you've watched.</p><p class='gallery__info'>Add the first one.</p>";
+    hideLoader();
   } else {
     showLoader();
 
@@ -81,6 +94,7 @@ export async function showQueueOfMovies(page) {
   btnQueue.classList.add('active');
   btnWatched.classList.remove('active');
   clearContainerPagination();
+  setSessionStorage(storageConfig.LIBRARY, 'queue');
   updatePageSessionStorage(currentPage);
 
   // gallery.innerHTML = '';
@@ -90,6 +104,7 @@ export async function showQueueOfMovies(page) {
   if (!movieSetId || movieSetId.length === 0) {
     gallery.innerHTML =
       "<p class='gallery__info'>You don't have any movies in the queue.</p><p class='gallery__info'>Add the first one.</p>";
+    hideLoader();
   } else {
     showLoader();
     arrayOfPromises = await Promise.all(createPromises(movieSetId));
