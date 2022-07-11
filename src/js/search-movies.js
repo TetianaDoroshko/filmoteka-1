@@ -39,9 +39,6 @@ function onSubmit(e) {
     return notify(text);
   }
 
-  btnDay.checked = false;
-  btnWeek.checked = false;
-
   renderBySearch(searchNameFilm, 1, true);
 
   // resetPage();
@@ -72,6 +69,9 @@ export function renderBySearch(searchNameFilm, page, isScroll) {
 
         return;
       }
+
+      btnDay.checked = false;
+      btnWeek.checked = false;
 
       setSessionStorage(storageConfig.BY_KEY, searchNameFilm);
       createPagination(res.total_pages, page);
