@@ -21,3 +21,4 @@ import './js/modal-details/watched';
 import './js/to-top-btn';
 import './js/storage/storage-settings';
 import './js/btn-trending';
+import './js/auth';

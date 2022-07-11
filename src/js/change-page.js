@@ -24,6 +24,7 @@ import { makingGenresList } from './utils/get-name-genres';
 import { getGenres } from './api-service/get-genres';
 // import { trendingHandler } from './btn-trending';
 import { renderBySearch } from './search-movies';
+import { authorizate } from './auth';
 
 // ===================================================
 const { btnDay, btnWeek } = refs().trendingBtnsRef;
@@ -132,22 +133,28 @@ function switchPageToHome(currentPage) {
 
 // ====================================================
 
-function switchPageToLibrary(currentPage, isWatchedOrQueue) {
-  if (typeof currentPage !== 'number') {
-    currentPage = 1;
+async function switchPageToLibrary(currentPage, isWatchedOrQueue) {
+  if (await authorizate()) {
+    if (typeof currentPage !== 'number') {
+      currentPage = 1;
+    }
+    refs().headerRef.header.classList.remove('header--home');
+    refs().headerRef.header.classList.add('header--library');
+
+    refs().headerRef.searchForm.classList.add('display-none');
+    refs().libraryButtonsRef.btnContainer.classList.remove('display-none');
+
+    refs().libraryRef.libBtn.classList.add('current');
+    refs().libraryRef.homeBtn.classList.remove('current');
+
+    refs().trendingBtnsRef.trendingButtons.classList.add('visually-hidden');
+    // refs().libraryRef.libBtn.setAttribute('style', 'pointer-events:none');
+    // refs().libraryRef.homeBtn.setAttribute('style', 'pointer-events:visible');
+    clearContainerPagination();
+    libraryHandler(currentPage, isWatchedOrQueue);
+  } else {
+    refs().galleryRef.moviesDiv.innerHTML =
+      '<p>Needs authorization to see the content</p>';
+    switchPageToHome();
   }
-  refs().headerRef.header.classList.remove('header--home');
-  refs().headerRef.header.classList.add('header--library');
-
-  refs().headerRef.searchForm.classList.add('display-none');
-  refs().libraryButtonsRef.btnContainer.classList.remove('display-none');
-
-  refs().libraryRef.libBtn.classList.add('current');
-  refs().libraryRef.homeBtn.classList.remove('current');
-
-  refs().trendingBtnsRef.trendingButtons.classList.add('visually-hidden');
-  // refs().libraryRef.libBtn.setAttribute('style', 'pointer-events:none');
-  // refs().libraryRef.homeBtn.setAttribute('style', 'pointer-events:visible');
-  clearContainerPagination();
-  libraryHandler(currentPage, isWatchedOrQueue);
 }
