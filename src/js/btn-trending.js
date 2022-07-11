@@ -8,17 +8,20 @@ import { createPagination, clearContainerPagination } from './pagination';
 
 const trendingButtons = refs().trendingBtnsRef.trendingButtons;
 
-export function trendingHandler() {
-  trendingButtons.addEventListener('change', changeTrending);
-}
+trendingButtons.addEventListener('change', changeTrending);
 
 async function changeTrending(e) {
   if (e.target.nodeName === 'INPUT') {
     showLoader();
     const data = await getTrendingMovies();
+    let query;
+
+    if (e.target.checked) {
+      query = e.target.value;
+    }
 
     renderMovies(data);
-    setSessionStorage(storageConfig.TRENDING);
+    setSessionStorage(storageConfig.TRENDING, query);
     createPagination(data.total_pages, 1);
     hideLoader();
   }
