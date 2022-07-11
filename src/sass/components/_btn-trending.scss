@@ -26,6 +26,8 @@
   border-radius: 5px;
   color: var(--primaryTextLight);
   text-align: center;
+  transition: transform var(--timingFunction), box-shadow var(--timingFunction),
+    filter var(--timingFunction);
 
   .trending__input:not(:checked) + &.active,
   .trending__input:not(:checked) + &:focus,
