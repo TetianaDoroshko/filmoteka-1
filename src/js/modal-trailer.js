@@ -36,7 +36,22 @@ function onCloseModalByEscape(event) {
 
 export async function createIframe(idMovie) {
   showLoader();
-  const dataTrailer = await getTrailer(idMovie);
+  const arrLangs = ['en-US', 'uk-UA', 'ru-RU'];
+  const currentLang = arrLangs.find(el => el.includes(languageSelect.value));
+  const withoutCurrent = arrLangs.filter(el => el !== currentLang);
+  const langs = [currentLang, ...withoutCurrent];
+
+  let dataTrailer;
+
+  for (let i = 0; i < 3; i += 1) {
+    dataTrailer = await getTrailer(idMovie, langs[i]);
+
+    console.log(dataTrailer.results);
+
+    if (dataTrailer.results.length > 0) {
+      break;
+    }
+  }
 
   const trailerName = dataTrailer.results.find(trailer => {
     const nameNormalized = trailer.name.toLowerCase();
