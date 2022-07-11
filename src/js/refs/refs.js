@@ -47,6 +47,7 @@ export function refs() {
       filmTrailerBtn: document.querySelector('[data-action="trailer"]'),
       modalBackdrop: document.querySelector('.modal'),
       filmDetailsModal: document.querySelector('.modal'),
+      modalWrapper: document.querySelector('.modal-wrapper'),
       image: document.querySelector('.js-image'),
       title: document.querySelector('.js-title'),
       voteAverage: document.querySelector('.js-vote'),
@@ -79,7 +80,7 @@ export function refs() {
     modalTrailerRef: {
       modalTrailer: document.querySelector('.js-trailer'),
     },
-    
+
     trendingBtnsRef: {
       btnDay: document.querySelector('#day'),
       btnWeek: document.querySelector('#week'),

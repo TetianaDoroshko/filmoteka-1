@@ -5,7 +5,7 @@ import { showLoader, hideLoader } from './loader/loader';
 import langs from './language/language-map';
 
 const { languageSelect } = refs().panel;
-
+const { filmDetailsRef } = refs();
 const { modalTrailerRef } = refs();
 
 modalTrailerRef.modalTrailer.addEventListener('click', onBackdropClick);
@@ -13,11 +13,13 @@ modalTrailerRef.modalTrailer.addEventListener('click', onBackdropClick);
 function onOpenModal() {
   window.addEventListener('keydown', onCloseModalByEscape);
   modalTrailerRef.modalTrailer.classList.remove('is-hidden');
+  filmDetailsRef.modalWrapper.classList.add('is-hidden');
 }
 
 function onCloseModal() {
   window.removeEventListener('keydown', onCloseModalByEscape);
   modalTrailerRef.modalTrailer.classList.add('is-hidden');
+  filmDetailsRef.modalWrapper.classList.remove('is-hidden');
 
   modalTrailerRef.modalTrailer.innerHTML = '';
 }
@@ -39,12 +41,12 @@ export async function createIframe(idMovie) {
   const arrLangs = ['en-US', 'uk-UA', 'ru-RU'];
   const currentLang = arrLangs.find(el => el.includes(languageSelect.value));
   const withoutCurrent = arrLangs.filter(el => el !== currentLang);
-  const langs = [currentLang, ...withoutCurrent];
+  const langsArr = [currentLang, ...withoutCurrent];
 
   let dataTrailer;
 
   for (let i = 0; i < 3; i += 1) {
-    dataTrailer = await getTrailer(idMovie, langs[i]);
+    dataTrailer = await getTrailer(idMovie, langsArr[i]);
 
     // console.log(dataTrailer.results);
 
