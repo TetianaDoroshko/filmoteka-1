@@ -15,8 +15,10 @@ import {
 import { showLoader, hideLoader } from './loader/loader';
 import { notify } from './notify';
 import langs from './language/language-map';
+import { createIframe } from './modal-trailer';
 
 const { languageSelect } = refs().panel;
+const { image } = refs().filmDetailsRef;
 
 export async function onFilmClick(event) {
   event.preventDefault();
@@ -41,4 +43,20 @@ export async function onFilmClick(event) {
   }
 
   hideLoader();
+
+  addListener(movieId);
+}
+
+let openModalTrailer;
+
+function addListener(movieId) {
+  openModalTrailer = () => {
+    createIframe(movieId);
+  };
+
+  image.addEventListener('click', openModalTrailer);
+}
+
+export function clearListener() {
+  image.removeEventListener('click', openModalTrailer);
 }
