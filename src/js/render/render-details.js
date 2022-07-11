@@ -3,6 +3,7 @@ import apiConfig from '../constants/api-config';
 import { getDetails } from '../api-service/get-details';
 import defaultImg1x from '../../images/img-default@1x.jpg';
 import defaultImg2x from '../../images/img-default@2x.jpg';
+import backdropDefault from '../../images/backdropDefault.jpg';
 
 const { filmDetailsRef } = refs();
 
@@ -49,4 +50,16 @@ export async function renderModalDetails(data) {
 export function clearImgSrc() {
   filmDetailsRef.image.src = '#';
   filmDetailsRef.image.srcset = '#';
+}
+export async function renderModalBackdrop(data) {
+  const { IMAGE_BASE_URL_2X } = apiConfig;
+  if (data.backdrop_path) {
+    filmDetailsRef.modalBackdrop.style.cssText = `background-image: url(${IMAGE_BASE_URL_2X}${data.backdrop_path});
+      background-position: center;
+      background-size: cover;`;
+  } else {
+    filmDetailsRef.modalBackdrop.style.cssText = `background-image: url(${backdropDefault});
+      background-position: center;
+      background-size: cover;`;
+  }
 }
