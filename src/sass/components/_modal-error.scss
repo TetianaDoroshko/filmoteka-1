@@ -3,16 +3,16 @@
   top: 20px;
   left: 50%;
   transform: translate(-50%, -200%);
-  
+
   display: flex;
   justify-content: center;
   align-items: center;
-  
+
   width: 300px;
   padding: 7px 7px;
   border: 1px solid transparent;
   border-radius: 5px;
-  
+
   text-align: center;
   background: linear-gradient(
     340deg,
@@ -20,13 +20,13 @@
     rgb(159, 5, 22) 32%,
     rgb(35, 47, 56) 90%
   );
- 
+
   cursor: pointer;
+  z-index: 1000;
 
   @include tablet {
     padding: 12px;
     width: 370px;
-   
   }
   @include desktop {
     padding: 15px;
@@ -50,7 +50,6 @@
 .windov-modal.show-hide .error-modal {
   animation: anim 3000ms linear;
 }
-
 
 @keyframes anim {
   0% {

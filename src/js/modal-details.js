@@ -12,8 +12,10 @@ import { renderModalDetails } from './render/render-details';
 import { showLoader, hideLoader } from './loader/loader';
 import { notify } from './notify';
 import langs from './language/language-map';
+import { createIframe } from './modal-trailer';
 
 const { languageSelect } = refs().panel;
+const { image } = refs().filmDetailsRef;
 
 export async function onFilmClick(event) {
   event.preventDefault();
@@ -32,9 +34,11 @@ export async function onFilmClick(event) {
     modalButtonsHandler(movieId);
     onOpenModal();
   } else {
-    const text = langs.notMovie[languageSelect.value]
+    const text = langs.notMovie[languageSelect.value];
     notify(text);
   }
 
   hideLoader();
+
+  image.addEventListener('click', () => createIframe(movieId));
 }

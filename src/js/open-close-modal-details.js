@@ -6,6 +6,7 @@ import { clearImgSrc } from './render/render-details';
 import { onFilmClick } from './modal-details';
 import { bodyLock, bodyUnlock } from './utils/body-lock';
 const { filmDetailsRef } = refs();
+const { image } = refs().filmDetailsRef;
 
 filmDetailsRef.filmDetailsModalClose.addEventListener('click', onCloseModal);
 filmDetailsRef.modalBackdrop.addEventListener('click', onBackdropClick);
