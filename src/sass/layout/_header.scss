@@ -90,7 +90,11 @@
 
   &:last-child {
     display: none;
-    margin-left: 40px;
+    margin-left: 30px;
+
+    @media screen and (min-width: 320px) {
+      margin-left: 40px;
+    }
   }
 
   &.current::after {
