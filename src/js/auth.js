@@ -39,7 +39,7 @@ function checkLogSatus() {
     onAuthStateChanged(auth, user => {
     if(user) {
       console.log('user is logged in');
-      btnLibrary.classList.remove('visually-hidden');
+      btnLibrary.style.display = 'block';
       btnAuth.setAttribute('actions', 'logged');
       btnAuth.textContent = 'Log out';
 
@@ -58,7 +58,7 @@ function authHandler (e) {
     signOut(auth);
     btnAuth.setAttribute('actions', 'out');
     btnAuth.textContent = 'Log in';
-    btnLibrary.classList.add('visually-hidden');
+    btnLibrary.style.display = 'none';
     switchPageToHome()
   } else {
     try {
