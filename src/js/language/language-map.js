@@ -229,8 +229,8 @@ const langs = {
   trweek: { en: 'Week', ru: 'Неделя', uk: 'Тиждень' },
   emptyWatched1: {
     en: "You don't have any movies you've watched.",
-    ru: 'У вас еще нет фильмов, которые вы смотрели.',
-    uk: 'Ви ще не маєте фільмів, які ви дивилися.',
+    ru: 'У вас еще нет фильмов которые вы смотрели.',
+    uk: 'Ви ще не маєте фільмів які ви дивилися.',
   },
   emptyWatched2: {
     en: 'Add the first one.',
