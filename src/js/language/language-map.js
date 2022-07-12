@@ -271,6 +271,12 @@ const langs = {
     ru: 'Войти',
     uk: 'Увійти',
   },
+
+  hello: {
+    en: 'Hello',
+    ru: 'Привет',
+    uk: 'Привіт',
+  },
 };
 
 export default langs;

@@ -31,7 +31,7 @@ const btnLibrary = refs().headerRef.btnLibrary;
 const { detailBtns } = refs().filmDetailsRef;
 
 export function checkLogSatus() {
-  const text = langs.logOut[languageSelect.value];
+  const textOut = langs.logOut[languageSelect.value];
   const textIn = langs.logIn[languageSelect.value];
 
   btnLibrary.style.display = 'none';
@@ -43,7 +43,7 @@ export function checkLogSatus() {
       btnLibrary.style.display = 'block';
       detailBtns.style.display = 'flex';
       btnAuth.setAttribute('actions', 'logged');
-      btnAuth.textContent = text;
+      btnAuth.textContent = textOut;
     } else {
       btnAuth.setAttribute('actions', 'out');
     }
@@ -52,19 +52,20 @@ export function checkLogSatus() {
 }
 
 function authHandler(e) {
-  const text = langs.logIn[languageSelect.value];
+  const textIn = langs.logIn[languageSelect.value];
+  const textHi = langs.hello[languageSelect.value];
 
   if (e.currentTarget.getAttribute('actions') === 'logged') {
     signOut(auth);
     btnAuth.setAttribute('actions', 'out');
-    btnAuth.textContent = text;
+    btnAuth.textContent = textIn;
     btnLibrary.style.display = 'none';
     detailBtns.style.display = 'none';
     switchPageToHome();
   } else {
     try {
       signInWithPopup(auth, provider).then(res =>
-        notify(`Hello, ${res.user.displayName}`)
+        notify(`${textHi}, ${res.user.displayName}`)
       );
     } catch (error) {
       console.log(error);
