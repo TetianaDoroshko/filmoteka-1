@@ -68,7 +68,7 @@ export async function showWatchedMovies(page) {
     const textOne = langs.emptyWatched1[languageSelect.value];
     const textTwo = langs.emptyWatched2[languageSelect.value];
 
-    gallery.innerHTML = `<p class='gallery__info'>${textOne}</p><p class='gallery__info'>${textTwo}</p>`;
+    gallery.innerHTML = `<div class="cat-gallery"></div><p class='gallery__info'>${textOne}</p><p class='gallery__info'>${textTwo}</p>`;
     hideLoader();
   } else {
     showLoader();
@@ -110,7 +110,7 @@ export async function showQueueOfMovies(page) {
     const textOne = langs.emptyQueue1[languageSelect.value];
     const textTwo = langs.emptyQueue2[languageSelect.value];
 
-    gallery.innerHTML = `<p class='gallery__info'>${textOne}</p><p class='gallery__info'>${textTwo}</p>`;
+    gallery.innerHTML = `<div class="cat-gallery"></div><p class='gallery__info'>${textOne}</p><p class='gallery__info'>${textTwo}</p></p>`;
     hideLoader();
   } else {
     showLoader();

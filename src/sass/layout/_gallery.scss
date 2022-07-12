@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans+Condensed:wght@500&display=swap');
 .gallery {
   padding-top: 20px;
   padding-bottom: 20px;
@@ -27,8 +28,18 @@
   }
 }
 .gallery__info {
+  font-family: 'Fira Sans Condensed', sans-serif;
   text-align: center;
   font-size: 16px;
   line-height: 2;
   color: var(--primaryTextDark);
+}
+
+.cat-gallery {
+  background-image: url(../images/cat__1.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  width: 100%;
+  height: 35vh;
 }
