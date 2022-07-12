@@ -11,6 +11,9 @@
   background-repeat: no-repeat;
   background-size: contain;
   cursor: pointer;
+  transition: transform var(--timingFunction), box-shadow var(--timingFunction),
+    filter var(--timingFunction);
+
   &:focus,
   &:hover {
     transform: scale(1.05);
