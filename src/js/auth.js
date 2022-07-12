@@ -59,7 +59,7 @@ function authHandler (e) {
     switchPageToHome()
   } else {
     try {
-      signInWithPopup(auth, provider);
+      signInWithPopup(auth, provider).then(res => notify(`Hello, ${res.user.displayName}`));
     } catch(error) {
       console.log(error);
     }
