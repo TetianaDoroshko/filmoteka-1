@@ -1,13 +1,15 @@
 .team-modal {
   transition: var(--timingFunction);
   display: flex;
-  align-items: center;
+  align-items: start;
   justify-content: center;
   padding-top: 0;
-  @media screen and (max-height: 400px) {
-    align-items: start;
-  }
+  padding: 20px;
+
   @include mobile {
+    align-items: center;
+
+    padding: 0;
     @media screen and (max-height: 352px) {
       align-items: start;
     }
@@ -26,7 +28,7 @@
 }
 
 .tm-content {
-  width: 260px;
+  width: 100%;
   background-color: var(--primaryLightThemeBgColor);
   position: relative;
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
@@ -40,7 +42,7 @@
   border-image-source: linear-gradient(60deg, #ff6b02, #ff001b);
 
   @include mobile {
-    width: 392px;
+    width: 440px;
     padding-bottom: 20px;
   }
   @include tablet {
@@ -48,7 +50,7 @@
     padding-bottom: 28px;
   }
   @include desktop {
-    width: 944px;
+    width: 1000px;
     padding-bottom: 40px;
   }
 }
@@ -163,8 +165,8 @@
 }
 
 .member-image {
-  width: 25px;
-  height: 25px;
+  width: 80px;
+  height: 80px;
   border-radius: 50%;
   background-color: var(--accentTextColor);
   transition: transform 0.35s;
@@ -172,16 +174,16 @@
     transform: scale(1.2);
   }
   @include mobile {
-    width: 45px;
-    height: 45px;
+    width: 80px;
+    height: 80px;
   }
   @include tablet {
-    width: 60px;
-    height: 60px;
-  }
-  @include desktop {
     width: 90px;
     height: 90px;
+  }
+  @include desktop {
+    width: 120px;
+    height: 120px;
   }
 }
 

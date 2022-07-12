@@ -11,6 +11,7 @@ import { renderMovies } from './render/render-gallery';
 import { hideLoader, showLoader } from './loader/loader';
 import { renderMoviesPromises } from './btn-library';
 
+const { moviesDiv } = refs().galleryRef;
 const { TRENDING, BY_KEY, LIBRARY } = storageConfig;
 
 //==================================================
@@ -127,6 +128,7 @@ function onClick(e) {
   activeCurrentPage();
   checkCurrentPosition();
   lockBtn();
+  scroll();
   // console.log(currentPage);
 }
 
@@ -282,4 +284,14 @@ function lockBtn() {
 export function clearContainerPagination() {
   container.innerHTML = '';
   totalPage = 0;
+}
+
+function scroll() {
+  const { top } = moviesDiv.getBoundingClientRect();
+  // console.log(top);
+
+  window.scrollBy({
+    top: top,
+    behavior: 'smooth',
+  });
 }
