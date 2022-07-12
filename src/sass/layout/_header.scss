@@ -43,11 +43,12 @@
   line-height: 1.17;
   font-weight: 500;
 
-  @include tablet {
+  @include mobile {
     display: inline-block;
   }
 }
 .navigation__actions {
+  margin-left: auto;
   display: flex;
 }
 .navigation__page {
@@ -147,7 +148,7 @@
   height: 34px;
   margin-left: 3px;
 
-  @media screen and (max-width: 400px) {
+  @media screen and (max-width: 480px) {
     display: none;
   }
 }
