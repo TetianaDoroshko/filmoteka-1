@@ -6,6 +6,8 @@ export function refs() {
       searchForm: document.querySelector('.js-search-form'),
       headLibBackGr: document.querySelector('.header--library'),
       searchInput: document.querySelector('.js-form-input'),
+      btnAuth: document.querySelector('.js-btn-auth'),
+      btnLibrary: document.querySelector('.js-library'),
     },
     searchRef: {
       searchForm: document.querySelector('.search-form'),

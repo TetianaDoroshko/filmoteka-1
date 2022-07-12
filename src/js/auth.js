@@ -1,8 +1,11 @@
 import { initializeApp } from 'firebase/app';
 // import { getAnalytics } from 'firebase/analytics';
-import { hideLoader, showLoader } from './loader/loader';
 import { refs } from './refs/refs';
-import {notify} from './notify'
+import {notify} from './notify';
+import {switchPageToHome} from './change-page';
+
+const btnAuth = refs().headerRef.btnAuth;
+const btnLibrary = refs().headerRef.btnLibrary;
 
 const firebaseConfig = {
   apiKey: 'AIzaSyArgaVgLGot3MCrNA7ImJovdOt4rbnN4Y4',
@@ -30,7 +33,43 @@ const auth = getAuth(app);
 
 const provider = new GoogleAuthProvider();
 
-let currentUser;
+document.addEventListener('DOMContentLoaded', checkLogSatus);
+
+function checkLogSatus() {
+    onAuthStateChanged(auth, user => {
+    if(user) {
+      console.log('user is logged in');
+      btnLibrary.classList.remove('visually-hidden');
+      btnAuth.setAttribute('actions', 'logged');
+      btnAuth.textContent = 'Log out';
+
+    } else {
+      console.log('No user');
+      btnAuth.setAttribute('actions', 'out');
+    }
+
+  })
+    btnAuth.addEventListener('click', authHandler);
+}
+
+
+function authHandler (e) {
+  if(e.currentTarget.getAttribute('actions') === 'logged') {
+    signOut(auth);
+    btnAuth.setAttribute('actions', 'out');
+    btnAuth.textContent = 'Log in';
+    btnLibrary.classList.add('visually-hidden');
+    switchPageToHome()
+  } else {
+    try {
+      signInWithPopup(auth, provider);
+    } catch(error) {
+      console.log(error);
+    }
+  }
+}
+
+
 
 export async function monitorAuthState() {
   try {

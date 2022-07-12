@@ -109,7 +109,7 @@ refs().headerRef.navLogo.addEventListener('click', switchPageToHome);
 
 // ====================================================
 
-function switchPageToHome(currentPage) {
+export function switchPageToHome(currentPage) {
   if (typeof currentPage !== 'number') {
     currentPage = 1;
   }
@@ -134,27 +134,21 @@ function switchPageToHome(currentPage) {
 // ====================================================
 
 async function switchPageToLibrary(currentPage, isWatchedOrQueue) {
-  if (await authorizate()) {
-    if (typeof currentPage !== 'number') {
-      currentPage = 1;
-    }
-    refs().headerRef.header.classList.remove('header--home');
-    refs().headerRef.header.classList.add('header--library');
-
-    refs().headerRef.searchForm.classList.add('display-none');
-    refs().libraryButtonsRef.btnContainer.classList.remove('display-none');
-
-    refs().libraryRef.libBtn.classList.add('current');
-    refs().libraryRef.homeBtn.classList.remove('current');
-
-    refs().trendingBtnsRef.trendingButtons.classList.add('visually-hidden');
-    // refs().libraryRef.libBtn.setAttribute('style', 'pointer-events:none');
-    // refs().libraryRef.homeBtn.setAttribute('style', 'pointer-events:visible');
-    clearContainerPagination();
-    libraryHandler(currentPage, isWatchedOrQueue);
-  } else {
-    refs().galleryRef.moviesDiv.innerHTML =
-      '<p>Needs authorization to see the content</p>';
-    switchPageToHome();
+  if (typeof currentPage !== 'number') {
+    currentPage = 1;
   }
+  refs().headerRef.header.classList.remove('header--home');
+  refs().headerRef.header.classList.add('header--library');
+
+  refs().headerRef.searchForm.classList.add('display-none');
+  refs().libraryButtonsRef.btnContainer.classList.remove('display-none');
+
+  refs().libraryRef.libBtn.classList.add('current');
+  refs().libraryRef.homeBtn.classList.remove('current');
+
+  refs().trendingBtnsRef.trendingButtons.classList.add('visually-hidden');
+  // refs().libraryRef.libBtn.setAttribute('style', 'pointer-events:none');
+  // refs().libraryRef.homeBtn.setAttribute('style', 'pointer-events:visible');
+  clearContainerPagination();
+  libraryHandler(currentPage, isWatchedOrQueue);
 }
