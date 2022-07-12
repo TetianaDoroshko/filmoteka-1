@@ -25,11 +25,13 @@ const provider = new GoogleAuthProvider();
 
 const btnAuth = refs().headerRef.btnAuth;
 const btnLibrary = refs().headerRef.btnLibrary;
+const { detailBtns } = refs().filmDetailsRef;
 
 export function checkLogSatus() {
   onAuthStateChanged(auth, user => {
     if (user) {
       btnLibrary.style.display = 'block';
+      detailBtns.style.display = 'flex';
       btnAuth.setAttribute('actions', 'logged');
       btnAuth.textContent = 'Log out';
     } else {
@@ -45,6 +47,7 @@ function authHandler(e) {
     btnAuth.setAttribute('actions', 'out');
     btnAuth.textContent = 'Log in';
     btnLibrary.style.display = 'none';
+    detailBtns.style.display = 'none';
     switchPageToHome();
   } else {
     try {

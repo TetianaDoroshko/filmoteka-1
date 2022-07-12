@@ -60,6 +60,7 @@ export function refs() {
       about: document.querySelector('.js-about'),
       btnWatched: document.querySelector('.js-btn-modal-watched'),
       btnQueue: document.querySelector('.js-btn-modal-queue'),
+      detailBtns: document.querySelector('.js-detail-btn'),
     },
     footerRef: {
       // ref: document.querySelector('.selector')
