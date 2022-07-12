@@ -54,7 +54,6 @@
   position: relative;
   display: block;
   padding: 20px 0;
-  margin-right: 40px;
   text-transform: uppercase;
   color: #ffffff;
   text-decoration: none;
@@ -89,7 +88,8 @@
   }
 
   &:last-child {
-    margin-right: 0px;
+    display: none;
+    margin-left: 40px;
   }
 
   &.current::after {

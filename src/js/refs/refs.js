@@ -6,6 +6,8 @@ export function refs() {
       searchForm: document.querySelector('.js-search-form'),
       headLibBackGr: document.querySelector('.header--library'),
       searchInput: document.querySelector('.js-form-input'),
+      btnAuth: document.querySelector('.js-btn-auth'),
+      btnLibrary: document.querySelector('.js-library'),
     },
     searchRef: {
       searchForm: document.querySelector('.search-form'),
@@ -44,8 +46,10 @@ export function refs() {
       filmDetailsModalClose: document.querySelector(
         '[data-action="close-modal"]'
       ),
+      filmTrailerBtn: document.querySelector('[data-action="trailer"]'),
       modalBackdrop: document.querySelector('.modal'),
       filmDetailsModal: document.querySelector('.modal'),
+      modalWrapper: document.querySelector('.modal-wrapper'),
       image: document.querySelector('.js-image'),
       title: document.querySelector('.js-title'),
       voteAverage: document.querySelector('.js-vote'),
@@ -74,6 +78,11 @@ export function refs() {
     upArrowRef: {
       upArrow: document.querySelector('.to-top-button'),
     },
+
+    modalTrailerRef: {
+      modalTrailer: document.querySelector('.js-trailer'),
+    },
+
     trendingBtnsRef: {
       btnDay: document.querySelector('#day'),
       btnWeek: document.querySelector('#week'),

@@ -96,7 +96,7 @@ function clearInput() {
 
 function scroll() {
   const { top } = moviesDiv.getBoundingClientRect();
-  console.log(top);
+  // console.log(top);
 
   window.scrollBy({
     top: top,

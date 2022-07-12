@@ -15,6 +15,9 @@ import {
   updatePageSessionStorage,
 } from './storage/session-storage';
 import { hideLoader, showLoader } from './loader/loader';
+import langs from './language/language-map';
+
+const { languageSelect } = refs().panel;
 
 const btnWatched = refs().libraryButtonsRef.btnWatched;
 const btnQueue = refs().libraryButtonsRef.btnQueue;
@@ -23,19 +26,19 @@ let arrayOfPromises;
 
 export function libraryHandler(page, isWatchedOrQueue) {
   addListenersBtnLib();
-  console.log(isWatchedOrQueue);
+  // console.log(isWatchedOrQueue);
 
   if (isWatchedOrQueue === 'watched') {
     showWatchedMovies(page);
     btnWatched.classList.add('active');
-    console.log('1');
+    // console.log('1');
   } else if (isWatchedOrQueue === 'queue') {
     showQueueOfMovies(page);
-    console.log('2');
+    // console.log('2');
   } else {
     showWatchedMovies(page);
     btnWatched.classList.add('active');
-    console.log('3');
+    // console.log('3');
   }
 }
 
@@ -62,8 +65,10 @@ export async function showWatchedMovies(page) {
 
   const movieSetId = getStorage(storageConfig.KEY_WATCHED);
   if (!movieSetId || movieSetId.length === 0) {
-    gallery.innerHTML =
-      "<p class='gallery__info'>You don't have any movies you've watched.</p><p class='gallery__info'>Add the first one.</p>";
+    const textOne = langs.emptyWatched1[languageSelect.value];
+    const textTwo = langs.emptyWatched2[languageSelect.value];
+
+    gallery.innerHTML = `<p class='gallery__info'>${textOne}</p><p class='gallery__info'>${textTwo}</p>`;
     hideLoader();
   } else {
     showLoader();
@@ -102,8 +107,10 @@ export async function showQueueOfMovies(page) {
   const movieSetId = getStorage(storageConfig.KEY_QUEUE);
   // console.log(movieSetId);
   if (!movieSetId || movieSetId.length === 0) {
-    gallery.innerHTML =
-      "<p class='gallery__info'>You don't have any movies in the queue.</p><p class='gallery__info'>Add the first one.</p>";
+    const textOne = langs.emptyQueue1[languageSelect.value];
+    const textTwo = langs.emptyQueue2[languageSelect.value];
+
+    gallery.innerHTML = `<p class='gallery__info'>${textOne}</p><p class='gallery__info'>${textTwo}</p>`;
     hideLoader();
   } else {
     showLoader();

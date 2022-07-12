@@ -24,7 +24,7 @@ import { makingGenresList } from './utils/get-name-genres';
 import { getGenres } from './api-service/get-genres';
 // import { trendingHandler } from './btn-trending';
 import { renderBySearch } from './search-movies';
-import { authorizate } from './auth';
+import { checkLogSatus } from './auth';
 
 // ===================================================
 const { btnDay, btnWeek } = refs().trendingBtnsRef;
@@ -39,7 +39,7 @@ async function getPage() {
 
   const genres = await getGenres();
   makingGenresList(genres);
-
+  checkLogSatus();
   if (!savedPage) {
     setSessionStorage(storageConfig.TRENDING);
     switchPageToHome(page);
@@ -51,16 +51,16 @@ async function getPage() {
       isWeekOrDay = 'week';
       btnWeek.checked = true;
     }
-    console.log(isWeekOrDay);
+    // console.log(isWeekOrDay);
 
     switchPageToHome(page);
   } else if (savedPage[storageConfig.LIBRARY]) {
     if (savedPage[storageConfig.LIBRARY] === 'watched') {
-      console.log('watched');
+      // console.log('watched');
 
       switchPageToLibrary(page, 'watched');
     } else if (savedPage[storageConfig.LIBRARY] === 'queue') {
-      console.log('queue');
+      // console.log('queue');
       switchPageToLibrary(page, 'queue');
     }
   } else if (savedPage[storageConfig.BY_KEY]) {
@@ -87,7 +87,7 @@ async function createPage(currentPage) {
     setSessionStorage(storageConfig.TRENDING, 'week');
   }
 
-  console.log(isWeekOrDay);
+  // console.log(isWeekOrDay);
 
   // const page = getPage(currentPage);
   // trendingHandler();
@@ -109,7 +109,7 @@ refs().headerRef.navLogo.addEventListener('click', switchPageToHome);
 
 // ====================================================
 
-function switchPageToHome(currentPage) {
+export function switchPageToHome(currentPage) {
   if (typeof currentPage !== 'number') {
     currentPage = 1;
   }
@@ -134,27 +134,21 @@ function switchPageToHome(currentPage) {
 // ====================================================
 
 async function switchPageToLibrary(currentPage, isWatchedOrQueue) {
-  if (await authorizate()) {
-    if (typeof currentPage !== 'number') {
-      currentPage = 1;
-    }
-    refs().headerRef.header.classList.remove('header--home');
-    refs().headerRef.header.classList.add('header--library');
-
-    refs().headerRef.searchForm.classList.add('display-none');
-    refs().libraryButtonsRef.btnContainer.classList.remove('display-none');
-
-    refs().libraryRef.libBtn.classList.add('current');
-    refs().libraryRef.homeBtn.classList.remove('current');
-
-    refs().trendingBtnsRef.trendingButtons.classList.add('visually-hidden');
-    // refs().libraryRef.libBtn.setAttribute('style', 'pointer-events:none');
-    // refs().libraryRef.homeBtn.setAttribute('style', 'pointer-events:visible');
-    clearContainerPagination();
-    libraryHandler(currentPage, isWatchedOrQueue);
-  } else {
-    refs().galleryRef.moviesDiv.innerHTML =
-      '<p>Needs authorization to see the content</p>';
-    switchPageToHome();
+  if (typeof currentPage !== 'number') {
+    currentPage = 1;
   }
+  refs().headerRef.header.classList.remove('header--home');
+  refs().headerRef.header.classList.add('header--library');
+
+  refs().headerRef.searchForm.classList.add('display-none');
+  refs().libraryButtonsRef.btnContainer.classList.remove('display-none');
+
+  refs().libraryRef.libBtn.classList.add('current');
+  refs().libraryRef.homeBtn.classList.remove('current');
+
+  refs().trendingBtnsRef.trendingButtons.classList.add('visually-hidden');
+  // refs().libraryRef.libBtn.setAttribute('style', 'pointer-events:none');
+  // refs().libraryRef.homeBtn.setAttribute('style', 'pointer-events:visible');
+  clearContainerPagination();
+  libraryHandler(currentPage, isWatchedOrQueue);
 }
