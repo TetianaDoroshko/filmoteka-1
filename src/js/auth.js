@@ -1,5 +1,4 @@
 import { initializeApp } from 'firebase/app';
-// import { getAnalytics } from 'firebase/analytics';
 import { refs } from './refs/refs';
 import {notify} from './notify';
 import {switchPageToHome} from './change-page';
@@ -38,13 +37,11 @@ document.addEventListener('DOMContentLoaded', checkLogSatus);
 function checkLogSatus() {
     onAuthStateChanged(auth, user => {
     if(user) {
-      console.log('user is logged in');
       btnLibrary.style.display = 'block';
       btnAuth.setAttribute('actions', 'logged');
       btnAuth.textContent = 'Log out';
 
     } else {
-      console.log('No user');
       btnAuth.setAttribute('actions', 'out');
     }
 

@@ -8,5 +8,10 @@
   border-radius: 50%;
   background-color: transparent;
   color: white;
-  border: 1px solid white;
+  // border: 1px solid white;
+  background-image: url(../images/btn-round-black.png);
+  background-position: bottom;
+  background-repeat: no-repeat;
+  background-size: contain;
+  cursor: pointer;
 }
