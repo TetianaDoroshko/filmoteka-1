@@ -24,7 +24,7 @@ import { makingGenresList } from './utils/get-name-genres';
 import { getGenres } from './api-service/get-genres';
 // import { trendingHandler } from './btn-trending';
 import { renderBySearch } from './search-movies';
-import { authorizate } from './auth';
+import { checkLogSatus } from './auth';
 
 // ===================================================
 const { btnDay, btnWeek } = refs().trendingBtnsRef;
@@ -39,7 +39,7 @@ async function getPage() {
 
   const genres = await getGenres();
   makingGenresList(genres);
-
+  checkLogSatus();
   if (!savedPage) {
     setSessionStorage(storageConfig.TRENDING);
     switchPageToHome(page);
