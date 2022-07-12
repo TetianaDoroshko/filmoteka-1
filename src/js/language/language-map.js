@@ -226,7 +226,7 @@ const langs = {
     uk: 'Розробник',
   },
   trday: { en: 'Day', ru: 'День', uk: 'День' },
-  trweek: { en: 'Week', ru: 'Неделя', uk: 'Неділя' },
+  trweek: { en: 'Week', ru: 'Неделя', uk: 'Тиждень' },
   emptyWatched1: {
     en: "You don't have any movies you've watched.",
     ru: 'У вас еще нет фильмов, которые вы смотрели.',
@@ -239,8 +239,8 @@ const langs = {
   },
   emptyQueue1: {
     en: "You don't have any movies in the queue.",
-    ru: 'У вас еще нет фильмов в очереди, для просмотра.',
-    uk: 'У вас ще немає фільмів у черзі, для перегляду.',
+    ru: 'У вас еще нет фильмов в очереди для просмотра.',
+    uk: 'У вас ще немає фільмів у черзі для перегляду.',
   },
   emptyQueue2: {
     en: 'Add the first one.',
