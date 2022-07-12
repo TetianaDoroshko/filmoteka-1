@@ -247,15 +247,29 @@ const langs = {
     ru: 'Добавьте свой первый фильм.',
     uk: 'Додайте свій перший фільм.',
   },
+
   trailer: {
     en: 'Sorry, trailer not found',
     ru: 'Извините, трейлер не найден',
     uk: 'Вибачте, трейлер не знайдено',
   },
+
   detailsNotFound: {
     en: 'No information',
     ru: 'Нету информации',
     uk: 'Інформації немає',
+  },
+
+  logOut: {
+    en: 'Log out',
+    ru: 'Выйти',
+    uk: 'Вийти',
+  },
+
+  logIn: {
+    en: 'Log in',
+    ru: 'Войти',
+    uk: 'Увійти',
   },
 };
 

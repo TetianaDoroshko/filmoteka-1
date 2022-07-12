@@ -9,6 +9,9 @@ import {
   signOut,
   onAuthStateChanged,
 } from 'firebase/auth';
+import langs from './language/language-map';
+
+const { languageSelect } = refs().panel;
 
 const firebaseConfig = {
   apiKey: 'AIzaSyArgaVgLGot3MCrNA7ImJovdOt4rbnN4Y4',
@@ -28,12 +31,19 @@ const btnLibrary = refs().headerRef.btnLibrary;
 const { detailBtns } = refs().filmDetailsRef;
 
 export function checkLogSatus() {
+  const text = langs.logOut[languageSelect.value];
+  const textIn = langs.logIn[languageSelect.value];
+
+  btnLibrary.style.display = 'none';
+  detailBtns.style.display = 'none';
+  btnAuth.textContent = textIn;
+
   onAuthStateChanged(auth, user => {
     if (user) {
       btnLibrary.style.display = 'block';
       detailBtns.style.display = 'flex';
       btnAuth.setAttribute('actions', 'logged');
-      btnAuth.textContent = 'Log out';
+      btnAuth.textContent = text;
     } else {
       btnAuth.setAttribute('actions', 'out');
     }
@@ -42,10 +52,12 @@ export function checkLogSatus() {
 }
 
 function authHandler(e) {
+  const text = langs.logIn[languageSelect.value];
+
   if (e.currentTarget.getAttribute('actions') === 'logged') {
     signOut(auth);
     btnAuth.setAttribute('actions', 'out');
-    btnAuth.textContent = 'Log in';
+    btnAuth.textContent = text;
     btnLibrary.style.display = 'none';
     detailBtns.style.display = 'none';
     switchPageToHome();
