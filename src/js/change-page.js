@@ -24,6 +24,7 @@ import { makingGenresList } from './utils/get-name-genres';
 import { getGenres } from './api-service/get-genres';
 // import { trendingHandler } from './btn-trending';
 import { renderBySearch } from './search-movies';
+import { checkLogSatus } from './auth';
 
 // ===================================================
 const { btnDay, btnWeek } = refs().trendingBtnsRef;
@@ -38,7 +39,7 @@ async function getPage() {
 
   const genres = await getGenres();
   makingGenresList(genres);
-
+  checkLogSatus();
   if (!savedPage) {
     setSessionStorage(storageConfig.TRENDING);
     switchPageToHome(page);
@@ -108,7 +109,7 @@ refs().headerRef.navLogo.addEventListener('click', switchPageToHome);
 
 // ====================================================
 
-function switchPageToHome(currentPage) {
+export function switchPageToHome(currentPage) {
   if (typeof currentPage !== 'number') {
     currentPage = 1;
   }
@@ -132,7 +133,7 @@ function switchPageToHome(currentPage) {
 
 // ====================================================
 
-function switchPageToLibrary(currentPage, isWatchedOrQueue) {
+async function switchPageToLibrary(currentPage, isWatchedOrQueue) {
   if (typeof currentPage !== 'number') {
     currentPage = 1;
   }
