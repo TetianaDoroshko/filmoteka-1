@@ -1,14 +1,16 @@
 .team-modal {
   transition: var(--timingFunction);
   display: flex;
-  align-items: start;
+  align-items: center;
   justify-content: center;
   padding-top: 0;
   padding: 20px;
 
-  @include mobile {
-    align-items: center;
+  @media screen and (max-width: 388px) {
+    align-items: start;
+  }
 
+  @include mobile {
     padding: 0;
     @media screen and (max-height: 352px) {
       align-items: start;

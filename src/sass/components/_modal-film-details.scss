@@ -318,3 +318,21 @@
     width: 136px;
   }
 }
+.iframe {
+  height: 280px;
+
+  @include mobile {
+    height: 320px;
+    width: 590px;
+  }
+
+  @include tablet {
+    height: 330px;
+    width: 600px;
+  }
+
+  @include desktop {
+    height: 480px;
+    width: 854px;
+  }
+}
