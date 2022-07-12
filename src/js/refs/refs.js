@@ -25,8 +25,8 @@ export function refs() {
       next: document.querySelector('.next-js'),
       first: document.querySelector('.first-js'),
       last: document.querySelector('.last-js'),
-      prevMore: document.querySelector('.prevMore-js'),
-      nextMore: document.querySelector('.nextMore-js'),
+      prevMore: document.querySelector('.prev-more-js'),
+      nextMore: document.querySelector('.next-more-js'),
     },
     modalTeamRef: {
       teamModal: document.querySelector('.team-modal'),

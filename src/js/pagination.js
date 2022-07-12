@@ -112,12 +112,12 @@ function onClick(e) {
     reRenderPagination();
   }
 
-  if (e.target.classList.contains('prevMore-js')) {
+  if (e.target.classList.contains('prev-more-js')) {
     currentPage = +paginationRef.pages[1].dataset.num;
     reRenderPagination();
   }
 
-  if (e.target.classList.contains('nextMore-js')) {
+  if (e.target.classList.contains('next-more-js')) {
     currentPage =
       +paginationRef.pages[paginationRef.pages.length - 2].dataset.num;
     reRenderPagination();
