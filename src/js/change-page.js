@@ -113,7 +113,7 @@ export function switchPageToHome(currentPage) {
   if (typeof currentPage !== 'number') {
     currentPage = 1;
   }
-  refs().headerRef.searchInput.value = null;
+  // refs().headerRef.searchInput.value;
 
   refs().headerRef.header.classList.add('header--home');
   refs().headerRef.header.classList.remove('header--library');
@@ -128,6 +128,8 @@ export function switchPageToHome(currentPage) {
   // refs().libraryRef.homeBtn.setAttribute('style', 'pointer-events:none');
   // refs().libraryRef.libBtn.setAttribute('style', 'pointer-events:visible');
   // setStorage(key, value);
+  btnDay.checked = true;
+
   createPage(currentPage);
 }
 
